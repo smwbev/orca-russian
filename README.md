@@ -1,168 +1,150 @@
-<h1 align="center">Русский язык для Orca</h1>
+<h1 align="center">Russian language pack for Orca</h1>
 
 <p align="center">
-  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/версия-5.0.3-08C?style=flat" alt="Версия пакета 5.0.3" /></a>
-  <img src="https://img.shields.io/badge/покрытие-98.2%25-08C?style=flat" alt="Переведено 98,2 % каталога интерфейса" />
-  <img src="https://img.shields.io/badge/строк-11%20613-08C?style=flat" alt="11 613 переведённых строк" />
-  <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.0-4493F8?style=flat" alt="Требуется Orca 1.4.0 или новее" />
-  <a href="LICENSE"><img src="https://img.shields.io/badge/лицензия-MIT-08C?style=flat" alt="Лицензия MIT" /></a>
+  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.0.3-08C?style=flat" alt="Package version 5.0.3" /></a>
+  <img src="https://img.shields.io/badge/coverage-98.2%25-08C?style=flat" alt="98.2 percent of the interface catalog translated" />
+  <img src="https://img.shields.io/badge/strings-11%20613-08C?style=flat" alt="11,613 translated strings" />
+  <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.0-4493F8?style=flat" alt="Requires Orca 1.4.0 or newer" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-08C?style=flat" alt="MIT License" /></a>
 </p>
 
 <p align="center">
-  <sub><a href="README.en.md">English</a></sub>
+  <sub><a href="docs/readme/README.ru.md">Русский</a></sub>
 </p>
 
 <p align="center">
-  <strong>Полный перевод интерфейса <a href="https://github.com/stablyai/orca">Orca</a> на русский язык.</strong><br/>
-  11 613 строк — меню, настройки, терминал, редактор, GitHub, GitLab, Linear, Jira, мобильный режим и онбординг.
+  <strong>A complete Russian translation of the <a href="https://github.com/stablyai/orca">Orca</a> interface.</strong><br/>
+  11,613 strings — menus, settings, terminal, editor, GitHub, GitLab, Linear, Jira, mobile, and onboarding.
 </p>
 
 ---
 
-## Установка
+## Install
 
-### Способ 1 — через маркетплейс (рекомендуется)
+### Option 1 — via the marketplace (recommended)
 
-Маркетплейс сам следит за обновлениями: когда выходит новая версия перевода, Orca предложит её установить.
+The marketplace tracks updates for you: when a new translation release ships, Orca offers to install it.
 
-1. **Настройки** → **Plugins** → включите систему плагинов.
-2. Откройте **Marketplace sources** → **Add source**.
-3. Вставьте адрес и нажмите **Add source**:
+1. **Settings** → **Plugins** → enable the plugin system.
+2. Open **Marketplace sources** → **Add source**.
+3. Paste the URL and confirm:
 
    ```
    https://github.com/smwbev/orca-plugins.git
    ```
 
-4. Во вкладке **All** найдите **Русский** и нажмите **Install**.
-5. **Настройки** → **Внешний вид** → **Язык** → выберите `ru-RU — smwbev.russian`.
+4. In the **All** tab, find **Русский** and click **Install**.
+5. **Settings** → **Appearance** → **Language** → select `ru-RU — smwbev.russian`.
 
-> Названия внутри раздела плагинов приведены по-английски намеренно: этот раздел Orca запрещает переводить, поэтому он остаётся английским даже после установки пакета. Подробнее — [ниже](#почему-часть-строк-остаётся-английской).
+### Option 2 — directly from a Git URL
 
-### Способ 2 — напрямую по Git URL
-
-Если маркетплейс не нужен, поставьте пакет одной ссылкой.
-
-1. **Настройки** → **Plugins** → **Install plugin** → вкладка **Git URL**.
-2. Вставьте адрес репозитория:
+1. **Settings** → **Plugins** → **Install plugin** → **Git URL** tab.
+2. Paste the repository URL:
 
    ```
    https://github.com/smwbev/orca-russian.git
    ```
 
-3. Укажите тег нужной версии (например, `v5.0.3`) или оставьте `main` для последней.
-4. **Настройки** → **Внешний вид** → **Язык** → `ru-RU — smwbev.russian`.
+3. Pin a release tag (for example `v5.0.3`), or leave `main` for the latest build.
+4. **Settings** → **Appearance** → **Language** → `ru-RU — smwbev.russian`.
 
-### Способ 3 — локальная папка для разработки
+### Option 3 — local development folder
 
-Подходит, если вы правите перевод у себя.
-
-1. Клонируйте репозиторий в постоянную папку:
+1. Clone the repository into a permanent directory:
 
    ```bash
    git clone https://github.com/smwbev/orca-russian.git
    ```
 
-2. **Настройки** → **Plugins** → добавьте полный путь к папке в поле development plugin paths (`devPluginPaths`).
-3. Перезапустите Orca и выберите язык.
+2. **Settings** → **Plugins** → add the full path to **development plugin paths** (`devPluginPaths`).
+3. Restart Orca and select the language.
 
 ---
 
-## Что переведено
+## Coverage
 
-| Область | Состояние |
+| Area | Status |
 |---|---|
-| Оболочка приложения: меню, трей, строка состояния, боковые панели, вкладки | ✅ |
-| Настройки целиком: внешний вид, терминал, аккаунты, репозитории, Git, агенты, интеграции, приватность, сочетания клавиш | ✅ |
-| Рабочие поверхности: редактор, diff, палитры, задачи, автоматизации | ✅ |
-| Интеграции: GitHub, GitLab, Linear, Jira | ✅ |
-| Мобильный режим, сопряжение телефона, эмулятор | ✅ |
-| Онбординг и знакомство с возможностями | ✅ |
-| Раздел настроек «Плагины» | ⛔ остаётся на английском |
+| App shell: menus, tray, status bar, sidebars, tabs | ✅ |
+| All settings: appearance, terminal, accounts, repositories, Git, agents, integrations, privacy, shortcuts | ✅ |
+| Working surfaces: editor, diff, palettes, tasks, automations | ✅ |
+| Integrations: GitHub, GitLab, Linear, Jira | ✅ |
+| Mobile mode, phone pairing, emulator | ✅ |
+| Onboarding and the feature wall | ✅ |
+| Plugins section in settings | ⛔ stays in English |
 
-### Почему часть строк остаётся английской
+### Why some strings stay in English
 
-217 строк перевести невозможно — это ограничение самой Orca, а не пробел в работе:
+217 strings cannot be translated. This is an Orca constraint, not missing work:
 
-- **214 строк** — раздел настроек плагинов. Движок защищает пространство имён `auto.components.settings.plugin*` (проверка регистронезависимая, поэтому под неё попадают и `PluginSettingsRow`, и `PluginsSettingsSection`). Если языковой пакет переопределит хотя бы один такой ключ, Orca отклонит **весь пакет целиком**, и русский язык просто не загрузится.
-- **2 строки** — CSS-анимации витрины возможностей длиной 9 691 и 9 965 символов при жёстком лимите 8 192 символа на строку.
-- **1 строка** — ещё один блок CSS: переводить в нём нечего.
+- **214 strings** — the plugin settings section. The engine protects the `auto.components.settings.plugin*` namespace with a case-insensitive check, so `PluginSettingsRow` and `PluginsSettingsSection` are covered too. If a language pack overrides even one of those keys, Orca rejects **the entire pack** and the language never loads.
+- **2 strings** — feature-wall CSS animations of 9,691 and 9,965 characters against a hard limit of 8,192 characters per string.
+- **1 string** — another CSS block with nothing to translate.
 
-Все остальные строки, отсутствующие в пакете, Orca показывает по-английски автоматически — это штатный механизм отката, приложение при этом работает нормально.
-
----
-
-## Обновление
-
-**Через маркетплейс:** Orca покажет уведомление о новой версии — достаточно нажать **Обновить**.
-
-**По Git URL:** переустановите плагин, указав новый тег.
-
-История версий: [releases](https://github.com/smwbev/orca-russian/releases). Версии выходят по схеме `vX.Y.Z`, где смена мажорной означает завершение крупного этапа перевода.
+Any key missing from the pack falls back to English automatically — that is the engine's normal behaviour, and the app keeps working.
 
 ---
 
-## Как устроен пакет
+## Updating
+
+**Marketplace:** Orca notifies you about a new version — click **Update**.
+
+**Git URL:** reinstall the plugin pinned to the newer tag.
+
+Version history lives in [releases](https://github.com/smwbev/orca-russian/releases). Releases follow `vX.Y.Z`; a major bump marks the completion of a large translation stage.
+
+---
+
+## How the pack is built
 
 ```
-orca-plugin.json        манифест: идентификатор, версия, ссылка на каталог
-locales/ru-RU.json      каталог переводов, 11 613 строк
-GLOSSARY.md             глоссарий: правила и единая терминология
+orca-plugin.json        manifest: identity, version, catalog path
+locales/ru-RU.json      translation catalog, 11,613 strings
+GLOSSARY.md             glossary: rules and consistent terminology (Russian)
 ```
 
-Orca подключает языковой пакет под синтетическим кодом языка, поэтому в списке языков он отображается как `ru-RU — smwbev.russian`. Ключи каталога совпадают с ключами английского оригинала `src/renderer/src/i18n/locales/en.json`; всё, чего нет в русском файле, берётся из английского.
+Orca loads language packs under a synthetic language code, which is why the picker shows `ru-RU — smwbev.russian`. Catalog keys mirror the English source at `src/renderer/src/i18n/locales/en.json`; anything absent from the Russian file is served from English.
 
-Пакет проходит проверку по ограничениям движка перед каждым выпуском:
+Every release is validated against the engine limits:
 
-| Ограничение | Лимит | Сейчас |
+| Limit | Cap | Current |
 |---|---|---|
-| Узлов в каталоге | 20 000 | 13 010 |
-| Глубина вложенности | 16 | 12 |
-| Длина строки | 8 192 символа | в пределах |
-| Размер файла | 5 МБ | ~1 МБ |
+| Catalog nodes | 20,000 | 13,010 |
+| Nesting depth | 16 | 12 |
+| String length | 8,192 chars | within limit |
+| File size | 5 MB | ~1 MB |
 
 ---
 
-## Терминология
+## Terminology
 
-Перевод следует единому глоссарию — [GLOSSARY.md](GLOSSARY.md). Он фиксирует не только соответствия терминов, но и правила: безличные формы обращения, дословный перенос плейсхолдеров, последовательное написание «ё», типографские кавычки и многоточия, различение похожих понятий.
+The translation follows a single glossary — [GLOSSARY.md](GLOSSARY.md) (written in Russian). Beyond term mappings it fixes the rules: impersonal address, verbatim placeholders, consistent «ё», typographic quotes and ellipses, and how to separate look-alike concepts.
 
-Несколько опорных решений:
-
-| Английский | Русский | Почему |
-|---|---|---|
-| workspace | рабочая область | ключевой термин, 392 вхождения |
-| worktree | рабочее дерево | отдельная сущность, с workspace не смешивается |
-| pull request | пул-реквест | устоявшаяся форма; аббревиатура PR не переводится |
-| merge request | мерж-реквест | GitLab; MR остаётся латиницей |
-| review | ревью | не путать с checks — «проверки» |
-| skill | навык | 127 вхождений |
-| session | сессия | «сеанс» не используется |
-
-Команды git, названия продуктов и внутренние идентификаторы намеренно остаются латиницей.
+Git commands, product names, and internal identifiers deliberately stay in Latin script.
 
 ---
 
-## Нашли ошибку в переводе
+## Reporting a translation issue
 
-Откройте [issue](https://github.com/smwbev/orca-russian/issues) и укажите:
+Open an [issue](https://github.com/smwbev/orca-russian/issues) with:
 
-1. Что написано сейчас и как, на ваш взгляд, должно быть.
-2. Где именно это встречается — раздел интерфейса или скриншот.
+1. The current wording and what it should say instead.
+2. Where it appears — the interface section or a screenshot.
 
-Правки терминологии сверяются с глоссарием: если термин меняется, он меняется по всему каталогу сразу, а не в одной строке.
-
----
-
-## Совместимость
-
-Требуется **Orca 1.4.0 или новее** — в более ранних версиях подключаемые языковые пакеты не поддерживаются.
-
-Пакет содержит только текстовые данные: он не выполняет код, не запрашивает разрешений и не имеет доступа к вашим файлам, репозиториям или учётным данным.
+Terminology changes are applied catalog-wide rather than to a single string, so that the glossary stays authoritative.
 
 ---
 
-## Лицензия
+## Compatibility
 
-Перевод распространяется под [лицензией MIT](LICENSE) — той же, под которой выходит сама Orca.
+Requires **Orca 1.4.0 or newer** — earlier versions do not support pluggable language packs.
 
-Английский каталог интерфейса, от которого производен этот пакет, принадлежит Stably AI и лицензирован по MIT. Ключи, структура каталога и небольшое число дословных строк — блоки CSS, примеры команд, внутренние идентификаторы — происходят оттуда и остаются под её условиями; подробности — в [NOTICE](NOTICE).
+The pack ships text data only: it executes no code, requests no permissions, and has no access to your files, repositories, or credentials.
+
+---
+
+## License
+
+Released under the [MIT License](LICENSE) — the same license Orca itself uses.
+
+The English interface catalog this pack derives from is Copyright (c) Stably AI and MIT-licensed. Catalog keys, structure, and a small number of verbatim strings — CSS blocks, command examples, internal identifiers — originate there and remain under its terms; see [NOTICE](NOTICE) for details.
