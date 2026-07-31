@@ -19,15 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-Attribution note
-
-The copyright above covers the Russian translations in this repository.
-
-This language pack is derived from the English interface catalog of Orca
-(https://github.com/stablyai/orca), which is Copyright (c) Stably AI and
-licensed under the MIT License. Translation keys, catalog structure, and a
-small number of verbatim strings (CSS blocks, command examples, and internal
-identifiers) originate from that catalog and remain subject to its license.

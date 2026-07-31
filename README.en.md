@@ -147,4 +147,4 @@ The pack ships text data only: it executes no code, requests no permissions, and
 
 Released under the [MIT License](LICENSE) — the same license Orca itself uses.
 
-The English interface catalog this pack derives from is Copyright (c) Stably AI and MIT-licensed. Catalog keys, structure, and a small number of verbatim strings — CSS blocks, command examples, internal identifiers — originate there and remain under its terms.
+The English interface catalog this pack derives from is Copyright (c) Stably AI and MIT-licensed. Catalog keys, structure, and a small number of verbatim strings — CSS blocks, command examples, internal identifiers — originate there and remain under its terms; see [NOTICE](NOTICE) for details.
