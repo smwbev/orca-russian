@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
-  "id": "orca-russian",
-  "publisher": "s3dev",
+  "id": "russian",
+  "publisher": "smwbev",
   "name": "Русский",
   "version": "1.0.0",
   "description": "Russian translations for common Orca navigation.",
