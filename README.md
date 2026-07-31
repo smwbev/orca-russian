@@ -39,14 +39,15 @@ The marketplace tracks updates for you: when a new translation release ships, Or
 ### Option 2 — directly from a Git URL
 
 1. **Settings** → **Plugins** → **Install plugin** → **Git URL** tab.
-2. Paste the repository URL:
+2. Paste the repository URL **with an explicit `#ref`** — Orca refuses the install without one, so that every install is pinned:
 
    ```
-   https://github.com/smwbev/orca-russian.git
+   https://github.com/smwbev/orca-russian.git#v5.0.4
    ```
 
-3. Pin a release tag (for example `v5.0.3`), or leave `main` for the latest build.
-4. **Settings** → **Appearance** → **Language** → `ru-RU — smwbev.russian`.
+   Any tag or commit works after `#`. There is no separate ref field in this dialog — the ref is part of the URL.
+
+3. **Settings** → **Appearance** → **Language** → `ru-RU — smwbev.russian`.
 
 ### Option 3 — local development folder
 
