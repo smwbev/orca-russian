@@ -3,7 +3,7 @@
   "id": "russian",
   "publisher": "smwbev",
   "name": "Русский",
-  "version": "2.11.0",
+  "version": "2.12.0",
   "description": "Russian translations for common Orca navigation.",
   "repository": "https://github.com/smwbev/orca-russian",
   "engines": { "orca": ">=1.4.0" },
