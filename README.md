@@ -1,7 +1,7 @@
 <h1 align="center">Русский язык для Orca</h1>
 
 <p align="center">
-  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/версия-5.0.1-08C?style=flat" alt="Версия пакета 5.0.1" /></a>
+  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/версия-5.0.3-08C?style=flat" alt="Версия пакета 5.0.3" /></a>
   <img src="https://img.shields.io/badge/покрытие-98.2%25-08C?style=flat" alt="Переведено 98,2 % каталога интерфейса" />
   <img src="https://img.shields.io/badge/строк-11%20613-08C?style=flat" alt="11 613 переведённых строк" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.0-4493F8?style=flat" alt="Требуется Orca 1.4.0 или новее" />
@@ -49,7 +49,7 @@
    https://github.com/smwbev/orca-russian.git
    ```
 
-3. Укажите тег нужной версии (например, `v5.0.1`) или оставьте `main` для последней.
+3. Укажите тег нужной версии (например, `v5.0.3`) или оставьте `main` для последней.
 4. **Настройки** → **Внешний вид** → **Язык** → `ru-RU — smwbev.russian`.
 
 ### Способ 3 — локальная папка для разработки

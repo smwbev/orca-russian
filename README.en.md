@@ -1,7 +1,7 @@
 <h1 align="center">Russian language pack for Orca</h1>
 
 <p align="center">
-  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.0.1-08C?style=flat" alt="Package version 5.0.1" /></a>
+  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.0.3-08C?style=flat" alt="Package version 5.0.3" /></a>
   <img src="https://img.shields.io/badge/coverage-98.2%25-08C?style=flat" alt="98.2 percent of the interface catalog translated" />
   <img src="https://img.shields.io/badge/strings-11%20613-08C?style=flat" alt="11,613 translated strings" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.0-4493F8?style=flat" alt="Requires Orca 1.4.0 or newer" />
@@ -45,7 +45,7 @@ The marketplace tracks updates for you: when a new translation release ships, Or
    https://github.com/smwbev/orca-russian.git
    ```
 
-3. Pin a release tag (for example `v5.0.1`), or leave `main` for the latest build.
+3. Pin a release tag (for example `v5.0.3`), or leave `main` for the latest build.
 4. **Settings** → **Appearance** → **Language** → `ru-RU — smwbev.russian`.
 
 ### Option 3 — local development folder
