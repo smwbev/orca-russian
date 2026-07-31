@@ -1,0 +1,36 @@
+{
+  "settings": {
+    "appearance": {
+      "language": {
+        "title": "Язык",
+        "description": "Выберите язык интерфейса Orca.",
+        "system": "Системный",
+        "english": "Английский",
+        "chinese": "Китайский (упрощённый)",
+        "korean": "Корейский",
+        "japanese": "Японский",
+        "spanish": "Испанский"
+      }
+    }
+  },
+  "menu": {
+    "checkForUpdates": "Проверить наличие обновлений…",
+    "settings": "Настройки",
+    "file": "Файл",
+    "exit": "Выход",
+    "edit": "Правка",
+    "appearance": "Внешний вид",
+    "view": "Вид",
+    "reload": "Перезагрузить",
+    "window": "Окно",
+    "help": "Справка",
+    "paste": "Вставить"
+  },
+  "tray": {
+    "openOrca": "Открыть Orca",
+    "quit": "Завершить",
+    "minimizeNotice": {
+      "body": "Orca продолжает работать в системном трее"
+    }
+  }
+}
