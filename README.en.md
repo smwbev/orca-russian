@@ -5,6 +5,7 @@
   <img src="https://img.shields.io/badge/coverage-98.2%25-08C?style=flat" alt="98.2 percent of the interface catalog translated" />
   <img src="https://img.shields.io/badge/strings-11%20613-08C?style=flat" alt="11,613 translated strings" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.0-4493F8?style=flat" alt="Requires Orca 1.4.0 or newer" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-08C?style=flat" alt="MIT License" /></a>
 </p>
 
 <p align="center">
@@ -139,3 +140,11 @@ Terminology changes are applied catalog-wide rather than to a single string, so 
 Requires **Orca 1.4.0 or newer** — earlier versions do not support pluggable language packs.
 
 The pack ships text data only: it executes no code, requests no permissions, and has no access to your files, repositories, or credentials.
+
+---
+
+## License
+
+Released under the [MIT License](LICENSE) — the same license Orca itself uses.
+
+The English interface catalog this pack derives from is Copyright (c) Stably AI and MIT-licensed. Catalog keys, structure, and a small number of verbatim strings — CSS blocks, command examples, internal identifiers — originate there and remain under its terms.
