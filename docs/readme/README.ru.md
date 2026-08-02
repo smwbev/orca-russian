@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/версия-5.0.3-08C?style=flat" alt="Версия пакета 5.0.3" /></a>
   <img src="https://img.shields.io/badge/покрытие-98.2%25-08C?style=flat" alt="Переведено 98,2 % каталога интерфейса" />
-  <img src="https://img.shields.io/badge/строк-11%20613-08C?style=flat" alt="11 613 переведённых строк" />
+  <img src="https://img.shields.io/badge/строк-11%20676-08C?style=flat" alt="11 676 переведённых строк" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.0-4493F8?style=flat" alt="Требуется Orca 1.4.0 или новее" />
   <a href="../../LICENSE"><img src="https://img.shields.io/badge/лицензия-MIT-08C?style=flat" alt="Лицензия MIT" /></a>
 </p>
@@ -14,7 +14,7 @@
 
 <p align="center">
   <strong>Полный перевод интерфейса <a href="https://github.com/stablyai/orca">Orca</a> на русский язык.</strong><br/>
-  11 613 строк — меню, настройки, терминал, редактор, GitHub, GitLab, Linear, Jira, мобильный режим и онбординг.
+  11 676 строк — меню, настройки, терминал, редактор, GitHub, GitLab, Linear, Jira, мобильный режим и онбординг.
 </p>
 
 ---
@@ -106,7 +106,7 @@
 
 ```
 orca-plugin.json        манифест: идентификатор, версия, ссылка на каталог
-locales/ru-RU.json      каталог переводов, 11 613 строк
+locales/ru-RU.json      каталог переводов, 11 676 строк
 GLOSSARY.md             глоссарий: правила и единая терминология
 ```
 
