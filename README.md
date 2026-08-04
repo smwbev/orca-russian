@@ -1,9 +1,9 @@
 <h1 align="center">Russian language pack for Orca</h1>
 
 <p align="center">
-  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.2-08C?style=flat" alt="Package version 5.1.2" /></a>
+  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.3-08C?style=flat" alt="Package version 5.1.3" /></a>
   <img src="https://img.shields.io/badge/coverage-98.2%25-08C?style=flat" alt="98.2 percent of the interface catalog translated" />
-  <img src="https://img.shields.io/badge/strings-11%20731-08C?style=flat" alt="11,731 translated strings" />
+  <img src="https://img.shields.io/badge/strings-11%20742-08C?style=flat" alt="11,742 translated strings" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.0-4493F8?style=flat" alt="Requires Orca 1.4.0 or newer" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-08C?style=flat" alt="MIT License" /></a>
 </p>
@@ -14,7 +14,7 @@
 
 <p align="center">
   <strong>A complete Russian translation of the <a href="https://github.com/stablyai/orca">Orca</a> interface.</strong><br/>
-  11,731 strings — menus, settings, terminal, editor, GitHub, GitLab, Linear, Jira, mobile, and onboarding.
+  11,742 strings — menus, settings, terminal, editor, GitHub, GitLab, Linear, Jira, mobile, and onboarding.
 </p>
 
 ---
@@ -42,7 +42,7 @@ The marketplace tracks updates for you: when a new translation release ships, Or
 2. Paste the repository URL **with an explicit `#ref`** — Orca refuses the install without one, so that every install is pinned:
 
    ```
-   https://github.com/smwbev/orca-russian.git#v5.1.2
+   https://github.com/smwbev/orca-russian.git#v5.1.3
    ```
 
    Any tag or commit works after `#`. There is no separate ref field in this dialog — the ref is part of the URL.
@@ -102,7 +102,7 @@ Version history lives in [releases](https://github.com/smwbev/orca-russian/relea
 
 ```
 orca-plugin.json        manifest: identity, version, catalog path
-locales/ru-RU.json      translation catalog, 11,731 strings
+locales/ru-RU.json      translation catalog, 11,742 strings
 GLOSSARY.md             glossary: rules and consistent terminology (Russian)
 ```
 
@@ -112,7 +112,7 @@ Every release is validated against the engine limits:
 
 | Limit | Cap | Current |
 |---|---|---|
-| Catalog nodes | 20,000 | 13,141 |
+| Catalog nodes | 20,000 | 13,152 |
 | Nesting depth | 16 | 12 |
 | String length | 8,192 chars | within limit |
 | File size | 5 MB | ~1 MB |
