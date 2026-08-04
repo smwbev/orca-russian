@@ -1365,6 +1365,13 @@
           "6f309eef8d": "Orca",
           "7e35393632": "Hermes"
         },
+        "AutomationListSearchField": {
+          "clear": "Очистить поиск",
+          "label": "Поиск автоматизаций",
+          "placeholder": "Поиск по названию, проекту или промпту",
+          "tooLong": "Слишком длинный запрос — список не фильтруется",
+          "tooLongShort": "Слишком длинный"
+        },
         "AutomationMissedRunGraceField": {
           "0f4459e91d": "48 часов",
           "2dc9ee84d0": "3 часа",
@@ -1495,6 +1502,7 @@
           "bb1b2cd31e": "Обзор",
           "c3a28c9793": "Выберите автоматизацию, чтобы увидеть запуски.",
           "cd8397cc32": "Новая рабочая область при каждом запуске",
+          "createFromBaseRef": "Создавать от {{baseRef}}",
           "d207ab4c25": "Начать с шаблона",
           "d2a01b0b6f": "Это можно изменить в настройках.",
           "d441032f7e": "pause",
@@ -1504,8 +1512,20 @@
           "e431bb85d4": "Выберите рабочую область на том же хосте, что и эта автоматизация Hermes.",
           "f4612e3f78": "Изменить",
           "f93ed7a6f8": "Подключение…",
+          "latestSavedOutput": "Последний сохранённый вывод",
+          "missingWorkspace": "Рабочая область не найдена",
+          "noRunUsageYet": "Расхода по запускам пока нет",
+          "noSearchMatches": "По запросу ничего не найдено.",
+          "noWorkspace": "Рабочая область не выбрана",
+          "paused": "Приостановлено",
           "pendingAutomationMissing": "Автоматизация больше недоступна.",
-          "pendingAutomationRunMissing": "История запусков больше недоступна."
+          "pendingAutomationRunMissing": "История запусков больше недоступна.",
+          "projectDefaultBaseRef": "по умолчанию для проекта",
+          "runCount": "запусков: {{count}}",
+          "runCount_one": "{{count}} запуск",
+          "runCount_other": "запусков: {{count}}",
+          "runUsageSummary": "≈{{cost}} · токенов: {{tokens}}",
+          "usageUnavailable": "Расход недоступен"
         },
         "CreateFromPicker": {
           "79512f22a7": "Ветки не найдены.",
