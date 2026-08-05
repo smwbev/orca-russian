@@ -2509,6 +2509,20 @@
           "dbdd2ad15f": "Поиск блоков…",
           "e2e12b0e98": "component"
         },
+        "RichMarkdownTableControls": {
+          "addColumn": "Добавить столбец",
+          "addRow": "Добавить строку",
+          "columnActions": "Действия со столбцом",
+          "deleteColumn": "Удалить столбец",
+          "deleteRow": "Удалить строку",
+          "deleteTable": "Удалить таблицу",
+          "insertColumnLeft": "Вставить столбец слева",
+          "insertColumnRight": "Вставить столбец справа",
+          "insertRowAbove": "Вставить строку выше",
+          "insertRowBelow": "Вставить строку ниже",
+          "rowActions": "Действия со строкой",
+          "tableActions": "Действия с таблицей"
+        },
         "RichMarkdownToolbar": {
           "0bea19a988": "Зачёркнутый",
           "2cd9e0bbb3": "Заголовки",
@@ -5231,8 +5245,10 @@
             "createPrIntentCommitFailed": "Не удалось закоммитить изменения. Устраните проблему и повторите «Создать PR».",
             "createPrIntentConfigureAi": "Добавьте сообщение коммита или настройте параметры ИИ контроля версий.",
             "createPrIntentCreatingReview": "Создание ревью…",
+            "createPrIntentEmptyGeneratedBody": "В сгенерированных материалах ревью не оказалось описания. Повторите создание PR.",
             "createPrIntentFastForwarding": "Обновление ветки…",
             "createPrIntentForcePushing": "Принудительная отправка с проверкой…",
+            "createPrIntentGenerateDetailsFailed": "Не удалось сгенерировать материалы ревью. Повторите создание PR.",
             "createPrIntentGenerateFailed": "Не удалось сгенерировать сообщение коммита. Добавьте его и повторите.",
             "createPrIntentGeneratingDetails": "Генерация сведений о ревью…",
             "createPrIntentNeedsSync": "Синхронизируйте эту ветку перед созданием ревью.",
@@ -11387,9 +11403,11 @@
           "5a273fbfce": "Добавить проект…",
           "7679f0c268": "Проекты",
           "83a820fa71": "Фильтр проектов…",
+          "allProjects": "Все проекты",
           "bbbc6e8e3b": "Нет подходящих невыбранных проектов",
           "d3a9c4cea1": "Очистить",
-          "f10ca29601": "Убрать фильтр «{{value0}}»"
+          "f10ca29601": "Убрать фильтр «{{value0}}»",
+          "selectedProjectsCount": "проектов: {{value0}}"
         },
         "SidebarSettingsHelpMenu": {
           "2991a0106c": "Справка",
@@ -11482,7 +11500,8 @@
             "title": "Отображение карточки"
           },
           "projectRuntimeHost": "Сервер проекта",
-          "projectSshHost": "SSH проекта"
+          "projectSshHost": "SSH проекта",
+          "showSection": "Показывать"
         },
         "SshTargetRow": {
           "4677394048": "Подключение…",
@@ -14150,6 +14169,20 @@
             "9ccec2316b": "Задача",
             "ca40ffcbec": "PR"
           }
+        }
+      }
+    },
+    "main": {
+      "window": {
+        "editableContextMenu": {
+          "deleteColumn": "Удалить столбец",
+          "deleteRow": "Удалить строку",
+          "deleteTable": "Удалить таблицу",
+          "insertColumnLeft": "Вставить столбец слева",
+          "insertColumnRight": "Вставить столбец справа",
+          "insertRowAbove": "Вставить строку выше",
+          "insertRowBelow": "Вставить строку ниже",
+          "table": "Таблица"
         }
       }
     },
