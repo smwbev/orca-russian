@@ -1,9 +1,9 @@
 <h1 align="center">Russian language pack for Orca</h1>
 
 <p align="center">
-  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.6-08C?style=flat" alt="Package version 5.1.6" /></a>
-  <img src="https://img.shields.io/badge/coverage-98.2%25-08C?style=flat" alt="98.2 percent of the interface catalog translated" />
-  <img src="https://img.shields.io/badge/strings-11%20803-08C?style=flat" alt="11,803 translated strings" />
+  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.7-08C?style=flat" alt="Package version 5.1.7" /></a>
+  <img src="https://img.shields.io/badge/coverage-98.5%25-08C?style=flat" alt="98.5 percent of the interface catalog translated" />
+  <img src="https://img.shields.io/badge/strings-11%20882-08C?style=flat" alt="11,882 translated strings" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.0-4493F8?style=flat" alt="Requires Orca 1.4.0 or newer" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-08C?style=flat" alt="MIT License" /></a>
 </p>
@@ -14,7 +14,7 @@
 
 <p align="center">
   <strong>A complete Russian translation of the <a href="https://github.com/stablyai/orca">Orca</a> interface.</strong><br/>
-  11,803 strings — menus, settings, terminal, editor, GitHub, GitLab, Linear, Jira, mobile, and onboarding.
+  11,882 strings — menus, settings, terminal, editor, GitHub, GitLab, Linear, Jira, mobile, and onboarding.
 </p>
 
 ---
@@ -42,7 +42,7 @@ The marketplace tracks updates for you: when a new translation release ships, Or
 2. Paste the repository URL **with an explicit `#ref`** — Orca refuses the install without one, so that every install is pinned:
 
    ```
-   https://github.com/smwbev/orca-russian.git#v5.1.6
+   https://github.com/smwbev/orca-russian.git#v5.1.7
    ```
 
    Any tag or commit works after `#`. There is no separate ref field in this dialog — the ref is part of the URL.
@@ -72,20 +72,20 @@ The marketplace tracks updates for you: when a new translation release ships, Or
 | Integrations: GitHub, GitLab, Linear, Jira | ✅ |
 | Mobile mode, phone pairing, emulator | ✅ |
 | Onboarding and the feature wall | ✅ |
-| Plugins section in settings | ⛔ stays in English |
+| Plugins section in settings | ⚠️ frame translated, consent copy stays in English |
 
 ### Why some strings stay in English
 
-217 strings cannot be translated on current Orca releases. This is an engine constraint, not missing work:
+183 strings cannot be translated. This is an engine constraint, not missing work:
 
-- **214 strings** — the plugin settings section. The engine protects the `auto.components.settings.plugin*` namespace with a case-insensitive check. If a language pack overrides even one of those keys, Orca rejects **the entire pack** and the language never loads.
+- **180 strings** — plugin consent and trust copy. The engine protects the `auto.components.settings.plugin*` namespace with a case-insensitive check, so a pack cannot rewrite a consent dialog, a provenance badge, a safety status, or a destructive confirmation. If a language pack overrides even one of those keys, Orca rejects **the entire pack** and the language never loads.
 - **2 strings** — feature-wall CSS animations of 9,691 and 9,965 characters against a hard limit of 8,192 characters per string.
 - **1 string** — another CSS block with nothing to translate.
 
 The list shrinks as Orca merges the fixes we send:
 
 - **34 strings** left it in [PR #11826](https://github.com/stablyai/orca/pull/11826) — status labels in Settings and Stats were built from literals inside helper functions and never reached the catalog at all. Translated since v5.1.0.
-- **34 more** are waiting on a release. [PR #12455](https://github.com/stablyai/orca/pull/12455) narrowed the namespace rule so that section titles, empty states, `Refresh` and the local development form — none of which carry a trust decision — became translatable. It is merged into `main` but not yet in any published build, so the pack keeps those keys out: shipping them would make every current release reject the pack outright. They return the moment a release contains the fix.
+- **34 more** left it in [PR #12455](https://github.com/stablyai/orca/pull/12455), which narrowed the namespace rule so that section titles, empty states, `Refresh` and the local development form — none of which carry a trust decision — became translatable. Shipped in Orca v1.4.169, translated since pack v5.1.7. On older Orca builds the pack drops those keys automatically, so it keeps loading there.
 
 Any key missing from the pack falls back to English automatically — that is the engine's normal behaviour, and the app keeps working.
 
@@ -105,7 +105,7 @@ Version history lives in [releases](https://github.com/smwbev/orca-russian/relea
 
 ```
 orca-plugin.json        manifest: identity, version, catalog path
-locales/ru-RU.json      translation catalog, 11,803 strings
+locales/ru-RU.json      translation catalog, 11,882 strings
 GLOSSARY.md             glossary: rules and consistent terminology (Russian)
 ```
 
@@ -115,7 +115,7 @@ Every release is validated against the engine limits:
 
 | Limit | Cap | Current |
 |---|---|---|
-| Catalog nodes | 20,000 | 13,219 |
+| Catalog nodes | 20,000 | 13,314 |
 | Nesting depth | 16 | 12 |
 | String length | 8,192 chars | within limit |
 | File size | 5 MB | ~1 MB |
