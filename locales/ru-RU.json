@@ -14737,12 +14737,39 @@
     "quit": "Завершить"
   },
   "worktreeJumpPalette": {
+    "filter": {
+      "activeCount": "активно: {{value0}}",
+      "ariaActive": "Фильтр: активно {{value0}}.",
+      "back": "Назад",
+      "chipOverflow": "+{{value0}}",
+      "clearAll": "Очистить всё",
+      "clearHosts": "Очистить хосты",
+      "clearProjects": "Очистить проекты",
+      "emptySubtitle": "Снимите фильтр выше или расширьте его на другие хосты и проекты.",
+      "emptyTitle": "Под активный фильтр ничего не подходит",
+      "hosts": "Хосты",
+      "label": "Фильтр",
+      "moreOptions": "ещё {{value0}} — продолжайте вводить, чтобы сузить список",
+      "noHosts": "Подходящих хостов нет",
+      "noOptions": "Подходящих хостов и проектов нет",
+      "noProjects": "Подходящих проектов нет",
+      "projects": "Проекты",
+      "removeChip": "Убрать фильтр {{value0}}",
+      "search": "Фильтр по хосту или проекту…",
+      "searchHosts": "Фильтр хостов…",
+      "searchProjects": "Фильтр проектов…",
+      "selectAllMatching": "Выбрать все подходящие ({{value0}})",
+      "selectedCollapsed": "Выбрано: {{value0}} — снимайте через метки или кнопкой «Очистить»",
+      "tabKey": "Tab",
+      "trigger": "Фильтровать результаты"
+    },
     "matchLabel": {
       "comment": "Комментарий",
       "issue": "Задача",
       "mr": "MR",
       "port": "Порт",
       "pr": "PR"
-    }
+    },
+    "renderCapOverflow": "ещё {{value0}} — продолжайте вводить или добавьте фильтр, чтобы сузить список"
   }
 }
