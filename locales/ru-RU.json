@@ -3949,6 +3949,7 @@
           "add-custom": "Добавить свой адрес…",
           "custom-option": "{{address}} (свой)",
           "custom-section": "Свой",
+          "no-address-selected": "Адрес не выбран",
           "remove-custom": "Убрать {{address}}",
           "trigger-label": "Сетевой адрес для объявления"
         },
@@ -6694,24 +6695,46 @@
           "a552887288": "Не удалось загрузить разрешения разработчика",
           "actionOpenSettings": "Открыть настройки",
           "actionRequest": "Запросить",
+          "actionRequestAccess": "Запросить доступ",
           "actionTriggerPrompt": "Вызвать запрос",
           "b2210b1b4f": "Bluetooth",
           "bf51e4a542": "USB-устройства",
           "bfa3402305": "Не удалось запросить разрешение",
           "c566bca278": "Полный доступ к диску",
           "cc8151d9fa": "Голосовой ввод, транскрибация, запись звука, sox, ffmpeg и утилиты Whisper.",
+          "connectionTestAction": "Проверить подключение",
+          "connectionTestDescription": "Укажите службу на другом устройстве в локальной сети. Orca проверит тот же сетевой путь, который используют инструменты терминала.",
+          "connectionTestFailed": "Не удалось выполнить проверку подключения.",
+          "connectionTestHost": "Хост",
+          "connectionTestInvalidTarget": "Укажите имя хоста или частный IP локальной сети и порт от 1 до 65535.",
+          "connectionTestLastVerified": "Последняя успешная проверка",
+          "connectionTestNotYetVerified": "Успешных проверок пока нет.",
+          "connectionTestPort": "Порт",
+          "connectionTestRefused": "Хост ответил, но порт отклонил подключение.",
+          "connectionTestRunning": "Проверка…",
+          "connectionTestTimeout": "Истекло время ожидания. Проверьте адрес, службу и настройки локальной сети в macOS.",
+          "connectionTestTitle": "Проверка подключения",
+          "connectionTestUnreachable": "Не удалось связаться с этим адресом.",
+          "connectionTestUnresolved": "Не удалось разрешить имя хоста.",
+          "connectionTestUnsupported": "Проверка подключения доступна в десктопном приложении для macOS.",
           "dac08ec03e": "Выполняется…",
           "dfbc12c8c8": "Отладка оборудования и инструменты, работающие с USB-устройствами.",
           "e119f0d66b": "Автоматизация",
           "e5b5f3d6b9": "Камера",
           "e7bb06007c": "Локальная сеть",
           "f24f31a884": "Запись экрана",
-          "f903bf20b5": "Обнаружение и доступ к серверам разработки в вашей сети.",
+          "f903bf20b5": "Позволяет терминалам и инструментам разработки подключаться к службам в вашей локальной сети. macOS не сообщает Orca текущее состояние этого разрешения.",
           "fa809e8ada": "Открыт раздел «Конфиденциальность и безопасность» в macOS",
+          "localNetworkOpenSettings": "Открыть системные настройки",
+          "localNetworkOpenSystemSettings": "Открыть системные настройки",
+          "localNetworkPromptCheck": "Проверить запрос macOS",
+          "localNetworkPromptGuidance": "Если появится запрос, выберите «Разрешить». Если запроса нет, откройте системные настройки и включите Orca в разделе «Конфиденциальность и безопасность» → «Локальная сеть».",
+          "openSettingsFailed": "Не удалось открыть системные настройки",
           "statusCheckManually": "Проверьте вручную",
           "statusDenied": "Отклонён",
           "statusEntitled": "Разрешено",
           "statusGranted": "Выдан",
+          "statusManagedByMacOS": "Управляется macOS",
           "statusNotRequested": "Не запрошен",
           "statusRestricted": "Ограничен",
           "statusUnsupported": "Только macOS"
@@ -8725,6 +8748,11 @@
           "a63953a48a": "Предпросмотр темы {{value0}}",
           "d06664e889": "dark",
           "f8931d407d": "Показывать разделитель панелей в предпросмотре"
+        },
+        "TerminalTccAttributionNotice": {
+          "body": "Демон терминалов запущен установкой Orca, которой больше нет, поэтому macOS не может связать его команды с Orca — разрешения на универсальный доступ и автоматизацию молча игнорируются (osascript падает с ошибкой -25211). Перезапуск демона это исправляет; открытые сессии терминалов при этом закроются.",
+          "openManageSessions": "Открыть управление сессиями",
+          "title": "Разрешения macOS не доходят до терминалов"
         },
         "TerminalThemeSections": {
           "5e0c24b5c8": "Управляет линией разделения между панелями в светлом режиме.",
@@ -14569,7 +14597,7 @@
         "next": "Далее",
         "other": "Другое…",
         "otherPlaceholder": "Введите ответ",
-        "send": "Отправить ответ",
+        "send": "Отправить",
         "sending": "Отправка…",
         "skip": "Пропустить",
         "step": "Шаг {{value0}}"
@@ -14687,6 +14715,42 @@
       "reviewStatus": "Статус PR / MR",
       "workspaceStatus": "Статус рабочей области"
     },
+    "map": {
+      "agentCount": "агентов: {{count}}",
+      "agentCount_one": "{{count}} агент",
+      "agentCount_other": "агентов: {{count}}",
+      "canvasLabel": "Вложенная карта проектов, рабочих областей и агентов",
+      "empty": "Под текущие фильтры не подходит ни один агент.",
+      "filters": {
+        "agentlessWorkspaces": "Рабочие области без агентов",
+        "canvasSummary": "показано {{shown}} из {{total}} агентов",
+        "showStates": "Состояния агентов",
+        "workspaceVisibility": "Содержимое карты"
+      },
+      "fit": "Вписать",
+      "host": {
+        "all": "Все хосты",
+        "local": "Локальные",
+        "remote": "Удалённые",
+        "ssh": "SSH",
+        "wsl": "WSL"
+      },
+      "hostFilter": "Фильтр по хостам",
+      "liveContainmentMap": "Живая карта вложенности",
+      "noLaunchableAgents": "Включённых агентов не обнаружено.",
+      "noWorkspaceAgents": "В этой рабочей области нет агентов.",
+      "openFolderWorkspace": "Открыть сведения о папочной рабочей области {{workspace}}",
+      "openWorktree": "Открыть сведения о рабочем дереве {{worktree}}",
+      "projectCount": "агентов: {{agents}} · рабочих областей: {{workspaces}}",
+      "runningAgents": "Агенты",
+      "sleepWorkspace": "Усыпить",
+      "spawnAgent": "Запустить нового агента",
+      "worktreeSummary": "агентов: {{total}} · активных: {{active}} · завершено: {{done}}",
+      "worktreeSummary_one": "{{total}} агент · активных: {{active}} · завершено: {{done}}",
+      "worktreeSummary_other": "агентов: {{total}} · активных: {{active}} · завершено: {{done}}",
+      "zoomIn": "Увеличить",
+      "zoomOut": "Уменьшить"
+    },
     "placeholder": {
       "description": "Здесь будут видны все агенты сразу. Панель скоро появится.",
       "title": "Панель агентов"
@@ -14713,7 +14777,12 @@
       "focusWorktree": "Открыть рабочее дерево"
     },
     "title": "Агенты",
-    "total": "Всего: {{count}}"
+    "total": "Всего: {{count}}",
+    "view": {
+      "board": "Доска",
+      "label": "Вид панели",
+      "map": "Карта агентов"
+    }
   },
   "featureTips": {
     "voice": {
