@@ -13742,6 +13742,10 @@
             "e4aa243f8c": "Перезапустить демон"
           },
           "TerminalLinkActionPopover": {
+            "copied": "Скопировано",
+            "copiedLink": "Ссылка скопирована",
+            "copyLink": "Копировать ссылку",
+            "copyLinkFailed": "Не удалось скопировать ссылку",
             "openFile": "Открыть файл",
             "openFolder": "Открыть папку",
             "openInFinder": "Открыть в Finder",
