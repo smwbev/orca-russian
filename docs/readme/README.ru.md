@@ -1,9 +1,9 @@
 <h1 align="center">Русский язык для Orca</h1>
 
 <p align="center">
-  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/версия-5.1.19-08C?style=flat" alt="Версия пакета 5.1.19" /></a>
+  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/версия-5.1.20-08C?style=flat" alt="Версия пакета 5.1.20" /></a>
   <img src="https://img.shields.io/badge/покрытие-98.5%25-08C?style=flat" alt="Переведено 98,5 % каталога интерфейса" />
-  <img src="https://img.shields.io/badge/строк-12%20211-08C?style=flat" alt="12 211 переведённых строк" />
+  <img src="https://img.shields.io/badge/строк-12%20347-08C?style=flat" alt="12 347 переведённых строк" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.0-4493F8?style=flat" alt="Требуется Orca 1.4.0 или новее" />
   <a href="../../LICENSE"><img src="https://img.shields.io/badge/лицензия-MIT-08C?style=flat" alt="Лицензия MIT" /></a>
 </p>
@@ -14,7 +14,7 @@
 
 <p align="center">
   <strong>Полный перевод интерфейса <a href="https://github.com/stablyai/orca">Orca</a> на русский язык.</strong><br/>
-  12 211 строк — меню, настройки, терминал, редактор, GitHub, GitLab, Linear, Jira, мобильный режим и онбординг.
+  12 347 строк — меню, настройки, терминал, редактор, GitHub, GitLab, Linear, Jira, мобильный режим и онбординг.
 </p>
 
 ---
@@ -46,7 +46,7 @@
 2. Вставьте адрес репозитория **вместе с явным `#ref`** — без него Orca откажет в установке, чтобы каждая установка была привязана к конкретной версии:
 
    ```
-   https://github.com/smwbev/orca-russian.git#v5.1.19
+   https://github.com/smwbev/orca-russian.git#v5.1.20
    ```
 
    После `#` подойдёт любой тег или коммит. Отдельного поля для ref в этом окне нет — он указывается прямо в адресе.
@@ -111,7 +111,7 @@
 
 ```
 orca-plugin.json        манифест: идентификатор, версия, ссылка на каталог
-locales/ru-RU.json      каталог переводов, 12 211 строк
+locales/ru-RU.json      каталог переводов, 12 347 строк
 GLOSSARY.md             глоссарий: правила и единая терминология
 ```
 
