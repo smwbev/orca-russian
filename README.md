@@ -1,7 +1,7 @@
 <h1 align="center">Russian language pack for Orca</h1>
 
 <p align="center">
-  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.21-08C?style=flat" alt="Package version 5.1.21" /></a>
+  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.22-08C?style=flat" alt="Package version 5.1.22" /></a>
   <img src="https://img.shields.io/badge/coverage-98.5%25-08C?style=flat" alt="98.5 percent of the interface catalog translated" />
   <img src="https://img.shields.io/badge/strings-12%20388-08C?style=flat" alt="12,388 translated strings" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.0-4493F8?style=flat" alt="Requires Orca 1.4.0 or newer" />
@@ -42,7 +42,7 @@ The marketplace tracks updates for you: when a new translation release ships, Or
 2. Paste the repository URL **with an explicit `#ref`** — Orca refuses the install without one, so that every install is pinned:
 
    ```
-   https://github.com/smwbev/orca-russian.git#v5.1.21
+   https://github.com/smwbev/orca-russian.git#v5.1.22
    ```
 
    Any tag or commit works after `#`. There is no separate ref field in this dialog — the ref is part of the URL.

@@ -68,6 +68,7 @@
 | Orca CLI, Orca Server, Orca Mobile | без перевода | имена продуктов |
 | Computer Use | Computer Use | имя функции, не переводим |
 | orca.yaml | orca.yaml | |
+| Caffeinate: On / Agent / Off | Вкл. / Агент / Выкл. | режим `Agent` до #13751 назывался `Auto`; ключ остался `.auto`, переводим по нынешнему тексту |
 
 ## Git и контроль версий
 
