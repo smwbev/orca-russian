@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.27-08C?style=flat" alt="Package version 5.1.27" /></a>
   <img src="https://img.shields.io/badge/coverage-98.5%25-08C?style=flat" alt="98.5 percent of the interface catalog translated" />
-  <img src="https://img.shields.io/badge/strings-12%20403-08C?style=flat" alt="12,403 translated strings" />
+  <img src="https://img.shields.io/badge/strings-12%20404-08C?style=flat" alt="12,404 translated strings" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.0-4493F8?style=flat" alt="Requires Orca 1.4.0 or newer" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-08C?style=flat" alt="MIT License" /></a>
 </p>
@@ -14,7 +14,7 @@
 
 <p align="center">
   <strong>A complete Russian translation of the <a href="https://github.com/stablyai/orca">Orca</a> interface.</strong><br/>
-  12,403 strings — menus, settings, terminal, editor, GitHub, GitLab, Linear, Jira, mobile, and onboarding.
+  12,404 strings — menus, settings, terminal, editor, GitHub, GitLab, Linear, Jira, mobile, and onboarding.
 </p>
 
 ---
@@ -105,7 +105,7 @@ Version history lives in [releases](https://github.com/smwbev/orca-russian/relea
 
 ```
 orca-plugin.json        manifest: identity, version, catalog path
-locales/ru-RU.json      translation catalog, 12,403 strings
+locales/ru-RU.json      translation catalog, 12,404 strings
 GLOSSARY.md             glossary: rules and consistent terminology (Russian)
 ```
 
@@ -115,7 +115,7 @@ Every release is validated against the engine limits:
 
 | Limit | Cap | Current |
 |---|---|---|
-| Catalog nodes | 20,000 | 13,895 |
+| Catalog nodes | 20,000 | 13,896 |
 | Nesting depth | 16 | 12 |
 | String length | 8,192 chars | within limit |
 | File size | 5 MB | ~1 MB |
