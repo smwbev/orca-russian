@@ -5000,8 +5000,19 @@
             },
             "updateReactionFailed": "Не удалось обновить реакцию."
           },
+          "CreateHostedReviewBasePicker": {
+            "205ef284fa": "Базовая ветка",
+            "5a9315b61a": "Нет веток, совпадающих с «{{value0}}». Нажмите Enter, чтобы всё равно использовать это значение.",
+            "bb4b41d563": "из {{value0}}",
+            "da4d57c9c2": "Оставьте пустым, чтобы использовать {{value0}}."
+          },
           "CreateHostedReviewComposer": {
             "741ff8a0d2": "Отправить и создать {{value0}}"
+          },
+          "CreateHostedReviewComposerFields": {
+            "29732f2fb0": "новый PR",
+            "90cabf6cfc": "Поместить этот PR в стек над #{{value0}}",
+            "ff81473a57": "Создаёт стек GitHub или расширяет существующий стек родителя."
           },
           "CreatePullRequestDialog": {
             "02b2ce911f": "Описание (необязательно)",
@@ -5825,6 +5836,17 @@
             }
           },
           "create": {
+            "hosted": {
+              "review": {
+                "button": {
+                  "label": {
+                    "8df1a05952": "Создать PR в стеке",
+                    "8e8149a0bf": "Создать черновик PR в стеке",
+                    "96ae7358e0": "Отправить и создать PR в стеке"
+                  }
+                }
+              }
+            },
             "pull": {
               "request": {
                 "review": {
@@ -9604,6 +9626,51 @@
           "showButtonDescription": "Показывать ярлык автоматизаций в боковой панели.",
           "title": "Автоматизации"
         },
+        "bitbucket": {
+          "credentials": {
+            "dialog": {
+              "accessToken": "Токен доступа",
+              "accessTokenPlaceholder": "Токен доступа к репозиторию, проекту или рабочей области",
+              "apiToken": "Токен API",
+              "apiTokenPlaceholder": "Токен API Atlassian",
+              "authModeLabel": "Способ аутентификации Bitbucket",
+              "baseUrl": "Базовый URL API (необязательно)",
+              "baseUrlPlaceholder": "https://api.bitbucket.org/2.0",
+              "basicHint": "Создайте токен API Atlassian для своего аккаунта, затем укажите электронную почту его владельца.",
+              "cancel": "Отмена",
+              "connect": "Подключить",
+              "connectFailed": "Не удалось подключиться",
+              "description": "Укажите учётные данные Bitbucket Cloud, чтобы просматривать пул-реквесты и статусы сборок. Orca проверит их перед сохранением.",
+              "docsLink": "Документация по токенам API Bitbucket",
+              "email": "Электронная почта аккаунта Atlassian",
+              "emailPlaceholder": "you@example.com",
+              "environmentManaged": "Bitbucket уже настроен через переменные окружения ORCA_BITBUCKET_*, и они имеют приоритет. Сбросьте их, чтобы сохранить учётные данные в Orca.",
+              "modeBasic": "Электронная почта и токен API",
+              "modeToken": "Токен доступа",
+              "remoteRuntime": "Сохранённые здесь учётные данные Bitbucket хранятся только на этой локальной машине. Для удалённой среды выполнения задайте переменные окружения ORCA_BITBUCKET_*.",
+              "storageNote": "Хранится на этой машине в зашифрованном виде, если доступна связка ключей ОС. Переменные окружения ORCA_BITBUCKET_* всегда имеют приоритет над сохранённым здесь.",
+              "title": "Подключить Bitbucket",
+              "tokenHint": "Токены доступа к репозиторию, проекту и рабочей области создаются на соответствующей странице настроек Bitbucket и требуют прав на чтение пул-реквестов.",
+              "verifying": "Проверка…"
+            }
+          },
+          "integration": {
+            "card": {
+              "accountUnknown": "Bitbucket Cloud",
+              "authModeBasic": "Электронная почта и токен API",
+              "authModeToken": "Токен доступа",
+              "connect": "Подключить",
+              "description": "Пул-реквесты и статусы сборок для Bitbucket Cloud.",
+              "disconnect": "Отключить Bitbucket",
+              "disconnectFailed": "Не удалось удалить сохранённые учётные данные Bitbucket.",
+              "edit": "Изменить учётные данные",
+              "envManaged": "Настроено через переменные окружения. Сбросьте переменные ORCA_BITBUCKET_*, чтобы управлять этими учётными данными в Orca.",
+              "notConfigured": "Подключите аккаунт Bitbucket Cloud с токеном API Atlassian или токеном доступа. Переменные окружения ORCA_BITBUCKET_* тоже подходят и имеют приоритет.",
+              "storedAuthFailed": "Сохранённые учётные данные Bitbucket не прошли аутентификацию. Измените их или проверьте, что у токена остались права на пул-реквесты.",
+              "storedCredential": "Сохранено в Orca на этой машине. Заданные переменные окружения ORCA_BITBUCKET_* имеют приоритет."
+            }
+          }
+        },
         "browser": {
           "search": {
             "060ac1fcba": "Импортируйте cookie из Chrome, Edge или других браузеров, чтобы использовать существующие входы внутри Orca.",
@@ -10207,11 +10274,13 @@
             "7166b9090c": "Аутентификация GitHub через gh CLI.",
             "7319e3015b": "linear",
             "7345b7c3e6": "atlassian",
+            "760e2446e0": "Аутентификация Bitbucket Cloud через сохранённый токен API или переменные окружения.",
             "76f6af7c57": "Подключите Jira Cloud или обновите учётные данные токена API Jira.",
             "7b1f3984bb": "Аутентификация Azure DevOps Repos через переменные окружения с токеном.",
             "8c568d761c": "пул-реквест",
             "a626990bd2": "отключить",
             "aab86d64e5": "Интеграция с Gitea",
+            "af5ae87847": "токен доступа",
             "af6611fa6e": "Интеграция с Azure DevOps",
             "b027b4b318": "Интеграция с Linear",
             "b38b5d27f1": "azure devops",
@@ -12183,6 +12252,9 @@
           "hostAuthNeeded": "Требуется аутентификация",
           "hostDisconnected": "Отключено",
           "sidebarRowMissing": "Цель больше не существует"
+        },
+        "WorktreeListScrollToTopButton": {
+          "jumpToTop": "В начало списка"
         },
         "WorktreeMetaDialog": {
           "029ea5ec57": "Открыть задачу GitHub",
