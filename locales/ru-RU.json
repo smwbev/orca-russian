@@ -4910,7 +4910,6 @@
             "copySessionId": "Копировать идентификатор сессии",
             "delete": "Удалить",
             "deleteReasonNonLocalHost": "Удалять можно только сессии на этом устройстве.",
-            "deleteReasonSessionLive": "Эта сессия ещё выполняется — дождитесь завершения, прежде чем удалять.",
             "deleteReasonSyntheticPath": "Эту сессию нельзя удалить из Orca.",
             "deleteReasonUnsupportedAgent": "Сессии {{value0}} нельзя удалять из Orca.",
             "dragToResume": "Перетащите, чтобы возобновить в новой вкладке",
@@ -14463,9 +14462,7 @@
         "cookie": {
           "import": {
             "toast": {
-              "googleCookiesSkipped": "Cookie Google не импортированы. Откройте в Orca браузер с этим профилем и войдите в Google.",
-              "googleDirectSignInAction": "Войти в Google",
-              "googleDirectSignInUnavailable": "Не удалось открыть профиль браузера. Откройте его и войдите на accounts.google.com.",
+              "googleCookiesSkipped": "Cookie Google не импортированы. Откройте в Orca на {{value0}} браузер с этим профилем и войдите в Google.",
               "restartFallbackUnavailableNone": "Ни один из cookie ({{value0}}) не удалось загрузить, а запасной вариант с перезапуском был недоступен. Прежние cookie этого профиля заменены. Попробуйте импорт ещё раз.",
               "restartFallbackUnavailablePartial": "Импортировано cookie: {{value0}} из {{value1}}. Остальные загрузить не удалось, а запасной вариант с перезапуском был недоступен. Попробуйте импорт ещё раз."
             }
