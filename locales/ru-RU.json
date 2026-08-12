@@ -7895,6 +7895,9 @@
           "change_host": "Открыть удалённые серверы",
           "scope_label": "{{value0}}: {{value1}}"
         },
+        "QuickCommandsList": {
+          "noSearchMatches": "Среди команд ничего не найдено."
+        },
         "QuickCommandsPane": {
           "0252ddd578": "Нет текста команды",
           "2bb9e38e93": "Без названия",
@@ -7926,6 +7929,9 @@
           "ec1ed99e70": "Удалить",
           "f2bf411640": "Не удалось загрузить команды с этого хоста.",
           "f91b649324": "Сохранённые команды"
+        },
+        "QuickCommandsToolbar": {
+          "searchLabel": "Поиск команд"
         },
         "RecentTabOrderControl": {
           "3b17c81ede": "Порядок во вкладках",
