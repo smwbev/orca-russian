@@ -59,6 +59,10 @@
       "pluginCommandFailed": "Не удалось выполнить команду плагина."
     },
     "components": {
+      "BrowserCookieImportDisclosure": {
+        "description": "Войдите в Google прямо в Orca.",
+        "title": "Входы в Google не импортируются"
+      },
       "BrowserPane": {
         "streamCapabilityUnsupported": "Выбранная среда выполнения не поддерживает трансляцию удалённого браузера.",
         "streamConnectionLost": "Соединение с удалённым сервером потеряно.",
@@ -1941,7 +1945,6 @@
             "a771c2b6c8": "Настройки браузера…",
             "a7a86702b3": "Профиль {{value0}} создан, выполнено переключение на него",
             "bf648471c5": "Создание…",
-            "c186b4d890": "В Google нужно входить напрямую — импорт его пропускает.",
             "c5f0e4d3b2a1": "Импортировано cookie: {{value0}} из {{value1}} ({{value2}}).",
             "cf7cdc67ef": "Новый профиль…",
             "d6a1f5e4c3b2": "Импортировано cookie: {{value0}} из {{value1}}.",
@@ -6705,7 +6708,6 @@
         },
         "BrowserProfileRow": {
           "2d4bea7f35": "Cookie профиля по умолчанию очищены.",
-          "654a0c2073": "В Google нужно входить напрямую — импорт его пропускает.",
           "796d846483": "Cookie не импортированы",
           "7df818977e": "Из",
           "8e636cae25": "Профиль «{{value0}}» убран.",
@@ -14455,6 +14457,9 @@
         "cookie": {
           "import": {
             "toast": {
+              "googleCookiesSkipped": "Cookie Google не импортированы. Откройте в Orca браузер с этим профилем и войдите в Google.",
+              "googleDirectSignInAction": "Войти в Google",
+              "googleDirectSignInUnavailable": "Не удалось открыть профиль браузера. Откройте его и войдите на accounts.google.com.",
               "restartFallbackUnavailableNone": "Ни один из cookie ({{value0}}) не удалось загрузить, а запасной вариант с перезапуском был недоступен. Прежние cookie этого профиля заменены. Попробуйте импорт ещё раз.",
               "restartFallbackUnavailablePartial": "Импортировано cookie: {{value0}} из {{value1}}. Остальные загрузить не удалось, а запасной вариант с перезапуском был недоступен. Попробуйте импорт ещё раз."
             }
