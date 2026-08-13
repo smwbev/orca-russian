@@ -1498,6 +1498,15 @@
           "6f309eef8d": "Orca",
           "7e35393632": "Hermes"
         },
+        "AutomationListFilterMenu": {
+          "all": "Все",
+          "clear": "Очистить фильтры",
+          "failed": "Ошибка",
+          "filters": "Фильтры",
+          "neverRan": "Не запускалась",
+          "removeFilter": "Убрать фильтр «{{value0}}»",
+          "succeeded": "Успешно"
+        },
         "AutomationListLocalRows": {
           "c92c9463c6": "Действия с автоматизацией"
         },
@@ -1507,6 +1516,10 @@
           "placeholder": "Поиск…",
           "tooLong": "Слишком длинный запрос — список не фильтруется",
           "tooLongShort": "Слишком длинный"
+        },
+        "AutomationListSortHeader": {
+          "sortedAscending": "{{value0}}, сортировка по возрастанию",
+          "sortedDescending": "{{value0}}, сортировка по убыванию"
         },
         "AutomationMissedRunGraceField": {
           "0f4459e91d": "48 часов",
@@ -1657,6 +1670,7 @@
           "latestSavedOutput": "Последний сохранённый вывод",
           "missingWorkspace": "Рабочая область не найдена",
           "newAutomation": "Новая автоматизация",
+          "noListMatches": "Нет подходящих автоматизаций.",
           "noRunUsageYet": "Расхода по запускам пока нет",
           "noSearchMatches": "По запросу ничего не найдено.",
           "noWorkspace": "Рабочая область не выбрана",
@@ -1670,6 +1684,7 @@
           "runCount_other": "запусков: {{count}}",
           "runUsageSummary": "≈{{cost}} · токенов: {{tokens}}",
           "tableActions": "Действия",
+          "tableLastRun": "Последний запуск",
           "tableName": "Название",
           "tableProject": "Проект",
           "tableStatus": "Статус",
@@ -1738,6 +1753,14 @@
           "ee5b280eba": "Рабочие области не найдены."
         },
         "automation": {
+          "list": {
+            "last": {
+              "run": {
+                "done": "Готово",
+                "failed": "Ошибка"
+              }
+            }
+          },
           "templates": {
             "37571fcb16": "Искать зависшую работу, устаревшие сгенерированные файлы и непройденную локальную проверку.",
             "39ed39280a": "Готовность к релизу",
