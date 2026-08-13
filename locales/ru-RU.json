@@ -1277,6 +1277,8 @@
         "f7fda8d562": "Создайте рабочее дерево или откройте вкладку в Orca, чтобы начать.",
         "ff908adfe9": "Загрузка целей перехода",
         "paletteHostBadge": "Хост: {{value0}}",
+        "paletteOpenTabBranch": "Имя ветки",
+        "paletteOpenTabWorkspace": "Название рабочей области",
         "pluginCommandFailed": "Не удалось выполнить команду плагина.",
         "projectBadge": "Проект",
         "projectsGroupsHeader": "Проекты и группы",
@@ -15151,6 +15153,9 @@
       "runningAgents": "Агенты",
       "sleepWorkspace": "Усыпить",
       "spawnAgent": "Запустить нового агента",
+      "status": {
+        "doneSeen": "Готово, просмотрено"
+      },
       "worktreeSummary": "агентов: {{total}} · активных: {{active}} · завершено: {{done}}",
       "worktreeSummary_one": "{{total}} агент · активных: {{active}} · завершено: {{done}}",
       "worktreeSummary_other": "агентов: {{total}} · активных: {{active}} · завершено: {{done}}",
