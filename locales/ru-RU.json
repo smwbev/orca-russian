@@ -4298,6 +4298,7 @@
             "jiraSelectBindFailed": "Не удалось связать эту задачу Jira. Выберите подходящий сайт или переподключите Jira, затем попробуйте снова.",
             "jiraSiteNotConnected": "Этот сайт Jira не подключён",
             "loadingJira": "Загрузка задачи Jira…",
+            "loadingLinearIssue": "Загрузка задачи Linear…",
             "openSettings": "Настройки",
             "placeholderNameOrLinearUrl": "Введите название, ссылку Linear или Jira",
             "placeholderSmartGitLab": "Введите название, #1234 либо ссылку GitHub, GitLab или Jira",
@@ -15516,6 +15517,13 @@
       "tabKey": "Tab",
       "trigger": "Фильтровать результаты"
     },
+    "linearIssue": {
+      "createHint": "Создать рабочее дерево из задачи Linear",
+      "createLabel": "Создать рабочее дерево из задачи Linear {{value0}}: {{value1}}",
+      "loadingHint": "Загрузка задачи Linear…",
+      "loadingLabel": "Загрузка задачи Linear {{value0}}",
+      "pendingLabel": "Создать рабочее дерево из задачи Linear {{value0}}"
+    },
     "matchLabel": {
       "comment": "Комментарий",
       "issue": "Задача",
@@ -15523,6 +15531,10 @@
       "port": "Порт",
       "pr": "PR"
     },
-    "renderCapOverflow": "ещё {{value0}} — прокрутите или продолжайте вводить, чтобы сузить список"
+    "renderCapOverflow": "ещё {{value0}} — прокрутите или продолжайте вводить, чтобы сузить список",
+    "taskUrl": {
+      "createHint": "Создать рабочее дерево из {{value0}}",
+      "loadingHint": "Загрузка {{value0}}…"
+    }
   }
 }
