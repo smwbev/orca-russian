@@ -4910,6 +4910,7 @@
             "copySessionId": "Копировать идентификатор сессии",
             "delete": "Удалить",
             "deleteReasonNonLocalHost": "Удалять можно только сессии на этом устройстве.",
+            "deleteReasonSessionLive": "Эта сессия ещё выполняется — дождитесь завершения, прежде чем удалять.",
             "deleteReasonSyntheticPath": "Эту сессию нельзя удалить из Orca.",
             "deleteReasonUnsupportedAgent": "Сессии {{value0}} нельзя удалять из Orca.",
             "dragToResume": "Перетащите, чтобы возобновить в новой вкладке",
