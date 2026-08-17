@@ -15399,6 +15399,11 @@
           "updatedAgo": "Обновлено {{value0}}",
           "workspaceStatus": "Состояние рабочей области: {{value0}}"
         },
+        "host": {
+          "candidateName": "{{value0}} на {{value1}}",
+          "label": "Хост: {{value0}}",
+          "unknown": "Неизвестный хост"
+        },
         "presentation": {
           "githubPullRequestNumber": "PR #{{value0}}",
           "gitlabMergeRequestNumber": "MR #{{value0}}"
