@@ -1357,16 +1357,37 @@
         }
       },
       "artifacts": {
+        "ArtifactActions": {
+          "more": "Другие действия с артефактом"
+        },
         "ArtifactCollection": {
-          "loadMore": "Загрузить ещё"
+          "loadMore": "Загрузить ещё",
+          "noMatches": "Совпадений нет"
+        },
+        "ArtifactDetailDrawer": {
+          "description": "Просмотр этого опубликованного артефакта и управление им."
         },
         "ArtifactDetailHeader": {
+          "close": "Закрыть",
           "publicLink": "Открыть его может любой, у кого есть эта ссылка"
         },
         "ArtifactListPane": {
           "listLabel": "Опубликованные артефакты",
           "noMatches": "Совпадений нет",
           "search": "Поиск артефактов"
+        },
+        "ArtifactListSearchField": {
+          "clear": "Очистить поиск",
+          "label": "Поиск артефактов",
+          "placeholder": "Поиск…"
+        },
+        "ArtifactListTableHeader": {
+          "actions": "Действия",
+          "expires": "Истекает",
+          "name": "Название",
+          "size": "Размер",
+          "type": "Тип",
+          "updated": "Обновлено"
         },
         "ArtifactPublishButton": {
           "a4a49da6af": "Опубликовать как артефакт",
@@ -1427,6 +1448,9 @@
           "title": "Артефакты",
           "unconfiguredCopy": "Вход в аккаунт Orca на этой машине пока не настроен."
         },
+        "ArtifactsPageSkeleton": {
+          "loading": "Загрузка артефактов"
+        },
         "actions": "Действия с артефактом",
         "artifact-publish-flow": {
           "29a406be09": "Артефакт должен содержать текст.",
@@ -1445,12 +1469,15 @@
         "copyLink": "Копировать ссылку",
         "copySuccess": "Ссылка на артефакт скопирована",
         "expired": "Срок действия ссылки истёк",
+        "expiredCompact": "Истёк",
         "expires": "Ссылка истекает {{when}}",
         "expiryUnknown": "Срок действия неизвестен",
         "openInBrowser": "Открыть в браузере",
         "preview": "Предпросмотр артефакта",
         "previewUnavailable": "Предпросмотр недоступен",
         "previewUnavailableDescription": "Откройте этот артефакт в браузере, чтобы его посмотреть.",
+        "typeHtml": "HTML",
+        "typeMarkdown": "Markdown",
         "updatedAt": "Обновлено {{when}}",
         "updatedRecently": "недавно"
       },
@@ -4071,6 +4098,9 @@
           "a8fb43cf1c": "Продолжить",
           "aa97420ba4": "Копировать ссылку на установку",
           "ac1eb64952": "Android",
+          "androidHelp": {
+            "guide": "Инструкция по установке"
+          },
           "b4ccce5cb7": "Управляйте Orca с телефона. Следите за агентами, просматривайте изменения и запускайте задачи, пока вы не за рабочим столом.",
           "b622eba64d": "Назад",
           "bb0074ce11": "QR-код сопряжения",
