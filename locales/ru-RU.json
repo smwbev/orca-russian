@@ -363,7 +363,8 @@
         "f72fad3b16": "Отмена",
         "f7cb495a12": "Перезапущено: {{value0}}",
         "fa3e042203": "Повторить",
-        "ffdd9a78e1": "Ссылки на diff этого MR недоступны для встроенных комментариев."
+        "ffdd9a78e1": "Ссылки на diff этого MR недоступны для встроенных комментариев.",
+        "gitlabActionFailed": "Не удалось выполнить действие в GitLab."
       },
       "JiraIssueWorkspace": {
         "0b6b5646ed": "Не назначено",
@@ -1203,7 +1204,8 @@
         "cdc9ac4b2d": "editor",
         "e57db40c11": "Не удалось собрать команду запуска для {{value0}}.",
         "f0600556b3": "Не удалось создать безымянный файл Markdown.",
-        "f82e9f02df": "Отмена"
+        "f82e9f02df": "Отмена",
+        "quitSnapshotSaveFailed": "Завершение работы отменено: не удалось сохранить снимок сессии ({{value0}})."
       },
       "TerminalSearch": {
         "0f3066256e": "Предыдущее совпадение",
@@ -14161,6 +14163,114 @@
         }
       },
       "task": {
+        "page": {
+          "chrome": {
+            "task": {
+              "page": {
+                "gitlab": {
+                  "filters": {
+                    "2328f6a40c": "Мои дела",
+                    "e157d7ce4d": "Мерж-реквесты"
+                  }
+                }
+              }
+            }
+          },
+          "dialogs": {
+            "new": {
+              "github": {
+                "issue": {
+                  "dialog": {
+                    "e02508846c": "этом репозитории"
+                  }
+                }
+              },
+              "linear": {
+                "issue": {
+                  "dialog": {
+                    "dialogDescription": "Создать задачу Linear для выбранной команды.",
+                    "dialogTitle": "Новая задача Linear"
+                  }
+                }
+              }
+            },
+            "task": {
+              "page": {
+                "connect": {
+                  "dialogs": {
+                    "353c7dc71d": "Обновить доступ"
+                  }
+                }
+              }
+            }
+          },
+          "github": {
+            "github": {
+              "detail": {
+                "host": {
+                  "312ca15778": "Список GitHub",
+                  "8d5cde4770": "Пул-реквесты"
+                }
+              },
+              "issue": {
+                "label": {
+                  "selector": {
+                    "2a1862c470": "Загрузка меток…"
+                  }
+                }
+              },
+              "work": {
+                "item": {
+                  "row": {
+                    "draftPullRequest": "Черновик пул-реквеста",
+                    "issue": "Задача",
+                    "pullRequest": "Пул-реквест"
+                  }
+                }
+              }
+            }
+          },
+          "hooks": {
+            "use": {
+              "task": {
+                "page": {
+                  "jira": {
+                    "create": {
+                      "dialog": {
+                        "jiraRequiredFieldsLoadFailed": "Не удалось загрузить обязательные поля Jira."
+                      }
+                    }
+                  },
+                  "linear": {
+                    "active": {
+                      "collection": {
+                        "68462f8b29": "Представление: {{value0}}",
+                        "d8b3cd9488": "Проект: {{value0}}"
+                      }
+                    }
+                  },
+                  "session": {
+                    "resume": {
+                      "savedLinearProjectMissing": "Сохранённый проект Linear не найден.",
+                      "savedLinearProjectRestoreFailed": "Не удалось восстановить сохранённый проект Linear.",
+                      "savedLinearViewMissing": "Сохранённое представление Linear не найдено.",
+                      "savedLinearViewRestoreFailed": "Не удалось восстановить сохранённое представление Linear."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "linear": {
+            "linear": {
+              "connect": {
+                "empty": {
+                  "3e00e8ebd4": "Загрузка Linear"
+                }
+              }
+            }
+          }
+        },
         "project": {
           "source": {
             "combobox": {
@@ -15278,6 +15388,9 @@
     "runtime": {
       "githubCheckDetailsTimeout": {
         "timedOut": "Истекло время загрузки подробностей проверки."
+      },
+      "gitlabIpcTimeout": {
+        "timedOut": "Истекло время ожидания ответа GitLab."
       },
       "gitlabJobTraceClient": {
         "emptyTrace": "Для этого задания GitLab журнал недоступен.",
