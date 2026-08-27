@@ -7821,6 +7821,9 @@
           "installIntro": "Установите Orca Mobile из",
           "installOutro": ", затем выполните сопряжение ниже."
         },
+        "NativeChatSupportedAgents": {
+          "label": "Поддерживаемые агенты:"
+        },
         "NotificationsPane": {
           "00cd406dbb": "Подавлять при активном окне",
           "0cb93240b8": "Система не показала уведомление",
