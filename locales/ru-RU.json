@@ -2134,7 +2134,8 @@
             "f7ab83f7ed": "Открыть страницу в браузере по умолчанию",
             "fa6ea61de3": "Отмена",
             "fc9be38f6f": "Аннотировать элемент страницы",
-            "fdfc7fe0ef": "Захватить элемент страницы"
+            "fdfc7fe0ef": "Захватить элемент страницы",
+            "fileUrlUnsupported": "Эта вкладка браузера не может открывать локальные файлы. Вместо этого выберите для файла «Открыть предпросмотр сбоку»."
           },
           "BrowserToolbarMenu": {
             "2293adf620": "Импортировать cookie",
@@ -2677,6 +2678,26 @@
           "a95d02c644": "Оставить мои правки",
           "b6cf20d514": "Файл на диске двоичный — текстовое сравнение недоступно.",
           "e2b1cd0393": "Не удалось прочитать файл с диска: {{value0}}"
+        },
+        "HtmlDocPreview": {
+          "assetTooLargeNotice": "Файл {{path}} слишком велик для загрузки в этом предпросмотре.",
+          "assetUnreadableNotice": "Orca не смогла прочитать {{path}} из рабочей области.",
+          "assetUnsupportedNotice": "Эта рабочая область не может передать {{path}} в предпросмотр.",
+          "copyDocumentPathControl": "Копировать путь к файлу",
+          "copyDocumentRelativePathControl": "Копировать относительный путь",
+          "documentPathCopied": "Скопировано",
+          "documentTooLargePanel": "Документ слишком велик для предпросмотра. Откройте его в редакторе.",
+          "documentUnreadablePanel": "Orca не смогла прочитать этот файл из рабочей области.",
+          "downloadBlockedNotice": "Скачивание файлов в предпросмотре документов отключено.",
+          "multipleAssetsFailedNotice": "Не удалось загрузить несколько файлов этого документа ({{count}}).",
+          "openExternallyControl": "Открыть в приложении по умолчанию",
+          "openExternallyUnknownHostError": "Не удалось открыть «{{value0}}»: хост, которому принадлежит файл, больше не известен.",
+          "openSourceControl": "Открыть исходный файл",
+          "previewAriaLabel": "Предпросмотр HTML",
+          "previewMenuControl": "Параметры предпросмотра",
+          "previewUnavailableTitle": "Предпросмотр недоступен",
+          "reloadPreviewControl": "Перезагрузить предпросмотр",
+          "workspaceFileChipLabel": "Файл рабочей области"
         },
         "ImageDiffViewer": {
           "57aac3979a": "Исходное",
@@ -14518,6 +14539,8 @@
             "copiedLink": "Ссылка скопирована",
             "copyLink": "Копировать ссылку",
             "copyLinkFailed": "Не удалось скопировать ссылку",
+            "downloadOpenFailed": "Не удалось скачать «{{value0}}».",
+            "downloadOpenWithDefaultApp": "Скачать и открыть в приложении по умолчанию",
             "openFile": "Открыть файл",
             "openFolder": "Открыть папку",
             "openInFinder": "Открыть в Finder",
@@ -14923,6 +14946,13 @@
       }
     },
     "hooks": {
+      "ipc": {
+        "events": {
+          "browserStateIpcBridge": {
+            "docPreviewLinkFailed": "Не удалось открыть эту ссылку в браузере Orca."
+          }
+        }
+      },
       "useAppMenuPaste": {
         "pasteTooLarge": "Вставка слишком велика."
       },
@@ -15214,6 +15244,11 @@
             "tooMany": "Можно прикрепить не более {{maxCount}} изображений.",
             "unsupportedType": "{{fileName}} — неподдерживаемый тип изображения."
           }
+        }
+      },
+      "file": {
+        "preview": {
+          "pairedOutsideWorktree": "Предпросмотр файлов вне рабочей области на сопряжённом сервере пока недоступен."
         }
       },
       "fix": {
