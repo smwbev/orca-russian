@@ -1,8 +1,8 @@
 # Глоссарий локализации Orca (ru-RU)
 
-Рабочий документ для перевода `src/renderer/src/i18n/locales/en.json` (13 665 строк —
+Рабочий документ для перевода `src/renderer/src/i18n/locales/en.json` (13 681 строк —
 объединение `main` и последнего релиза, см. «Известные ограничения»).
-Актуально на `v5.1.96` (29 августа 2026): переведено 13 350 строк, английский остаток — 315
+Актуально на `v5.1.97` (29 августа 2026): переведено 13 366 строк, английский остаток — 315
 (180 защищённых `settings.plugin*`, 3 CSS, 112 осиротевших ключей обмена навыками, 9 осиротевших
 ключей удалённого браузера из #15448, 1 неиспользуемый ключ автоматизаций из #16532 и 10 строк,
 совпадающих с оригиналом). Обмен навыками (`skills.*`, `settings.shareSkills.*`) переведён
@@ -211,6 +211,8 @@
 | Message delivery is unconfirmed. / Message was not sent. / Retry (`NativeChatStructuredSession.1f772bb5d0` / `93ef441197` / `a5e7f14068`) | Доставка сообщения не подтверждена. / Сообщение не отправлено. / Повторить | (#16729) строка исходящих структурированного чата с кнопкой повтора |
 | Could not open Codex chat / Could not close this Codex chat / «The terminal stayed open so the provider remains recoverable.» / {{value0}} bytes (`native-chat.structuredSession*`, `providerFrame.byteLength`) | Не удалось открыть чат Codex / Не удалось закрыть этот чат Codex / «Терминал остался открытым, чтобы провайдера можно было восстановить.» / {{value0}} байт | (#16729) тосты запуска/закрытия структурированной сессии Codex (`provider` → «провайдер» по глоссарию); размер усечённого кадра провайдера в раскрывашке сообщения — «байт» без склонения, как `{{value0}} MB` → «МБ» |
 | The structured agent session is not available yet. Retry in a moment. (`activateAiVaultStructuredSession.unavailable`) | Структурированная сессия агента пока недоступна. Повторите попытку через мгновение. | (#16729) тост при перетаскивании сессии из истории сессий агента, пока структурированная сессия ещё поднимается; «через мгновение» — как `worktreeNotReady` |
+| Multi-task / Use Orca's browser / Turn on notifications / Choose your default agent / Enable Orca CLI / Connect integrations / Automate workspace setup / Start work in multiple repos (`feature.wall.setup.checklist.localized.copy.*`, имена шагов) | Работать параллельно / Использовать браузер Orca / Включить уведомления / Выбрать агента по умолчанию / Включить Orca CLI / Подключить интеграции / Автоматизировать настройку рабочей области / Начать работу в нескольких репозиториях | ([#17108](https://github.com/stablyai/orca/pull/17108)) 8 шагов чек-листа Setup Guide (`SetupGuideModal`, `SettingsSetupGuidePane` → `FeatureWallSetupChecklist`); до #17108 брались из `feature-wall-setup-steps.ts` без `translate()` и были непереводимы. Имена — инфинитивом, как `MobileEmulatorAgentSetupGuideSteps` «Включить Orca CLI»; «Multi-task» здесь глагол в ряду других действий, поэтому «Работать параллельно» (секция `parallel-work`, у `SetupGuideModal` — «параллельной работы агентов»), а не «Многозадачность» |
+| Work in 2 different worktrees at once… / Browse your web app without leaving Orca… / Know the moment an agent finishes, needs attention, or gets blocked. / Register the Orca shell command and install agent skills for browser, computer, and orchestration workflows. / Run install and setup commands automatically… / Bring your key repos into Orca… (`feature.wall.setup.checklist.localized.copy.*`, описания шагов) | «Работайте сразу в двух разных рабочих деревьях. Каждое изолировано (даже в одном проекте)…» / «Открывайте своё веб-приложение, не выходя из Orca…» / «Узнавайте сразу, когда агент закончил, требует внимания или заблокирован.» / «Зарегистрируйте команду оболочки Orca и установите навыки агентов для сценариев работы с браузером, компьютером и оркестрацией.» / «Автоматически выполняйте команды установки и настройки, чтобы каждое новое рабочее дерево было готово для агентов.» / «Добавьте ключевые репозитории в Orca, чтобы запускать работу агентов, не разыскивая папки.» | (#17108) 2-е лицо мн. ч., как `ConnectIntegrationsList.task_step_title` («Запускайте агентов… не выходя из Orca»); `needs attention` → «требует внимания» (как `AgentCapabilitiesSetupAction`), `workflows` → «сценарии» (как `SetupGuideModal`), `agent skills` → «навыки агентов» (как `CliSection`), `setup commands` → «команды … настройки» по глоссарию (`setup script` → «скрипт настройки») |
 
 ## Действия
 
@@ -336,7 +338,7 @@
   `build.py` предупреждает об опущенном `{{label}}`, и это ровно тот случай, для которого
   предупреждение сделано мягким. Тот же класс, что `SkillInstallReviewContent.tsx:84`.
 - **Лимит длины строки.** 8192 символа. Две CSS-строки анимаций стены возможностей (9691 и 9965 символов) физически не помещаются в пакет и остаются английскими; третья (7055) — чистый CSS, переводить нечего.
-- **Запас по лимитам движка** на v5.1.96: 15 038 узлов из 20 000  глубина 12 из 16, размер ~1,1 МБ из 5 МБ.
+- **Запас по лимитам движка** на v5.1.97: 15 058 узлов из 20 000  глубина 12 из 16, размер ~1,1 МБ из 5 МБ.
 - **Каталог апстрима меняется.** `build.py` сам выбрасывает ключи, исчезнувшие из `en.json`
   (при обновлении на Orca 1.4.163 таких было 13), и ругается, только если устаревший ключ
   пришёл из блока перевода. После обновления Orca достаточно заменить `.i18n-work/en.json`
