@@ -8598,6 +8598,8 @@
           "serverConnected": "Подключено",
           "serverDetails": "Сведения о сервере",
           "serverDisconnected": "Отключено",
+          "serverReconnecting": "Переподключение",
+          "serverWorkspaceWindowClosed": "Окно рабочей области закрыто",
           "shareWorkflow": "Поделиться этим хостом",
           "shareWorkflowHelp": "Другие устройства присоединяются к этой машине",
           "sshTunnelRequired": "Требуется SSH-туннель",
