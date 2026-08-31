@@ -15772,7 +15772,9 @@
           "c6e022ddfc": "Не удалось добавить проект",
           "e649269645": "Используйте «Добавить проект», чтобы указать путь на выбранном хосте.",
           "presenceProfileOverflow": "{{names}} и ещё {{count}}",
-          "removeProjectFailed": "Не удалось удалить проект"
+          "removeProjectFailed": "Не удалось удалить проект",
+          "wslFilesystemBoundaryTitle": "Этот проект хранится на диске Windows",
+          "wslFilesystemBoundaryDescription": "Git для этого проекта работает в {{distro}} и обращается к дискам Windows через мост файловой системы WSL. Ожидайте, что git будет примерно в 20 раз медленнее, чем на копии, хранящейся внутри {{distro}}."
         },
         "runtime": {
           "status": {

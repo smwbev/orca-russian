@@ -1,8 +1,8 @@
 # Глоссарий локализации Orca (ru-RU)
 
-Рабочий документ для перевода `src/renderer/src/i18n/locales/en.json` (13 714 строк —
+Рабочий документ для перевода `src/renderer/src/i18n/locales/en.json` (13 716 строк —
 объединение `main` и последнего релиза, см. «Известные ограничения»).
-Актуально на `v5.1.100` (31 августа 2026): переведено 13 399 строк, английский остаток — 315
+Актуально на `v5.1.101` (31 августа 2026): переведена 13 401 строка, английский остаток — 315
 (180 защищённых `settings.plugin*`, 3 CSS, 112 осиротевших ключей обмена навыками, 9 осиротевших
 ключей удалённого браузера из #15448, 1 неиспользуемый ключ автоматизаций из #16532 и 10 строк,
 совпадающих с оригиналом). Обмен навыками (`skills.*`, `settings.shareSkills.*`) переведён
@@ -221,6 +221,7 @@
 | Annotation intent / Edit annotation {{value0}} (`browser.page.annotation.tray`) | Назначение аннотации / Изменить аннотацию {{value0}} | ([#17511](https://github.com/stablyai/orca/pull/17511)) aria тогл-группы «Изменение»/«Вопрос» (те же опции, что в карточке создания) и кнопки-карандаша; value0 — порядковый номер |
 | Orca isn’t reachable on this host / restoring / checking / contact note (`RuntimeHostStatusRow`) | «Orca на этом хосте недоступна» / «Orca пытается восстановить подключение» / «Orca проверяет, доступен ли этот хост» / «Хост может по-прежнему работать; недоступно только подключение Orca.» | ([#17062](https://github.com/stablyai/orca/pull/17062)) сабменю деталей сбоя хоста в статус-баре; «Попытка {{value0}}» и «Окно рабочей области закрыто» — дословно по соседнему `SshStatusSegment` |
 | Filtering {{value0}} of {{value1}} team labels… / partial (`linear-issue-attribute-filter-*`) | «Фильтруется {{value0}} из {{value1}} меток команд — задачи остальных команд не включены.» / бейдж «частично» | ([#17376](https://github.com/stablyai/orca/pull/17376), [#17342](https://github.com/stablyai/orca/pull/17342)) предупреждение о неполном покрытии фильтров Linear; «частично» — по `SshStatusSegment.bc5a3fd41a` |
+| This project is stored on a Windows drive / description (`repos.wslFilesystemBoundary*`) | «Этот проект хранится на диске Windows» / «Git для этого проекта работает в {{distro}} и обращается к дискам Windows через мост файловой системы WSL. Ожидайте, что git будет примерно в 20 раз медленнее, чем на копии, хранящейся внутри {{distro}}.» | ([#17636](https://github.com/stablyai/orca/pull/17636)) предупреждение после добавления проекта, чьё дерево лежит на диске Windows, а git идёт в WSL (ловит и UNC-написание \\wsl.localhost\…\mnt\c\…); {{distro}} — имя дистрибутива латиницей, без управления падежом («работает в {{distro}}», «внутри {{distro}}»); «WSL filesystem bridge» → «мост файловой системы WSL» (9p/drvfs) |
 | Update the remote runtime to unlink GitHub pull requests (`worktree.meta.persist.github.pr.suppression`) | Чтобы отвязывать пул-реквесты GitHub, обновите удалённую среду выполнения | ([#16898](https://github.com/stablyai/orca/pull/16898)) `runtime` → «среда выполнения», конструкция «Чтобы …, обновите» — по `capturedOwner.unfenced` |
 
 ## Действия
