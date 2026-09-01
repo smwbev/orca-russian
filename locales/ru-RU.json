@@ -2813,6 +2813,7 @@
         },
         "LargeDiffLoadPrompt": {
           "a0af0198aa": "Большие diff по умолчанию не отображаются.",
+          "c3d9f4a712": "Размер этого diff пока неизвестен, поэтому он загружается по запросу.",
           "f7fa7a40d0": "Загрузить diff"
         },
         "MarkdownPreview": {
@@ -8599,6 +8600,8 @@
           "serverDetails": "Сведения о сервере",
           "serverDisconnected": "Отключено",
           "serverReconnecting": "Переподключение",
+          "serverRuntimeUnavailable": "Orca недоступна",
+          "serverRuntimeUnavailableDescription": "SSH-транспорт подключён, но среда выполнения Orca не ответила. Хост может по-прежнему работать.",
           "serverWorkspaceWindowClosed": "Окно рабочей области закрыто",
           "shareWorkflow": "Поделиться этим хостом",
           "shareWorkflowHelp": "Другие устройства присоединяются к этой машине",
@@ -13880,6 +13883,8 @@
             "previous_connection_closed": "Предыдущее подключение закрыто",
             "reconnect_attempt": "Попытка {{value0}}",
             "restoring_connection": "Orca пытается восстановить подключение",
+            "runtime_unavailable": "SSH-транспорт подключён, но среда выполнения Orca недоступна",
+            "runtime_unavailable_explanation": "Удалённый хост может по-прежнему работать; недоступно только подключение к среде выполнения Orca.",
             "workspace_window_closed": "Окно рабочей области закрыто"
           },
           "SkillUpdateStatusSegment": {
@@ -13925,6 +13930,7 @@
             "runtime_reconnect_attempt": "Попытка {{value0}}",
             "runtime_reconnecting": "Переподключение",
             "runtime_unavailable": "Отключено",
+            "runtime_unavailable_transport_up": "Orca недоступна",
             "runtime_workspace_window_closed": "Окно рабочей области закрыто",
             "workspaceConflict": "Конфликт рабочей области",
             "workspaceSyncError": "Ошибка синхронизации рабочей области"
