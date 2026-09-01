@@ -1754,6 +1754,7 @@
           "noRunUsageYet": "Расхода по запускам пока нет",
           "noSearchMatches": "По запросу ничего не найдено.",
           "noWorkspace": "Рабочая область не выбрана",
+          "ownerChanged": "Эта автоматизация сменила хост. Обновите список и повторите.",
           "paused": "Приостановлено",
           "pendingAutomationMissing": "Автоматизация больше недоступна.",
           "pendingAutomationRunMissing": "История запусков больше недоступна.",
@@ -14324,6 +14325,8 @@
             "chooseAction": "Выберите действие.",
             "d62d63b807": "Создать файл",
             "d7d496a451": "Страницы браузера больше не существует",
+            "omniboxPlaceholderWithHistory": "Поиск по открытым вкладкам, истории, файлам, ссылкам, агентам…",
+            "openPage": "Открыть страницу",
             "searchProvider": "Поиск в {{value0}}"
           },
           "TabBarQuickCommandAddActions": {
