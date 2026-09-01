@@ -16196,7 +16196,12 @@
         "pairHost": "Сопрягите хост, чтобы просмотреть историю чата агента."
       },
       "status": {
-        "responding": "Агент отвечает"
+        "responding": "Агент отвечает",
+        "thinking": "Размышляет",
+        "toggleDetails": "Показать или скрыть подробности хода",
+        "workedFor": "Работал {{value0}} с",
+        "working": "Работает…",
+        "workingFor": "Работает {{value0}} с"
       },
       "stop": "Остановить агента",
       "structuredSessionCloseFailed": "Не удалось закрыть этот чат Codex",
@@ -16209,8 +16214,18 @@
       "tool": {
         "countN": "Вызовов инструментов: {{value0}}",
         "countOne": "1 вызов инструмента",
+        "ranCommandManyToolsSummary": "Выполнено команд: {{commandCount}}, использовано инструментов: {{toolCount}}",
+        "ranCommandOneToolSummary": "Выполнено команд: {{commandCount}}, использовано инструментов: {{toolCount}}",
+        "ranCommandsManyToolsSummary": "Выполнено команд: {{commandCount}}, использовано инструментов: {{toolCount}}",
+        "ranCommandsOneToolSummary": "Выполнено команд: {{commandCount}}, использовано инструментов: {{toolCount}}",
         "result": "Результат",
-        "running": "Выполняется…"
+        "running": "Выполняется…",
+        "runningCommand": "Выполняется команда",
+        "runningNamed": "Выполняется {{toolName}}",
+        "runningNamedPreview": "Выполняется {{toolName}} {{preview}}",
+        "runningPreview": "Выполняется {{preview}}",
+        "usedManySummary": "Использовано инструментов: {{toolCount}}",
+        "usedOneSummary": "Использован 1 инструмент"
       }
     },
     "status": {
