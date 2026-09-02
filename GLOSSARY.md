@@ -1,8 +1,8 @@
 # Глоссарий локализации Orca (ru-RU)
 
-Рабочий документ для перевода `src/renderer/src/i18n/locales/en.json` (13 829 строк —
+Рабочий документ для перевода `src/renderer/src/i18n/locales/en.json` (13 832 строк —
 объединение `main` и последнего релиза, см. «Известные ограничения»).
-Актуально на `v5.1.109` (3 сентября 2026): переведено 13 514 строк, английский остаток — 315
+Актуально на `v5.1.110` (3 сентября 2026): переведено 13 517 строк, английский остаток — 315
 (180 защищённых `settings.plugin*`, 3 CSS, 112 осиротевших ключей обмена навыками, 9 осиротевших
 ключей удалённого браузера из #15448, 1 неиспользуемый ключ автоматизаций из #16532 и 10 строк,
 совпадающих с оригиналом). Обмен навыками (`skills.*`, `settings.shareSkills.*`) переведён
@@ -224,6 +224,7 @@
 | This project is stored on a Windows drive / description (`repos.wslFilesystemBoundary*`) | «Этот проект хранится на диске Windows» / «Git для этого проекта работает в {{distro}} и обращается к дискам Windows через мост файловой системы WSL. Ожидайте, что git будет примерно в 20 раз медленнее, чем на копии, хранящейся внутри {{distro}}.» | ([#17636](https://github.com/stablyai/orca/pull/17636)) предупреждение после добавления проекта, чьё дерево лежит на диске Windows, а git идёт в WSL (ловит и UNC-написание \\wsl.localhost\…\mnt\c\…); {{distro}} — имя дистрибутива латиницей, без управления падежом («работает в {{distro}}», «внутри {{distro}}»); «WSL filesystem bridge» → «мост файловой системы WSL» (9p/drvfs) |
 | Update the remote runtime to unlink GitHub pull requests (`worktree.meta.persist.github.pr.suppression`) | Чтобы отвязывать пул-реквесты GitHub, обновите удалённую среду выполнения | ([#16898](https://github.com/stablyai/orca/pull/16898)) `runtime` → «среда выполнения», конструкция «Чтобы …, обновите» — по `capturedOwner.unfenced` |
 | Orca unavailable / SSH transport is connected, but the Orca runtime is unavailable / did not answer (`SshStatusSegment.runtime_unavailable_transport_up`, `RuntimeHostStatusRow.runtime_unavailable*`, `RuntimeEnvironmentsPane.serverRuntimeUnavailable*`) | «Orca недоступна» / «SSH-транспорт подключён, но среда выполнения Orca недоступна» / «…не ответила» | ([#17710](https://github.com/stablyai/orca/pull/17710)) апстрим стал отличать живой SSH-транспорт от недоступной среды выполнения; краткий статус «Orca недоступна» — ж. р. по `host_unreachable`, пояснения — по образцу `contact_note` |
+| View activity / Turn off activity view / Activity options (`dashboard.sidebar.openActivity`/`closeActivity`, `ActivityPrototypePage.activityOptions`) | Показать активность / Выключить вид активности / Параметры активности | ([#18250](https://github.com/stablyai/orca/pull/18250)) колокольчик в шапке боковой панели переключает её в вид «Агенты» (`aria-pressed`), поэтому пара «Показать … / Выключить вид …», а не «Показать/Скрыть»; `view` → «вид» по `SidebarHeader.views` («Вид боковой панели») и интро «Вид «Агенты»»; «Параметры …» — по `Workspace options` / `Session options` |
 
 ## Действия
 
@@ -350,7 +351,7 @@
   `build.py` предупреждает об опущенном `{{label}}`, и это ровно тот случай, для которого
   предупреждение сделано мягким. Тот же класс, что `SkillInstallReviewContent.tsx:84`.
 - **Лимит длины строки.** 8192 символа. Две CSS-строки анимаций стены возможностей (9691 и 9965 символов) физически не помещаются в пакет и остаются английскими; третья (7055) — чистый CSS, переводить нечего.
-- **Запас по лимитам движка** на v5.1.109: 15 239 узлов из 20 000, глубина 12 из 16, размер ~1,2 МБ из 5 МБ.
+- **Запас по лимитам движка** на v5.1.110: 15 242 узлов из 20 000, глубина 12 из 16, размер ~1,2 МБ из 5 МБ.
 - **Каталог апстрима меняется.** `build.py` сам выбрасывает ключи, исчезнувшие из `en.json`
   (при обновлении на Orca 1.4.163 таких было 13), и ругается, только если устаревший ключ
   пришёл из блока перевода. После обновления Orca достаточно заменить `.i18n-work/en.json`
