@@ -1,8 +1,8 @@
 # Глоссарий локализации Orca (ru-RU)
 
-Рабочий документ для перевода `src/renderer/src/i18n/locales/en.json` (13 831 строк —
+Рабочий документ для перевода `src/renderer/src/i18n/locales/en.json` (13 832 строк —
 объединение `main` и последнего релиза, см. «Известные ограничения»).
-Актуально на `v5.1.111` (3 сентября 2026): переведено 13 516 строк, английский остаток — 315
+Актуально на `v5.1.112` (4 сентября 2026): переведено 13 517 строк, английский остаток — 315
 (180 защищённых `settings.plugin*`, 3 CSS, 112 осиротевших ключей обмена навыками, 9 осиротевших
 ключей удалённого браузера из #15448, 1 неиспользуемый ключ автоматизаций из #16532 и 10 строк,
 совпадающих с оригиналом). Обмен навыками (`skills.*`, `settings.shareSkills.*`) переведён
@@ -226,6 +226,7 @@
 | Orca unavailable / SSH transport is connected, but the Orca runtime is unavailable / did not answer (`SshStatusSegment.runtime_unavailable_transport_up`, `RuntimeHostStatusRow.runtime_unavailable*`, `RuntimeEnvironmentsPane.serverRuntimeUnavailable*`) | «Orca недоступна» / «SSH-транспорт подключён, но среда выполнения Orca недоступна» / «…не ответила» | ([#17710](https://github.com/stablyai/orca/pull/17710)) апстрим стал отличать живой SSH-транспорт от недоступной среды выполнения; краткий статус «Orca недоступна» — ж. р. по `host_unreachable`, пояснения — по образцу `contact_note` |
 | View activity / Turn off activity view / Activity options (`dashboard.sidebar.openActivity`/`closeActivity`, `ActivityPrototypePage.activityOptions`) | Показать активность / Выключить вид активности / Параметры активности | ([#18250](https://github.com/stablyai/orca/pull/18250)) колокольчик в шапке боковой панели переключает её в вид «Агенты» (`aria-pressed`), поэтому пара «Показать … / Выключить вид …», а не «Показать/Скрыть»; `view` → «вид» по `SidebarHeader.views` («Вид боковой панели») и интро «Вид «Агенты»»; «Параметры …» — по `Workspace options` / `Session options` |
 | Could not confirm whether Codex chat opened. Retry to check again. (`auto.lib.worktree.creation.flow.structured.launch.unknown`) | Не удалось подтвердить, открылся ли чат Codex. Повторите проверку. | ([#18248](https://github.com/stablyai/orca/pull/18248)) ошибка на карточке создания рабочего дерева, когда Orca не смогла проверить, открылся ли структурированный чат Codex; «чат Codex» — по `structuredSessionLaunchFailed` («Не удалось открыть чат Codex»), «Повторите проверку.» — по `checks.panel.review.untyped.body` (тот же хвост «Retry to check again.»); кнопка карточки `WorktreeCreationPanel` — «Повторить» |
+| No preview for this remote session — open the workspace to view the terminal. (`dashboardPopout.terminal.remotePreviewUnavailable`) | Нет предпросмотра для этой удалённой сессии — откройте рабочую область, чтобы увидеть терминал. | ([#18403](https://github.com/stablyai/orca/pull/18403)) заглушка превью терминала в панели агентов (`AgentTerminalPreview`, `AgentTerminalDialog`) для SSH-сессии: у удалённого pty нет снимка буфера, поэтому Orca больше не утверждает «панель закрыта» (`terminal.closed`), а лишь что превью недоступно; «Нет предпросмотра» — по `ImageDiffViewer`, «откройте рабочую область» — по `launch.agent.background.session` («…откройте рабочую область и вставьте его»), «чтобы увидеть» — по `Open the PR details to view current reviewers`; рядом кнопка `focusWorktree` → «Открыть рабочее дерево» |
 
 ## Действия
 
@@ -352,7 +353,7 @@
   `build.py` предупреждает об опущенном `{{label}}`, и это ровно тот случай, для которого
   предупреждение сделано мягким. Тот же класс, что `SkillInstallReviewContent.tsx:84`.
 - **Лимит длины строки.** 8192 символа. Две CSS-строки анимаций стены возможностей (9691 и 9965 символов) физически не помещаются в пакет и остаются английскими; третья (7055) — чистый CSS, переводить нечего.
-- **Запас по лимитам движка** на v5.1.111: 15 245 узлов из 20 000, глубина 12 из 16, размер ~1,2 МБ из 5 МБ.
+- **Запас по лимитам движка** на v5.1.112: 15 246 узлов из 20 000, глубина 12 из 16, размер ~1,2 МБ из 5 МБ.
 - **Каталог апстрима меняется.** `build.py` сам выбрасывает ключи, исчезнувшие из `en.json`
   (при обновлении на Orca 1.4.163 таких было 13), и ругается, только если устаревший ключ
   пришёл из блока перевода. После обновления Orca достаточно заменить `.i18n-work/en.json`
