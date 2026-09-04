@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.117-08C?style=flat" alt="Package version 5.1.117" /></a>
   <img src="https://img.shields.io/badge/coverage-99.3%25-08C?style=flat" alt="99.3 percent of the interface catalog translated" />
-  <img src="https://img.shields.io/badge/strings-13%20690-08C?style=flat" alt="13,690 translated strings" />
+  <img src="https://img.shields.io/badge/strings-13%20720-08C?style=flat" alt="13,690 translated strings" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.0-4493F8?style=flat" alt="Requires Orca 1.4.0 or newer" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-08C?style=flat" alt="MIT License" /></a>
 </p>
