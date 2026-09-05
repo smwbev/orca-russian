@@ -16544,12 +16544,19 @@
         "showTerminal": "Показать терминал"
       },
       "tool": {
+        "addedFile": "Файл добавлен",
+        "copyDiff": "Копировать diff",
         "countN": "Вызовов инструментов: {{value0}}",
         "countOne": "1 вызов инструмента",
+        "deletedFile": "Файл удалён",
+        "diffGap": "Строки не показаны",
+        "diffTruncated": "Diff обрезан",
+        "editedFile": "Файл изменён",
         "ranCommandManyToolsSummary": "Выполнено команд: {{commandCount}}, использовано инструментов: {{toolCount}}",
         "ranCommandOneToolSummary": "Выполнено команд: {{commandCount}}, использовано инструментов: {{toolCount}}",
         "ranCommandsManyToolsSummary": "Выполнено команд: {{commandCount}}, использовано инструментов: {{toolCount}}",
         "ranCommandsOneToolSummary": "Выполнено команд: {{commandCount}}, использовано инструментов: {{toolCount}}",
+        "renamedFile": "Файл переименован",
         "result": "Результат",
         "running": "Выполняется…",
         "runningCommand": "Выполняется команда",
@@ -17080,6 +17087,18 @@
   "quickOpen": {
     "moreMatchesAvailable": "Возможно, есть и другие совпадения. Уточните запрос, чтобы сузить результаты."
   },
+  "rendererRecovery": {
+    "copyCommands": "Копировать команды",
+    "crashLoopDetail": "Orca безуспешно пыталась восстановиться — попыток подряд: {{recoveryCount}}.",
+    "crashLoopMessage": "Окно приложения неоднократно завершалось сбоем, и Orca прекратила перезагружать его автоматически.",
+    "driverFallback": "Если это не поможет, причина обычно в графическом драйвере.",
+    "genericDetail": "Часто это проблема графического драйвера или установки приложения. Перезагрузите, чтобы попробовать снова, или завершите и перезапустите Orca.",
+    "quit": "Завершить",
+    "reload": "Перезагрузить",
+    "stalledDetail": "Orca перезагрузила окно после сбоя, но загрузка так и не завершилась.",
+    "stalledMessage": "Окно приложения перестало отвечать во время перезагрузки после сбоя.",
+    "title": "Orca раз за разом не загружается"
+  },
   "runtimeRpc": {
     "startupFailure": {
       "continueButton": "Продолжить без CLI",
@@ -17155,6 +17174,14 @@
         "rowTitle": "SSH-рабочие области",
         "useHost": "Через SSH-хост"
       }
+    }
+  },
+  "sidebar": {
+    "revealFiltered": {
+      "cancel": "Оставить фильтры",
+      "confirm": "Очистить фильтры и показать",
+      "description": "Активная рабочая область скрыта в боковой панели. Если показать её, фильтры боковой панели будут очищены.",
+      "title": "Показать скрытую рабочую область?"
     }
   },
   "sourceControl": {
