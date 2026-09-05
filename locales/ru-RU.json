@@ -16548,7 +16548,10 @@
       "stop": "Остановить агента",
       "structuredSessionCloseFailed": "Не удалось закрыть эту сессию чата",
       "structuredSessionCloseFailedDescription": "Терминал остался открытым, чтобы провайдера можно было восстановить.",
+      "structuredSessionFellBackToTerminal": "Структурированный чат недоступен",
+      "structuredSessionFellBackToTerminalDescription": "Вместо этого Orca попыталась открыть терминал {{value0}}.",
       "structuredSessionLaunchFailed": "Не удалось открыть чат {{value0}}",
+      "structuredSessionLaunchFailedDescription": "Orca не смогла открыть структурированный чат {{value0}}. Подробности — в журналах.",
       "structuredSessionLaunchPending": "Запуск чата {{value0}}…",
       "toggle": {
         "showChat": "Показать чат",
