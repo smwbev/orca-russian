@@ -1377,12 +1377,14 @@
           "search": "Поиск",
           "showChildAgents": "Показывать дочерних агентов",
           "showUnreadOnly": "Показывать только непрочитанные",
+          "threadListOptionsFiltered": "Параметры списка веток, фильтры активны",
           "unreadOnlyDescription": "Оставляет в списке активности только ветки с непрочитанными обновлениями."
         },
         "ActivityScopeFilterControls": {
           "clearHostFilter": "Показывать все хосты",
           "clearProjectFilter": "Показывать все проекты",
-          "hiddenCount": "Скрыто: {{value0}}"
+          "hiddenCount": "Скрыто: {{value0}}",
+          "resetScope": "Показывать все хосты и проекты"
         },
         "ActivityThreadHoverCard": {
           "copyPath": "Копировать путь",
@@ -1390,6 +1392,9 @@
           "jumpToWorkspace": "Перейти к рабочей области",
           "pathCopied": "Путь скопирован в буфер обмена",
           "workspace": "Рабочая область"
+        },
+        "ActivityThreadRow": {
+          "clearNotification": "Убрать уведомление"
         },
         "ActivityTitlebarControls": {
           "d6a8de3934": "агенты",
