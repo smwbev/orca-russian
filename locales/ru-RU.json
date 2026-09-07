@@ -1372,11 +1372,23 @@
           "e3db9892f6": "Активности пока нет.",
           "f6396e1f85": "Агент",
           "f70e4bec47": "Компактный режим",
+          "interrupted": "Прервано",
           "markThreadRead": "Отметить ветку как прочитанную",
           "none": "Нет",
           "search": "Поиск",
           "showChildAgents": "Показывать дочерних агентов",
           "showUnreadOnly": "Показывать только непрочитанные",
+          "state": {
+            "blocked": "Заблокировано",
+            "done": "Готово",
+            "failed": "Ошибка",
+            "idle": "Простой",
+            "monitoring": "Наблюдение за фоновыми задачами",
+            "permission": "Требует внимания",
+            "unverifiable": "Нет недавних обновлений",
+            "waiting": "Ожидание ввода",
+            "working": "В работе"
+          },
           "threadListOptionsFiltered": "Параметры списка веток, фильтры активны",
           "unreadOnlyDescription": "Оставляет в списке активности только ветки с непрочитанными обновлениями."
         },
@@ -16627,6 +16639,26 @@
       "structuredSessionLaunchFailed": "Не удалось открыть чат {{value0}}",
       "structuredSessionLaunchFailedDescription": "Orca не смогла открыть структурированный чат {{value0}}. Подробности — в журналах.",
       "structuredSessionLaunchPending": "Запуск чата {{value0}}…",
+      "subagents": {
+        "ranN": "Отработало субагентов: {{value0}}",
+        "ranOne": "Отработал 1 субагент",
+        "startedN": "Запущено субагентов: {{value0}}",
+        "startedOne": "Запущен 1 субагент",
+        "state": {
+          "completed": "завершено",
+          "failed": "ошибка",
+          "failedCount": "{{value0}} с ошибкой",
+          "idle": "простой",
+          "idleCount": "{{value0}} в простое",
+          "stopped": "остановлено",
+          "stoppedCount": "{{value0}} остановлено",
+          "unverifiable": "не подтверждено",
+          "unverifiableCount": "{{value0}} не подтверждено",
+          "working": "в работе",
+          "workingCount": "{{value0}} в работе"
+        },
+        "tokens": "токенов: {{value0}}"
+      },
       "toggle": {
         "showChat": "Показать чат",
         "showTerminal": "Показать терминал"
@@ -16964,7 +16996,9 @@
       "closeActivity": "Выключить вид активности",
       "dashboardLabel": "Панель агентов",
       "label": "Агенты",
-      "openActivity": "Показать активность"
+      "openActivity": "Показать активность",
+      "projects": "Проекты",
+      "workspaces": "Рабочие области"
     }
   },
   "dashboardPopout": {
