@@ -16674,6 +16674,7 @@
         "diffGap": "Строки не показаны",
         "diffTruncated": "Diff обрезан",
         "editedFile": "Файл изменён",
+        "exitCode": "код выхода {{value0}}",
         "ranCommandManyToolsSummary": "Выполнено команд: {{commandCount}}, использовано инструментов: {{toolCount}}",
         "ranCommandOneToolSummary": "Выполнено команд: {{commandCount}}, использовано инструментов: {{toolCount}}",
         "ranCommandsManyToolsSummary": "Выполнено команд: {{commandCount}}, использовано инструментов: {{toolCount}}",
