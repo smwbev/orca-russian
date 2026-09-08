@@ -1372,6 +1372,7 @@
           "e3db9892f6": "Активности пока нет.",
           "f6396e1f85": "Агент",
           "f70e4bec47": "Компактный режим",
+          "filtersSection": "Фильтры",
           "interrupted": "Прервано",
           "markThreadRead": "Отметить ветку как прочитанную",
           "none": "Нет",
@@ -1391,11 +1392,10 @@
             "working": "В работе"
           },
           "threadListOptionsFiltered": "Параметры списка веток, фильтры активны",
-          "unreadOnlyDescription": "Оставляет в списке активности только ветки с непрочитанными обновлениями."
+          "unreadOnlyDescription": "Оставляет в списке активности только ветки с непрочитанными обновлениями.",
+          "viewSection": "Вид"
         },
         "ActivityScopeFilterControls": {
-          "clearHostFilter": "Показывать все хосты",
-          "clearProjectFilter": "Показывать все проекты",
           "hiddenCount": "Скрыто: {{value0}}",
           "resetScope": "Показывать все хосты и проекты"
         },
