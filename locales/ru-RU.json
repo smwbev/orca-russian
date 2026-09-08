@@ -16587,6 +16587,11 @@
       "launchPromptNotDelivered": "Не доставлено — проверьте терминал",
       "loadEarlier": "Загрузить предыдущие сообщения",
       "loadingEarlier": "Загрузка…",
+      "notices": {
+        "compaction": "Контекст сжат",
+        "details": "Подробности",
+        "plan": "План"
+      },
       "orchestrationPaused": {
         "command": "orca orchestration check",
         "label": "Оркестрация приостановлена",
