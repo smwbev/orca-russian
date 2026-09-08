@@ -3,7 +3,7 @@
   "id": "russian",
   "publisher": "smwbev",
   "name": "Русский",
-  "version": "5.1.137",
+  "version": "5.1.138",
   "description": "Полный перевод интерфейса Orca на русский язык.",
   "repository": "https://github.com/smwbev/orca-russian",
   "engines": {
