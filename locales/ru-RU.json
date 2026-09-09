@@ -16702,6 +16702,22 @@
         },
         "tokens": "токенов: {{value0}}"
       },
+      "taskList": {
+        "added": "Добавлено: {{task}}",
+        "completed": "Выполнено",
+        "empty": "Задач нет",
+        "finished": "Выполнено: {{task}}",
+        "inProgress": "В работе",
+        "pending": "В ожидании",
+        "progress": "Выполнено задач: {{completed}} из {{total}}",
+        "removed": "Удалено: {{task}}",
+        "reset": "Снова в ожидании: {{task}}",
+        "showAll": "Полный список задач",
+        "started": "Взято в работу: {{task}}",
+        "title": "Задачи",
+        "unchanged": "Задачи без изменений",
+        "updated": "Обновлено: {{task}}"
+      },
       "toggle": {
         "showChat": "Показать чат",
         "showTerminal": "Показать терминал"
