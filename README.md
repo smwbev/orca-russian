@@ -76,13 +76,13 @@ The marketplace tracks updates for you: when a new translation release ships, Or
 
 ### Why some strings stay in English
 
-303 catalog keys stay in English. None of it is missing work:
+316 catalog keys stay in English. None of it is missing work:
 
 - **180 strings** — plugin consent and trust copy. The engine protects the `auto.components.settings.plugin*` namespace with a case-insensitive check, so a pack cannot rewrite a consent dialog, a provenance badge, a safety status, or a destructive confirmation. If a language pack overrides even one of those keys, Orca rejects **the entire pack** and the language never loads.
 - **2 strings** — feature-wall CSS animations of 9,691 and 9,965 characters against a hard limit of 8,192 characters per string.
 - **1 string** — another CSS block with nothing to translate.
-- **112 keys** — orphans left in the English catalog after the skill-sharing feature was reverted and relanded; no component reads them, so translating them would only add weight.
-- **8 strings** — identical in Russian (`SHA-256`, `· SSH`, `WSL ·`, a sample share URL, `{{name}} +{{count}}`), or split into fragments that the component pluralises with a hard-coded English `s`.
+- **123 keys** — orphans no component reads: 111 left over after the skill-sharing feature was reverted and relanded, plus 12 from browser SSH-routing and automation settings that were rewritten in place. Translating them would only add weight.
+- **10 strings** — identical in Russian (`SHA-256`, `· SSH`, `WSL ·`, a sample share URL, `{{name}} +{{count}}`), or split into fragments that the component pluralises with a hard-coded English `s`.
 
 The list shrinks as Orca merges the fixes we send:
 
