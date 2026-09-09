@@ -16639,6 +16639,13 @@
         "skip": "Пропустить",
         "step": "Шаг {{value0}}"
       },
+      "receipt": {
+        "cancelled": "Отменено",
+        "cancelledBy": "Отменено на {{device}}",
+        "resolved": "Решено",
+        "resolver": "Отвечено на {{device}}",
+        "unavailable": "Выбранный ответ недоступен"
+      },
       "scrollMessageToTop": "Прокрутить это сообщение наверх",
       "state": {
         "empty": {
@@ -16723,6 +16730,12 @@
         "runningPreview": "Выполняется {{preview}}",
         "usedManySummary": "Использовано инструментов: {{toolCount}}",
         "usedOneSummary": "Использован 1 инструмент"
+      },
+      "turnDiff": {
+        "many": "Изменённых файлов: {{count}}",
+        "one": "1 изменённый файл",
+        "partial": "Неполный diff",
+        "recorded": "Итоги по правкам, записанным за этот ход."
       }
     },
     "onboarding": {
