@@ -1,9 +1,9 @@
 <h1 align="center">Русский язык для Orca</h1>
 
 <p align="center">
-  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/версия-5.1.142-08C?style=flat" alt="Версия пакета 5.1.142" /></a>
-  <img src="https://img.shields.io/badge/покрытие-99.3%25-08C?style=flat" alt="Переведено 99,3 % каталога интерфейса" />
-  <img src="https://img.shields.io/badge/строк-13%20904-08C?style=flat" alt="13 904 переведённые строки" />
+  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/версия-5.1.143-08C?style=flat" alt="Версия пакета 5.1.143" /></a>
+  <img src="https://img.shields.io/badge/покрытие-99.1%25-08C?style=flat" alt="Переведено 99,1 % каталога интерфейса" />
+  <img src="https://img.shields.io/badge/строк-13%20946-08C?style=flat" alt="13 946 переведённых строк" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.0-4493F8?style=flat" alt="Требуется Orca 1.4.0 или новее" />
   <a href="../../LICENSE"><img src="https://img.shields.io/badge/лицензия-MIT-08C?style=flat" alt="Лицензия MIT" /></a>
 </p>
@@ -14,7 +14,7 @@
 
 <p align="center">
   <strong>Полный перевод интерфейса <a href="https://github.com/stablyai/orca">Orca</a> на русский язык.</strong><br/>
-  13 904 строки — меню, настройки, терминал, редактор, GitHub, GitLab, Linear, Jira, мобильный режим и онбординг.
+  13 946 строк — меню, настройки, терминал, редактор, GitHub, GitLab, Linear, Jira, мобильный режим и онбординг.
 </p>
 
 ---
@@ -46,7 +46,7 @@
 2. Вставьте адрес репозитория **вместе с явным `#ref`** — без него Orca откажет в установке, чтобы каждая установка была привязана к конкретной версии:
 
    ```
-   https://github.com/smwbev/orca-russian.git#v5.1.142
+   https://github.com/smwbev/orca-russian.git#v5.1.143
    ```
 
    После `#` подойдёт любой тег или коммит. Отдельного поля для ref в этом окне нет — он указывается прямо в адресе.
@@ -113,7 +113,7 @@
 
 ```
 orca-plugin.json        манифест: идентификатор, версия, ссылка на каталог
-locales/ru-RU.json      каталог переводов, 13 904 строки
+locales/ru-RU.json      каталог переводов, 13 946 строк
 GLOSSARY.md             глоссарий: правила и единая терминология
 ```
 
@@ -123,7 +123,7 @@ Orca подключает языковой пакет под синтетиче�
 
 | Ограничение | Лимит | Сейчас |
 |---|---|---|
-| Узлов в каталоге | 20 000 | 15 671 |
+| Узлов в каталоге | 20 000 | 15 715 |
 | Глубина вложенности | 16 | 12 |
 | Длина строки | 8 192 символа | в пределах |
 | Размер файла | 5 МБ | ~1 МБ |
