@@ -1,9 +1,9 @@
 <h1 align="center">Russian language pack for Orca</h1>
 
 <p align="center">
-  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.155-08C?style=flat" alt="Package version 5.1.155" /></a>
+  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.156-08C?style=flat" alt="Package version 5.1.156" /></a>
   <img src="https://img.shields.io/badge/coverage-99.1%25-08C?style=flat" alt="99.1 percent of the interface catalog translated" />
-  <img src="https://img.shields.io/badge/strings-15%20108-08C?style=flat" alt="15,108 translated strings" />
+  <img src="https://img.shields.io/badge/strings-15%20433-08C?style=flat" alt="15,433 translated strings" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.0-4493F8?style=flat" alt="Requires Orca 1.4.0 or newer" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-08C?style=flat" alt="MIT License" /></a>
 </p>
@@ -14,7 +14,7 @@
 
 <p align="center">
   <strong>A complete Russian translation of the <a href="https://github.com/stablyai/orca">Orca</a> interface.</strong><br/>
-  15,108 strings — menus, settings, terminal, editor, GitHub, GitLab, Linear, Jira, mobile, and onboarding.
+  15,433 strings — menus, settings, terminal, editor, GitHub, GitLab, Linear, Jira, mobile, and onboarding.
 </p>
 
 ---
@@ -42,7 +42,7 @@ The marketplace tracks updates for you: when a new translation release ships, Or
 2. Paste the repository URL **with an explicit `#ref`** — Orca refuses the install without one, so that every install is pinned:
 
    ```
-   https://github.com/smwbev/orca-russian.git#v5.1.155
+   https://github.com/smwbev/orca-russian.git#v5.1.156
    ```
 
    Any tag or commit works after `#`. There is no separate ref field in this dialog — the ref is part of the URL.
@@ -76,13 +76,13 @@ The marketplace tracks updates for you: when a new translation release ships, Or
 
 ### Why some strings stay in English
 
-630 catalog keys stay in English. None of it is missing work:
+365 catalog keys stay in English. None of it is missing work:
 
 - **180 strings** — plugin consent and trust copy. The engine protects the `auto.components.settings.plugin*` namespace with a case-insensitive check, so a pack cannot rewrite a consent dialog, a provenance badge, a safety status, or a destructive confirmation. If a language pack overrides even one of those keys, Orca rejects **the entire pack** and the language never loads.
 - **2 strings** — feature-wall CSS animations of 9,691 and 9,965 characters against a hard limit of 8,192 characters per string.
 - **1 string** — another CSS block with nothing to translate.
-- **123 keys** — orphans no component reads: 111 left over after the skill-sharing feature was reverted and relanded, plus 12 from browser SSH-routing and automation settings that were rewritten in place. Translating them would only add weight.
-- **10 strings** — identical in Russian (`SHA-256`, `· SSH`, `WSL ·`, a sample share URL, `{{name}} +{{count}}`), or split into fragments that the component pluralises with a hard-coded English `s`.
+- **122 keys** — orphans no component reads: 112 left over after the skill-sharing feature was reverted and relanded, plus 10 from browser SSH-routing and automation settings that were rewritten in place. Translating them would only add weight.
+- **11 strings** — identical in Russian (`SHA-256`, `· SSH`, `WSL ·`, a sample share URL, `{{name}} +{{count}}`), or split into fragments that the component pluralises with a hard-coded English `s`.
 
 The list shrinks as Orca merges the fixes we send:
 
@@ -107,7 +107,7 @@ Version history lives in [releases](https://github.com/smwbev/orca-russian/relea
 
 ```
 orca-plugin.json        manifest: identity, version, catalog path
-locales/ru-RU.json      translation catalog, 15,108 strings
+locales/ru-RU.json      translation catalog, 15,433 strings
 GLOSSARY.md             glossary: rules and consistent terminology (Russian)
 ```
 
@@ -117,7 +117,7 @@ Every release is validated against the engine limits:
 
 | Limit | Cap | Current |
 |---|---|---|
-| Catalog nodes | 20,000 | 17,005 |
+| Catalog nodes | 20,000 | 17,366 |
 | Nesting depth | 16 | 12 |
 | String length | 8,192 chars | within limit |
 | File size | 5 MB | ~1 MB |
