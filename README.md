@@ -151,7 +151,7 @@ Terminology changes are applied catalog-wide rather than to a single string, so 
 
 ## Compatibility
 
-Requires **Orca 1.4.169 or newer**. Pluggable language packs appeared in 1.4.0, but this pack translates 34 plugin-settings strings that only 1.4.169 and later let a pack override, and an older build rejects the whole catalog over a single one of them. The manifest declares the minimum, so an older Orca refuses the install and names the version it needs instead of silently staying in English.
+Requires **Orca 1.4.169 or newer**. Pluggable language packs appeared in 1.4.160, but this pack translates 34 plugin-settings strings that only 1.4.169 and later let a pack override, and an older build rejects the whole catalog over a single one of them. The manifest declares the minimum, so an older Orca refuses the install and names the version it needs instead of silently staying in English.
 
 The pack ships text data only: it executes no code, requests no permissions, and has no access to your files, repositories, or credentials. The scripts in `tools/` maintain the catalog; the manifest declares no entry point, so Orca never runs them.
 
