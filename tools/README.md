@@ -1,0 +1,74 @@
+# Tools
+
+The scripts that build and check this pack. Orca does not load them: the manifest declares no entry point, and a language pack is data only.
+
+| Script | What it does |
+|---|---|
+| [`audit-pack.py`](audit-pack.py) | Audits any Orca language pack against one Orca release: whether the engine would accept the catalog, coverage, untranslated and stale keys, placeholder drift. |
+| [`build.py`](build.py) | Builds `locales/ru-RU.json` from translation blocks and validates it against the rules of the latest stable Orca release. |
+| [`release-check.py`](release-check.py) | Checks that the version and every count agree across the manifest, both READMEs and the glossary. Run before tagging. |
+
+They need `python3` 3.8 or newer and an authenticated [`gh`](https://cli.github.com/). Run them from the repository root.
+
+`audit-pack.py` is written in English because it is meant for any pack author. `build.py` and `release-check.py` print and are commented in Russian, like the glossary: they are this pack's own workflow.
+
+## Auditing a pack
+
+```bash
+python3 tools/audit-pack.py                      # this pack, latest stable Orca release
+python3 tools/audit-pack.py --release v1.4.224   # a specific release
+python3 tools/audit-pack.py path/to/another-pack # any directory with an orca-plugin.json
+python3 tools/audit-pack.py --list               # every missing and stale key
+```
+
+```
+Orca v1.4.224: 15749 catalog keys, 15567 a pack may translate (180 protected, 2 over 8192 characters, 34 allow-listed).
+
+smwbev.russian v5.1.158 — ru-RU, locales/ru-RU.json, engines >=1.4.169
+  engine verdict: ACCEPTED
+  size: 17402/20000 entries, depth 12/16, 1425589 bytes
+  coverage: 15433/15567 = 99.14 % of what a pack may translate; 134 missing
+  stale keys the release does not define: 0
+  extra plural forms: 36 — unreachable until stablyai/orca#12505: a pack resolves plurals with the two English forms
+  identical to English: 1084
+  placeholders the English source does not have: 0
+```
+
+The exit status is 1 when the engine would reject a pack, so the script can gate a release.
+
+The verdict mirrors the checks Orca runs on a language pack at install time:
+
+- **Protected paths.** Everything under `auto.components.settings.plugin*` is consent and trust copy, except the paths listed in `plugin-translatable-chrome.ts`. One protected key and Orca rejects the whole catalog without a message; the interface just stays English.
+- **Limits.** 20,000 entries, depth 16, 8,192 characters per value, 5 MB per file.
+- **Unsafe keys.** Empty keys, keys with a dot or a control character, `__proto__`, `prototype`, `constructor`.
+
+### Why the rules are read from the release, not from `main`
+
+A pack is installed on a release. A rule that has only reached `main` applies to nobody yet.
+
+Pack v5.1.4 learned this the hard way: it shipped 34 strings the allow-list had just opened up on `main`, the current release still protected them, and Russian stopped loading for everyone on it. The same reasoning sets `engines.orca` to `>=1.4.169`, the first release that carries the allow-list.
+
+## Building
+
+```bash
+python3 tools/build.py
+```
+
+The committed catalog is the base. Translation blocks are laid over it: flat JSON files named `wave*-ru-part*.json` in the working directory `.i18n-work/` (not tracked; set `ORCA_RU_WORK` for another path), each mapping a dotted key to its translation. With no blocks the build re-validates the catalog and writes it back unchanged.
+
+The build then:
+
+- drops a key that neither the latest release nor `main` defines, and fails if such a key came from a block;
+- fails on a protected key, a placeholder the English source does not have, or any engine limit;
+- accepts a `_few` or `_many` form only while its plural family is alive in Orca's catalog and the pack carries the family's `_one` and `_other`;
+- warns about a value with no Cyrillic, a missing «ё», or a dropped placeholder, which is usually the English plural `s`.
+
+Nothing is written when a check fails.
+
+## Before tagging
+
+```bash
+python3 tools/release-check.py
+```
+
+A published tag never moves, so the only protection against a stale number is a check before the tag. The script compares the manifest version and the catalog's string count with every place the documentation states them, and checks that the "stay in English" total equals the sum of its own breakdown.

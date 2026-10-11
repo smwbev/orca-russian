@@ -1,8 +1,8 @@
 <h1 align="center">Russian language pack for Orca</h1>
 
 <p align="center">
-  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.157-08C?style=flat" alt="Package version 5.1.157" /></a>
-  <img src="https://img.shields.io/badge/coverage-99.1%25-08C?style=flat" alt="99.1 percent of the interface catalog translated" />
+  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.158-08C?style=flat" alt="Package version 5.1.158" /></a>
+  <img src="https://img.shields.io/badge/coverage-99.1%25-08C?style=flat" alt="99.1 percent of the strings a language pack may translate" />
   <img src="https://img.shields.io/badge/strings-15%20433-08C?style=flat" alt="15,433 translated strings" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.169-4493F8?style=flat" alt="Requires Orca 1.4.169 or newer" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-08C?style=flat" alt="MIT License" /></a>
@@ -23,17 +23,17 @@
 
 ### Option 1 — via the marketplace (recommended)
 
-The marketplace tracks updates for you: when a new translation release ships, Orca offers to install it.
+A marketplace install updates in place: **Check for update** on the pack's card fetches the newest release.
 
-1. **Settings** → **Plugins** → enable the plugin system.
-2. Open **Marketplace sources** → **Add source**.
-3. Paste the URL and confirm:
+1. **Settings** → **Plugins** → turn on **Plugin system**.
+2. Click **Manage sources**. Paste the URL into **Git URL**, leave **Git ref** at `main`, and click **Add source**:
 
    ```
    https://github.com/smwbev/orca-plugins.git
    ```
 
-4. In the **All** tab, find **Русский** and click **Install**.
+3. In the **All** tab, find the **Russian** card from `smwbev`, click **Install**, and confirm with **Install plugin**.
+4. Orca opens **Review plugin**. The pack is declarative content with no plugin code; click **Enable plugin**. The language is not offered until you do.
 5. **Settings** → **Appearance** → **Language** → select `ru-RU — smwbev.russian`.
 
 ### Option 2 — directly from a Git URL
@@ -42,12 +42,13 @@ The marketplace tracks updates for you: when a new translation release ships, Or
 2. Paste the repository URL **with an explicit `#ref`** — Orca refuses the install without one, so that every install is pinned:
 
    ```
-   https://github.com/smwbev/orca-russian.git#v5.1.157
+   https://github.com/smwbev/orca-russian.git#v5.1.158
    ```
 
    Any tag or commit works after `#`. There is no separate ref field in this dialog — the ref is part of the URL.
 
-3. **Settings** → **Appearance** → **Language** → `ru-RU — smwbev.russian`.
+3. In **Review plugin**, click **Enable plugin**.
+4. **Settings** → **Appearance** → **Language** → `ru-RU — smwbev.russian`.
 
 ### Option 3 — local development folder
 
@@ -57,8 +58,8 @@ The marketplace tracks updates for you: when a new translation release ships, Or
    git clone https://github.com/smwbev/orca-russian.git
    ```
 
-2. **Settings** → **Plugins** → add the full path to **development plugin paths** (`devPluginPaths`).
-3. Restart Orca and select the language.
+2. **Settings** → **Plugins** → **Development** → enter the full path to the folder and click **Add path**.
+3. Review and enable the plugin when Orca asks, then select the language. Restart Orca if the pack does not show up.
 
 ---
 
@@ -95,11 +96,11 @@ Any key missing from the pack falls back to English automatically — that is th
 
 ## Updating
 
-**Marketplace:** Orca notifies you about a new version — click **Update**.
+**Marketplace:** in **Settings** → **Plugins**, click **Check for update** on the pack's card, then **Update plugin**.
 
 **Git URL:** reinstall the plugin pinned to the newer tag.
 
-Version history lives in [releases](https://github.com/smwbev/orca-russian/releases). Releases follow `vX.Y.Z`; a major bump marks the completion of a large translation stage.
+Version history: [releases](https://github.com/smwbev/orca-russian/releases) from v5.1.157 on, [tags](https://github.com/smwbev/orca-russian/tags) for everything earlier. Versions follow `vX.Y.Z`; a major bump marks the completion of a large translation stage.
 
 ---
 
@@ -107,20 +108,25 @@ Version history lives in [releases](https://github.com/smwbev/orca-russian/relea
 
 ```
 orca-plugin.json        manifest: identity, version, catalog path
-locales/ru-RU.json      translation catalog, 15,433 strings
+locales/ru-RU.json      translation catalog, 15,433 strings and 36 extra plural forms
 GLOSSARY.md             glossary: rules and consistent terminology (Russian)
+tools/                  the build, the release check and a pack audit — see tools/README.md
 ```
 
 Orca loads language packs under a synthetic language code, which is why the picker shows `ru-RU — smwbev.russian`. Catalog keys mirror the English source at `src/renderer/src/i18n/locales/en.json`; anything absent from the Russian file is served from English.
 
-Every release is validated against the engine limits:
+Russian needs more plural forms than English has. Orca resolves a pack's plurals with the two English forms today ([stablyai/orca#12106](https://github.com/stablyai/orca/issues/12106)), so every `_other` string is worded to read correctly for any count: «сохранено веток: 5». The 36 extra entries are the `_few` and `_many` forms of the 18 plural families the resolver serves. They change nothing on screen now and start rendering the day [stablyai/orca#12505](https://github.com/stablyai/orca/pull/12505) lands.
+
+Every release is rebuilt with [`tools/build.py`](tools/build.py) and validated against the rules of the latest Orca release, not of `main`:
 
 | Limit | Cap | Current |
 |---|---|---|
-| Catalog nodes | 20,000 | 17,366 |
+| Catalog nodes | 20,000 | 17,402 |
 | Nesting depth | 16 | 12 |
 | String length | 8,192 chars | within limit |
-| File size | 5 MB | ~1 MB |
+| File size | 5 MB | ~1.4 MB |
+
+[`tools/audit-pack.py`](tools/audit-pack.py) runs the same checks on any language pack, not only this one: whether the engine would accept the catalog, what a release left untranslated, and which keys it no longer defines.
 
 ---
 
@@ -147,7 +153,7 @@ Terminology changes are applied catalog-wide rather than to a single string, so 
 
 Requires **Orca 1.4.169 or newer**. Pluggable language packs appeared in 1.4.0, but this pack translates 34 plugin-settings strings that only 1.4.169 and later let a pack override, and an older build rejects the whole catalog over a single one of them. The manifest declares the minimum, so an older Orca refuses the install and names the version it needs instead of silently staying in English.
 
-The pack ships text data only: it executes no code, requests no permissions, and has no access to your files, repositories, or credentials.
+The pack ships text data only: it executes no code, requests no permissions, and has no access to your files, repositories, or credentials. The scripts in `tools/` maintain the catalog; the manifest declares no entry point, so Orca never runs them.
 
 ---
 
