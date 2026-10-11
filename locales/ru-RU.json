@@ -8300,7 +8300,7 @@
           "anywhereTitle": "Orca Relay",
           "available": "Доступно",
           "connecting": "Подключение",
-          "localDescription": "Телефон должен быть в этой сети Wi-Fi или подключён через Tailscale. Учётная запись не нужна.",
+          "localDescription": "Телефон должен быть в этой сети Wi-Fi или подключён через Tailscale. Аккаунт не нужен.",
           "localTitle": "Локальная сеть",
           "pathGroup": "Как телефон достучится до этого компьютера",
           "ready": "Готово",

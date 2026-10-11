@@ -1,10 +1,10 @@
 <h1 align="center">Russian language pack for Orca</h1>
 
 <p align="center">
-  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.156-08C?style=flat" alt="Package version 5.1.156" /></a>
+  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.157-08C?style=flat" alt="Package version 5.1.157" /></a>
   <img src="https://img.shields.io/badge/coverage-99.1%25-08C?style=flat" alt="99.1 percent of the interface catalog translated" />
   <img src="https://img.shields.io/badge/strings-15%20433-08C?style=flat" alt="15,433 translated strings" />
-  <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.0-4493F8?style=flat" alt="Requires Orca 1.4.0 or newer" />
+  <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.169-4493F8?style=flat" alt="Requires Orca 1.4.169 or newer" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-08C?style=flat" alt="MIT License" /></a>
 </p>
 
@@ -42,7 +42,7 @@ The marketplace tracks updates for you: when a new translation release ships, Or
 2. Paste the repository URL **with an explicit `#ref`** — Orca refuses the install without one, so that every install is pinned:
 
    ```
-   https://github.com/smwbev/orca-russian.git#v5.1.156
+   https://github.com/smwbev/orca-russian.git#v5.1.157
    ```
 
    Any tag or commit works after `#`. There is no separate ref field in this dialog — the ref is part of the URL.
@@ -87,7 +87,7 @@ The marketplace tracks updates for you: when a new translation release ships, Or
 The list shrinks as Orca merges the fixes we send:
 
 - **34 strings** left it in [PR #11826](https://github.com/stablyai/orca/pull/11826) — status labels in Settings and Stats were built from literals inside helper functions and never reached the catalog at all. Translated since v5.1.0.
-- **34 more** left it in [PR #12455](https://github.com/stablyai/orca/pull/12455), which narrowed the namespace rule so that section titles, empty states, `Refresh` and the local development form — none of which carry a trust decision — became translatable. Shipped in Orca v1.4.169, translated since pack v5.1.7. On older Orca builds the pack drops those keys automatically, so it keeps loading there.
+- **34 more** left it in [PR #12455](https://github.com/stablyai/orca/pull/12455), which narrowed the namespace rule so that section titles, empty states, `Refresh` and the local development form — none of which carry a trust decision — became translatable. Shipped in Orca v1.4.169, translated since pack v5.1.7. An older Orca build rejects a catalog that carries them, so the manifest declares `engines.orca >=1.4.169` and such a build refuses the install with a message naming the version it needs.
 
 Any key missing from the pack falls back to English automatically — that is the engine's normal behaviour, and the app keeps working.
 
@@ -145,7 +145,7 @@ Terminology changes are applied catalog-wide rather than to a single string, so 
 
 ## Compatibility
 
-Requires **Orca 1.4.0 or newer** — earlier versions do not support pluggable language packs.
+Requires **Orca 1.4.169 or newer**. Pluggable language packs appeared in 1.4.0, but this pack translates 34 plugin-settings strings that only 1.4.169 and later let a pack override, and an older build rejects the whole catalog over a single one of them. The manifest declares the minimum, so an older Orca refuses the install and names the version it needs instead of silently staying in English.
 
 The pack ships text data only: it executes no code, requests no permissions, and has no access to your files, repositories, or credentials.
 
