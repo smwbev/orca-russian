@@ -24,9 +24,9 @@ python3 tools/audit-pack.py --list               # every missing and stale key
 ```
 Orca v1.4.224: 15749 catalog keys, 15567 a pack may translate (180 protected, 2 over 8192 characters, 34 allow-listed).
 
-smwbev.russian v5.1.159 — ru-RU, locales/ru-RU.json, engines >=1.4.169
+smwbev.russian v5.1.160 — ru-RU, locales/ru-RU.json, engines >=1.4.169
   engine verdict: ACCEPTED
-  size: 17497/20000 entries, depth 12/16, 1436457 bytes
+  size: 17497/20000 entries, depth 12/16, 1436425 bytes
   coverage: 15433/15567 = 99.14 % of what a pack may translate; 134 missing
   stale keys the release does not define: 0
   extra plural forms: 131 — `_few` and `_many` stay unreachable until stablyai/orca#12505

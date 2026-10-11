@@ -1,7 +1,7 @@
 <h1 align="center">Русский язык для Orca</h1>
 
 <p align="center">
-  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/версия-5.1.159-08C?style=flat" alt="Версия пакета 5.1.159" /></a>
+  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/версия-5.1.160-08C?style=flat" alt="Версия пакета 5.1.160" /></a>
   <img src="https://img.shields.io/badge/покрытие-99.1%25-08C?style=flat" alt="Переведено 99,1 % строк, которые разрешено переводить языковому пакету" />
   <img src="https://img.shields.io/badge/строк-15%20433-08C?style=flat" alt="15 433 переведённые строки" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.169-4493F8?style=flat" alt="Требуется Orca 1.4.169 или новее" />
@@ -48,7 +48,7 @@
 2. Вставьте адрес репозитория **вместе с явным `#ref`** — без него Orca откажет в установке, чтобы каждая установка была привязана к конкретной версии:
 
    ```
-   https://github.com/smwbev/orca-russian.git#v5.1.159
+   https://github.com/smwbev/orca-russian.git#v5.1.160
    ```
 
    После `#` подойдёт любой тег или коммит. Отдельного поля для ref в этом окне нет — он указывается прямо в адресе.
