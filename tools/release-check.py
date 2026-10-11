@@ -56,13 +56,15 @@ def flat(o, p=''):
 manifest = json.load(open(os.path.join(ROOT, 'orca-plugin.json'), encoding='utf-8'))
 version = manifest['version']
 catalog = flat(json.load(open(os.path.join(ROOT, 'locales/ru-RU.json'), encoding='utf-8')))
-# Формы `_few`/`_many` — русские добавки без английской пары. В счётчик строк и в покрытие
-# они не входят, иначе число «переведено» перестало бы сходиться с каталогом Orca.
-EXTRA_FORM = re.compile(r'_(few|many)$')
-extra_forms = [k for k in catalog if EXTRA_FORM.search(k)
-               and all(EXTRA_FORM.sub(suffix, k) in catalog for suffix in ('_one', '_other'))]
+# Добавочные формы множественного числа — русские добавки без английской пары. В счётчик
+# строк и в покрытие они не входят, иначе число «переведено» перестало бы сходиться с
+# каталогом Orca. Определяются по одному пакету: `_few` и `_many` всегда, `_one` — когда в
+# пакете нет `_other` с той же базой (в каталоге Orca `_one` без `_other` не бывает;
+# tools/build.py сверяет это правило с каталогом и останавливается, если оно нарушено).
+extra_forms = [k for k in catalog if re.search(r'_(few|many)$', k)
+               or (k.endswith('_one') and k[:-4] + '_other' not in catalog)]
 lines = len(catalog) - len(extra_forms)
-print(f'манифест: v{version}, каталог: {lines} строк (+{len(extra_forms)} форм _few/_many)')
+print(f'манифест: v{version}, каталог: {lines} строк (+{len(extra_forms)} добавочных форм)')
 
 # Счётчик пишут тремя способами: 12,452 (англ.), 12 452 и 12%20452 (бейдж).
 ok_counts = {f'{lines:,}', f'{lines // 1000} {lines % 1000:03d}', f'{lines // 1000}%20{lines % 1000:03d}'}
@@ -104,7 +106,7 @@ for rel in DOCS:
             if int(found) != len(extra_forms):
                 errors.append(f'{rel} ({what}): {found} вместо {len(extra_forms)}')
 if extra_forms and not extra_checked:
-    errors.append('в пакете есть формы _few/_many, но документация их число не называет')
+    errors.append('в пакете есть добавочные формы, но документация их число не называет')
 
 # Английский остаток: заголовок раздела обязан равняться сумме своих пунктов и совпадать
 # в обоих README. До v5.1.157 заголовок считали от main (365), а пункты объясняли только

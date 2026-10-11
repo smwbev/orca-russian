@@ -82,28 +82,38 @@ def get(d, path):
 def placeholders(s):
     return sorted(re.findall(r'\{\{[^}]*\}\}', s))
 
-# Русскому нужны формы `_few` и `_many`, которых в английском каталоге нет. Такая форма
-# законна, пока живо её семейство: в каталоге Orca есть `_other` с той же базой. Он же
-# служит английским образцом при сверке плейсхолдеров.
-# Сегодня движок до этих форм не доходит: пакет регистрируется под синтетическим кодом
-# `plugin<hex>`, и i18next выбирает между `_one` и `_other` (stablyai/orca#12106). Формы
-# заложены заранее, чтобы заработать в день, когда смержат stablyai/orca#12505. Поэтому
-# `_other` по-прежнему обязан читаться при любом числе («сохранено веток: 5»).
-PLURAL_EXTRA = re.compile(r'_(few|many)$')
+# Русскому нужны формы, которых в английском каталоге нет. i18next ищет их для любого
+# вызова с параметром `count`: к ключу, который назвал компонент, приписывается суффикс
+# формы, и только потом берётся сам ключ. Отсюда два вида добавочных форм:
+#   - `_few` и `_many` у семейства, где в каталоге Orca есть `<база>_one` и `<база>_other`;
+#   - `_one`, `_few` и `_many` у строки, которую Orca зовёт со счётчиком, но хранит одним
+#     текстом (`fileOther`, `connectedHostCount_other`, `transcriptsSkipped`). Сам ключ
+#     остаётся запасным вариантом для дробей.
+# Сегодня движок выбирает только между `_one` и остальным: пакет регистрируется под
+# синтетическим кодом `plugin<hex>` (stablyai/orca#12106). Формы `_few`/`_many` заложены
+# заранее и заработают в день, когда смержат stablyai/orca#12505. Поэтому строка, которая
+# достаётся «остальным» числам, по-прежнему обязана читаться при любом числе
+# («сохранено веток: 5»).
+PLURAL_EXTRA = re.compile(r'_(one|few|many)$')
 
 def plural_family(k):
     m = PLURAL_EXTRA.search(k)
     return k[:m.start()] if m else None
 
 def plural_sources(k):
-    """Английские формы семейства для ключа `_few`/`_many`; пусто, если семейства нет."""
+    """Английские образцы для добавочной формы; пусто, если ключ обычный или опоры нет."""
     base = plural_family(k)
-    if base is None:
+    if base is None or get(en, k) is not None or get(en_release, k) is not None:
         return []
-    if get(en, base + '_other') is None and get(en_release, base + '_other') is None:
-        return []
-    return [s for cat in (en, en_release) for suffix in ('_other', '_one')
-            if (s := get(cat, base + suffix)) is not None]
+    return [s for cat in (en, en_release) for name in (base + '_other', base + '_one', base)
+            if (s := get(cat, name)) is not None]
+
+def plural_companions(k):
+    """Ключи, без которых добавочная форма повисает: семейство либо сама строка."""
+    base = plural_family(k)
+    if get(en, base + '_other') is not None or get(en_release, base + '_other') is not None:
+        return [base + '_one', base + '_other']
+    return [base]
 
 # --- база: уже собранный каталог, чтобы блоки в рабочем каталоге не были единственным источником ---
 flat = {}
@@ -138,7 +148,7 @@ for k in dupes:
 # Ключ, исчезнувший из каталога Orca, — не ошибка: апстрим переименовал или удалил
 # строку. Такие записи молча выпадают из пакета, но ошибкой считаются, если пришли
 # из блока перевода (значит, блок пора править), а не из уже собранного каталога.
-# Форма `_few`/`_many` уходит вместе со своим семейством.
+# Добавочная форма уходит вместе со своей опорой.
 retired = [k for k in flat
            if get(en, k) is None and get(en_release, k) is None and not plural_sources(k)]
 for k in retired:
@@ -161,12 +171,11 @@ for k, v in flat.items():
     extra = plural_sources(k)
     if extra:
         extra_forms.append(k)
-        base = plural_family(k)
-        # Без `_one` и `_other` в пакете семейство неполно: при сегодняшнем резолвере
-        # число, не равное единице, осталось бы английским.
-        for suffix in ('_one', '_other'):
-            if base + suffix not in flat:
-                errors.append(f'{k}: в пакете нет {base + suffix} — форма без своего семейства')
+        # Без опоры в пакете при сегодняшнем резолвере число, для которого формы нет,
+        # осталось бы английским.
+        for companion in plural_companions(k):
+            if companion not in flat:
+                errors.append(f'{k}: в пакете нет {companion} — форма без своей опоры')
     src = get(en, k) or get(en_release, k) or (extra[0] if extra else None)
     if src is None:
         errors.append(f'ключа {k} нет ни в main, ни в релизе')
@@ -193,6 +202,15 @@ for k, v in flat.items():
         warnings.append(f'{k} без кириллицы: {v!r}')
     if 'ё' not in v and re.search(r'(все|ещ)е\b', v.lower()):
         warnings.append(f'{k}: возможно пропущена «ё» — {v!r}')
+
+# release-check.py считает добавочные формы без каталога Orca, по одному пакету: `_few` и
+# `_many` всегда, `_one` — когда в пакете нет `_other` с той же базой. Расхождение значит,
+# что в каталоге Orca появился ключ, ломающий это правило, и счётчики в документации врут.
+_by_shape = {k for k in flat if re.search(r'_(few|many)$', k)
+             or (k.endswith('_one') and k[:-4] + '_other' not in flat)}
+if _by_shape != set(extra_forms):
+    odd = sorted(_by_shape ^ set(extra_forms))
+    errors.append(f'добавочные формы посчитаны двумя способами по-разному: {odd[:5]}')
 
 # --- разворачиваем в дерево ---
 tree = {}
@@ -237,7 +255,7 @@ if errors:
 
 open(TARGET, 'w', encoding='utf-8').write(raw)
 print(f'\n✅ записан {TARGET}')
-# «Строк» — переводы строк каталога Orca. Формы `_few`/`_many` считаются отдельно:
+# «Строк» — переводы строк каталога Orca. Добавочные формы считаются отдельно:
 # английских пар у них нет, и в покрытие они не входят.
-print(f'   строк: {len(flat) - len(extra_forms)} (+{len(extra_forms)} форм _few/_many), '
+print(f'   строк: {len(flat) - len(extra_forms)} (+{len(extra_forms)} добавочных форм), '
       f'узлов: {nodes[0]}/20000, глубина: {maxdepth[0]}/16, размер: {size} Б/5 МБ')

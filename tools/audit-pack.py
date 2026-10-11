@@ -156,8 +156,7 @@ for root in args.packs or [default_pack]:
               f'of what a pack may translate; {len(missing)} missing')
         print(f'  stale keys the release does not define: {len(stale)}')
         print(f'  extra plural forms: {len(extra_plural)}'
-              + (' — unreachable until stablyai/orca#12505: a pack resolves plurals with the two English forms'
-                 if extra_plural else ''))
+              + (' — `_few` and `_many` stay unreachable until stablyai/orca#12505' if extra_plural else ''))
         print(f'  identical to English: {len(same)}')
         print(f'  placeholders the English source does not have: {len(surplus)}')
         for label, keys in (('missing', missing), ('stale', stale), ('surplus placeholder', surplus)):

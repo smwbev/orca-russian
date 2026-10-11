@@ -24,12 +24,12 @@ python3 tools/audit-pack.py --list               # every missing and stale key
 ```
 Orca v1.4.224: 15749 catalog keys, 15567 a pack may translate (180 protected, 2 over 8192 characters, 34 allow-listed).
 
-smwbev.russian v5.1.158 — ru-RU, locales/ru-RU.json, engines >=1.4.169
+smwbev.russian v5.1.159 — ru-RU, locales/ru-RU.json, engines >=1.4.169
   engine verdict: ACCEPTED
-  size: 17402/20000 entries, depth 12/16, 1425589 bytes
+  size: 17497/20000 entries, depth 12/16, 1436457 bytes
   coverage: 15433/15567 = 99.14 % of what a pack may translate; 134 missing
   stale keys the release does not define: 0
-  extra plural forms: 36 — unreachable until stablyai/orca#12505: a pack resolves plurals with the two English forms
+  extra plural forms: 131 — `_few` and `_many` stay unreachable until stablyai/orca#12505
   identical to English: 1084
   placeholders the English source does not have: 0
 ```
@@ -60,7 +60,7 @@ The build then:
 
 - drops a key that neither the latest release nor `main` defines, and fails if such a key came from a block;
 - fails on a protected key, a placeholder the English source does not have, or any engine limit;
-- accepts a `_few` or `_many` form only while its plural family is alive in Orca's catalog and the pack carries the family's `_one` and `_other`;
+- accepts a plural form English lacks (`_few` and `_many` of a plural family; `_one`, `_few` and `_many` of a string Orca calls with a count) only while the string it extends is alive in Orca's catalog and translated in the pack;
 - warns about a value with no Cyrillic, a missing «ё», or a dropped placeholder, which is usually the English plural `s`.
 
 Nothing is written when a check fails.
