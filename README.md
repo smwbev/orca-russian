@@ -76,7 +76,7 @@ The marketplace tracks updates for you: when a new translation release ships, Or
 
 ### Why some strings stay in English
 
-365 catalog keys stay in English. None of it is missing work:
+316 keys of the Orca v1.4.224 catalog stay in English. None of it is missing work:
 
 - **180 strings** — plugin consent and trust copy. The engine protects the `auto.components.settings.plugin*` namespace with a case-insensitive check, so a pack cannot rewrite a consent dialog, a provenance badge, a safety status, or a destructive confirmation. If a language pack overrides even one of those keys, Orca rejects **the entire pack** and the language never loads.
 - **2 strings** — feature-wall CSS animations of 9,691 and 9,965 characters against a hard limit of 8,192 characters per string.
