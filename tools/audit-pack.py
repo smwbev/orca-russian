@@ -144,9 +144,17 @@ for root in args.packs or [default_pack]:
         extra_plural = sorted(k for k in text if k not in english and PLURAL.search(k) and family(k))
         stale = sorted(k for k in text if k not in english and k not in extra_plural)
         same = [k for k in covered if text[k] == english[k]]
+        def known_placeholders(key):
+            sources = [english[key]] if key in english else family(key)
+            found = set().union(*map(placeholders, sources)) if sources else set()
+            # A family's forms share one `count` call: `_one` may show the count even where
+            # English words its singular without it ("Reopen terminal").
+            if key in english and PLURAL.search(key) and '{{count}}' in english.get(PLURAL.sub('', key) + '_other', ''):
+                found.add('{{count}}')
+            return sources, found
+
         surplus = sorted(k for k in text
-                         if (sources := [english[k]] if k in english else family(k))
-                         and placeholders(text[k]) - set().union(*map(placeholders, sources)))
+                         if (known := known_placeholders(k))[0] and placeholders(text[k]) - known[1])
 
         print(f'{manifest.get("publisher")}.{manifest.get("id")} v{manifest.get("version")} — '
               f'{pack.get("locale")}, {pack["path"]}, engines {manifest.get("engines", {}).get("orca")}')

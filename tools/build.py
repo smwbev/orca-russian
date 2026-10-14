@@ -188,6 +188,11 @@ for k, v in flat.items():
     # ({{value0}})», в main «Clean up workspaces» без плейсхолдера.
     variants = extra or [s for s in (get(en, k), get(en_release, k)) if s is not None]
     known = {p for s in variants for p in placeholders(s)}
+    # Формы семейства обслуживает один вызов с `count`: `_one` вправе взять его из `_other`,
+    # даже когда английская единица обходится без числа («Reopen terminal»).
+    if not extra and (base := plural_family(k)) and any(
+            '{{count}}' in (get(cat, base + '_other') or '') for cat in (en, en_release)):
+        known.add('{{count}}')
     extra_ph = [p for p in placeholders(v) if p not in known]
     dropped = [p for p in placeholders(src) if p not in placeholders(v)]
     if extra_ph:
