@@ -1,9 +1,9 @@
 <h1 align="center">Russian language pack for Orca</h1>
 
 <p align="center">
-  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.161-08C?style=flat" alt="Package version 5.1.161" /></a>
-  <img src="https://img.shields.io/badge/coverage-99.1%25-08C?style=flat" alt="99.1 percent of the strings a language pack may translate" />
-  <img src="https://img.shields.io/badge/strings-15%20536-08C?style=flat" alt="15,536 translated strings" />
+  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.162-08C?style=flat" alt="Package version 5.1.162" /></a>
+  <img src="https://img.shields.io/badge/coverage-99.2%25-08C?style=flat" alt="99.2 percent of the strings a language pack may translate" />
+  <img src="https://img.shields.io/badge/strings-15%20785-08C?style=flat" alt="15,785 translated strings" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.169-4493F8?style=flat" alt="Requires Orca 1.4.169 or newer" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-08C?style=flat" alt="MIT License" /></a>
 </p>
@@ -14,7 +14,7 @@
 
 <p align="center">
   <strong>A complete Russian translation of the <a href="https://github.com/stablyai/orca">Orca</a> interface.</strong><br/>
-  15,536 strings — menus, settings, terminal, editor, GitHub, GitLab, Linear, Jira, mobile, and onboarding.
+  15,785 strings — menus, settings, terminal, editor, GitHub, GitLab, Linear, Jira, mobile, and onboarding.
 </p>
 
 ---
@@ -42,7 +42,7 @@ A marketplace install updates in place: **Check for update** on the pack's card 
 2. Paste the repository URL **with an explicit `#ref`** — Orca refuses the install without one, so that every install is pinned:
 
    ```
-   https://github.com/smwbev/orca-russian.git#v5.1.161
+   https://github.com/smwbev/orca-russian.git#v5.1.162
    ```
 
    Any tag or commit works after `#`. There is no separate ref field in this dialog — the ref is part of the URL.
@@ -77,7 +77,7 @@ A marketplace install updates in place: **Check for update** on the pack's card 
 
 ### Why some strings stay in English
 
-316 keys of the Orca v1.4.225 catalog stay in English. None of it is missing work:
+316 keys of the Orca v1.4.226 catalog stay in English. None of it is missing work:
 
 - **180 strings** — plugin consent and trust copy. The engine protects the `auto.components.settings.plugin*` namespace with a case-insensitive check, so a pack cannot rewrite a consent dialog, a provenance badge, a safety status, or a destructive confirmation. If a language pack overrides even one of those keys, Orca rejects **the entire pack** and the language never loads.
 - **2 strings** — feature-wall CSS animations of 9,691 and 9,965 characters against a hard limit of 8,192 characters per string.
@@ -108,7 +108,7 @@ Version history: [releases](https://github.com/smwbev/orca-russian/releases) fro
 
 ```
 orca-plugin.json        manifest: identity, version, catalog path
-locales/ru-RU.json      translation catalog, 15,536 strings and 132 extra plural forms
+locales/ru-RU.json      translation catalog, 15,785 strings and 144 extra plural forms
 GLOSSARY.md             glossary: rules and consistent terminology (Russian)
 tools/                  the build, the release check and a pack audit — see tools/README.md
 ```
@@ -117,13 +117,13 @@ Orca loads language packs under a synthetic language code, which is why the pick
 
 Russian needs more plural forms than English has. Orca resolves a pack's plurals with the two English forms today ([stablyai/orca#12106](https://github.com/stablyai/orca/issues/12106)), so the string that every count but one falls back to is worded to read correctly for any number: «сохранено веток: 5».
 
-The 132 extra entries are the forms English lacks: `_few` and `_many` for 17 plural families, and `_one`, `_few` and `_many` for 33 strings that Orca calls with a count but ships as a single text. Only the `_one` forms show today, where a string has no separate key for a count of one: «1 агент» instead of «Агентов: 1». The rest start rendering the day [stablyai/orca#12505](https://github.com/stablyai/orca/pull/12505) lands.
+The 144 extra entries are the forms English lacks: `_few` and `_many` for 17 plural families, and `_one`, `_few` and `_many` for 37 strings that Orca calls with a count but ships as a single text. Only the `_one` forms show today, where a string has no separate key for a count of one: «1 агент» instead of «Агентов: 1». The rest start rendering the day [stablyai/orca#12505](https://github.com/stablyai/orca/pull/12505) lands.
 
 Every release is rebuilt with [`tools/build.py`](tools/build.py) and validated against the rules of the latest Orca release, not of `main`:
 
 | Limit | Cap | Current |
 |---|---|---|
-| Catalog nodes | 20,000 | 17,623 |
+| Catalog nodes | 20,000 | 17,912 |
 | Nesting depth | 16 | 12 |
 | String length | 8,192 chars | within limit |
 | File size | 5 MB | ~1.4 MB |
