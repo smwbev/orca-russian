@@ -1,9 +1,9 @@
 <h1 align="center">Russian language pack for Orca</h1>
 
 <p align="center">
-  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.164-08C?style=flat" alt="Package version 5.1.164" /></a>
+  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.165-08C?style=flat" alt="Package version 5.1.165" /></a>
   <img src="https://img.shields.io/badge/coverage-99.1%25-08C?style=flat" alt="99.1 percent of the strings a language pack may translate" />
-  <img src="https://img.shields.io/badge/strings-15%20939-08C?style=flat" alt="15,939 translated strings" />
+  <img src="https://img.shields.io/badge/strings-15%20925-08C?style=flat" alt="15,925 translated strings" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.169-4493F8?style=flat" alt="Requires Orca 1.4.169 or newer" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-08C?style=flat" alt="MIT License" /></a>
 </p>
@@ -14,7 +14,7 @@
 
 <p align="center">
   <strong>A complete Russian translation of the <a href="https://github.com/stablyai/orca">Orca</a> interface.</strong><br/>
-  15,939 strings — menus, settings, terminal, editor, GitHub, GitLab, Linear, Jira, mobile, and onboarding.
+  15,925 strings — menus, settings, terminal, editor, GitHub, GitLab, Linear, Jira, mobile, and onboarding.
 </p>
 
 ---
@@ -42,7 +42,7 @@ A marketplace install updates in place: **Check for update** on the pack's card 
 2. Paste the repository URL **with an explicit `#ref`** — Orca refuses the install without one, so that every install is pinned:
 
    ```
-   https://github.com/smwbev/orca-russian.git#v5.1.164
+   https://github.com/smwbev/orca-russian.git#v5.1.165
    ```
 
    Any tag or commit works after `#`. There is no separate ref field in this dialog — the ref is part of the URL.
@@ -77,7 +77,7 @@ A marketplace install updates in place: **Check for update** on the pack's card 
 
 ### Why some strings stay in English
 
-316 keys of the Orca v1.4.224 catalog stay in English. None of it is missing work:
+316 keys of the Orca v1.4.227 catalog stay in English. None of it is missing work:
 
 - **180 strings** — plugin consent and trust copy. The engine protects the `auto.components.settings.plugin*` namespace with a case-insensitive check, so a pack cannot rewrite a consent dialog, a provenance badge, a safety status, or a destructive confirmation. If a language pack overrides even one of those keys, Orca rejects **the entire pack** and the language never loads.
 - **2 strings** — feature-wall CSS animations of 9,691 and 9,965 characters against a hard limit of 8,192 characters per string.
@@ -108,7 +108,7 @@ Version history: [releases](https://github.com/smwbev/orca-russian/releases) fro
 
 ```
 orca-plugin.json        manifest: identity, version, catalog path
-locales/ru-RU.json      translation catalog, 15,939 strings and 154 extra plural forms
+locales/ru-RU.json      translation catalog, 15,925 strings and 154 extra plural forms
 GLOSSARY.md             glossary: rules and consistent terminology (Russian)
 tools/                  the build, the release check and a pack audit — see tools/README.md
 ```
@@ -123,7 +123,7 @@ Every release is rebuilt with [`tools/build.py`](tools/build.py) and validated a
 
 | Limit | Cap | Current |
 |---|---|---|
-| Catalog nodes | 20,000 | 18,080 |
+| Catalog nodes | 20,000 | 18,066 |
 | Nesting depth | 16 | 12 |
 | String length | 8,192 chars | within limit |
 | File size | 5 MB | ~1.4 MB |
@@ -155,7 +155,7 @@ Terminology changes are applied catalog-wide rather than to a single string, so 
 
 Requires **Orca 1.4.169 or newer**. Pluggable language packs appeared in 1.4.160, but this pack translates 34 plugin-settings strings that only 1.4.169 and later let a pack override, and an older build rejects the whole catalog over a single one of them. The manifest declares the minimum, so an older Orca refuses the install and names the version it needs instead of silently staying in English.
 
-**Roadmap crash in Orca 1.4.198 – 1.4.224.** With any language pack active, opening a GitHub Project roadmap crashes the Tasks page. The fix ([#26860](https://github.com/stablyai/orca/pull/26860)) shipped in Orca 1.4.225 and 1.4.226, but both releases were withdrawn on 15 October 2026, and 1.4.224 is the latest again. On 1.4.224, avoid the roadmap view until the next Orca release.
+**Roadmap crash in Orca 1.4.198 – 1.4.227.** With any language pack active, opening a GitHub Project roadmap crashes the Tasks page. The fix ([#26860](https://github.com/stablyai/orca/pull/26860)) shipped only in Orca 1.4.225 and 1.4.226, both withdrawn on 15 October 2026; the hotfix 1.4.227 that followed them is built from 1.4.224 and does not include it. Avoid the roadmap view until the next Orca release.
 
 The pack ships text data only: it executes no code, requests no permissions, and has no access to your files, repositories, or credentials. The scripts in `tools/` maintain the catalog; the manifest declares no entry point, so Orca never runs them.
 
