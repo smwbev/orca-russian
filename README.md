@@ -117,7 +117,7 @@ Orca loads language packs under a synthetic language code, which is why the pick
 
 Russian needs more plural forms than English has. Orca resolves a pack's plurals with the two English forms today ([stablyai/orca#12106](https://github.com/stablyai/orca/issues/12106)), so the string that every count but one falls back to is worded to read correctly for any number: «сохранено веток: 5».
 
-The 147 extra entries are the forms English lacks: `_few` and `_many` for 17 plural families, and `_one`, `_few` and `_many` for 38 strings that Orca calls with a count but ships as a single text. Only the `_one` forms show today, where a string has no separate key for a count of one: «1 агент» instead of «Агентов: 1». The rest start rendering the day [stablyai/orca#12505](https://github.com/stablyai/orca/pull/12505) lands.
+The 147 extra entries are the forms English lacks: `_few` and `_many` for 17 plural families, and the missing forms for 38 strings that Orca calls with a count but ships as a single text — `_one`, `_few` and `_many` for 37 of them, only `_few` and `_many` for `SkillDelete.nothingOther`. Only the `_one` forms show today, where a string has no separate key for a count of one: «1 агент» instead of «Агентов: 1». The rest start rendering the day [stablyai/orca#12505](https://github.com/stablyai/orca/pull/12505) lands.
 
 Every release is rebuilt with [`tools/build.py`](tools/build.py) and validated against the rules of the latest Orca release, not of `main`:
 
