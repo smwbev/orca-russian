@@ -1,9 +1,9 @@
 <h1 align="center">Russian language pack for Orca</h1>
 
 <p align="center">
-  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.167-08C?style=flat" alt="Package version 5.1.167" /></a>
+  <a href="https://github.com/smwbev/orca-russian/releases"><img src="https://img.shields.io/badge/version-5.1.168-08C?style=flat" alt="Package version 5.1.168" /></a>
   <img src="https://img.shields.io/badge/coverage-99.2%25-08C?style=flat" alt="99.2 percent of the strings a language pack may translate" />
-  <img src="https://img.shields.io/badge/strings-15%20995-08C?style=flat" alt="15,995 translated strings" />
+  <img src="https://img.shields.io/badge/strings-16%20163-08C?style=flat" alt="16,163 translated strings" />
   <img src="https://img.shields.io/badge/Orca-%E2%89%A5%201.4.169-4493F8?style=flat" alt="Requires Orca 1.4.169 or newer" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-08C?style=flat" alt="MIT License" /></a>
 </p>
@@ -14,7 +14,7 @@
 
 <p align="center">
   <strong>A complete Russian translation of the <a href="https://github.com/stablyai/orca">Orca</a> interface.</strong><br/>
-  15,995 strings — menus, settings, terminal, editor, GitHub, GitLab, Linear, Jira, mobile, and onboarding.
+  16,163 strings — menus, settings, terminal, editor, GitHub, GitLab, Linear, Jira, mobile, and onboarding.
 </p>
 
 ---
@@ -42,7 +42,7 @@ A marketplace install updates in place: **Check for update** on the pack's card 
 2. Paste the repository URL **with an explicit `#ref`** — Orca refuses the install without one, so that every install is pinned:
 
    ```
-   https://github.com/smwbev/orca-russian.git#v5.1.167
+   https://github.com/smwbev/orca-russian.git#v5.1.168
    ```
 
    Any tag or commit works after `#`. There is no separate ref field in this dialog — the ref is part of the URL.
@@ -77,11 +77,9 @@ A marketplace install updates in place: **Check for update** on the pack's card 
 
 ### Why some strings stay in English
 
-316 keys of the Orca v1.4.230 catalog stay in English. None of it is missing work:
+313 keys of the Orca v1.4.232 catalog stay in English. None of it is missing work:
 
 - **180 strings** — plugin consent and trust copy. The engine protects the `auto.components.settings.plugin*` namespace with a case-insensitive check, so a pack cannot rewrite a consent dialog, a provenance badge, a safety status, or a destructive confirmation. If a language pack overrides even one of those keys, Orca rejects **the entire pack** and the language never loads.
-- **2 strings** — feature-wall CSS animations of 9,691 and 9,965 characters against a hard limit of 8,192 characters per string.
-- **1 string** — another CSS block with nothing to translate.
 - **122 keys** — orphans no component reads: 112 left over after the skill-sharing feature was reverted and relanded, plus 10 from browser SSH-routing and automation settings that were rewritten in place. Translating them would only add weight.
 - **11 strings** — identical in Russian (`SHA-256`, `· SSH`, `WSL ·`, a sample share URL, `{{name}} +{{count}}`), or split into fragments that the component pluralises with a hard-coded English `s`.
 
@@ -108,7 +106,7 @@ Version history: [releases](https://github.com/smwbev/orca-russian/releases) fro
 
 ```
 orca-plugin.json        manifest: identity, version, catalog path
-locales/ru-RU.json      translation catalog, 15,995 strings and 159 extra plural forms
+locales/ru-RU.json      translation catalog, 16,163 strings and 159 extra plural forms
 GLOSSARY.md             glossary: rules and consistent terminology (Russian)
 tools/                  the build, the release check and a pack audit — see tools/README.md
 ```
@@ -123,10 +121,10 @@ Every release is rebuilt with [`tools/build.py`](tools/build.py) and validated a
 
 | Limit | Cap | Current |
 |---|---|---|
-| Catalog nodes | 20,000 | 18,167 |
+| Catalog nodes | 20,000 | 18,348 |
 | Nesting depth | 16 | 12 |
 | String length | 8,192 chars | within limit |
-| File size | 5 MB | ~1.4 MB |
+| File size | 5 MB | ~1.5 MB |
 
 [`tools/audit-pack.py`](tools/audit-pack.py) runs the same checks on any language pack, not only this one: whether the engine would accept the catalog, what a release left untranslated, and which keys it no longer defines.
 

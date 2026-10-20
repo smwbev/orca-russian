@@ -22,22 +22,22 @@ python3 tools/audit-pack.py --list               # every missing and stale key
 ```
 
 ```
-Orca v1.4.230: 16311 catalog keys, 16129 a pack may translate (180 protected, 2 over 8192 characters, 34 allow-listed).
+Orca v1.4.232: 16476 catalog keys, 16296 a pack may translate (180 protected, 0 over 8192 characters, 34 allow-listed).
 
-smwbev.russian v5.1.167 — ru-RU, locales/ru-RU.json, engines >=1.4.169
+smwbev.russian v5.1.168 — ru-RU, locales/ru-RU.json, engines >=1.4.169
   engine verdict: ACCEPTED
-  size: 18167/20000 entries, depth 12/16, 1512631 bytes
-  coverage: 15995/16129 = 99.17 % of what a pack may translate; 134 missing
+  size: 18348/20000 entries, depth 12/16, 1533032 bytes
+  coverage: 16163/16296 = 99.18 % of what a pack may translate; 133 missing
   stale keys the release does not define: 0
   extra plural forms: 159 — `_few` and `_many` stay unreachable until stablyai/orca#12505
-  identical to English: 1082
+  identical to English: 1085
   placeholders the English source does not have: 0
     missing: auto.components.automations.externalScope.unknownManager
-    missing: auto.components.feature.wall.review.animated.visual.pr.view.styles.fc9a23c83d
     missing: auto.components.settings.shareSkills.refreshLinks
     missing: auto.components.skills.SkillBundleInstallFlow.01c5a13e04
     missing: auto.components.skills.SkillBundleInstallFlow.01c5a13e05
-    … 129 more missing (use --list)
+    missing: auto.components.skills.SkillBundleInstallOutcome.01c5a12e05
+    … 128 more missing (use --list)
 ```
 
 The exit status is 1 when the engine would reject a pack, so the script can gate a release.
