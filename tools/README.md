@@ -22,14 +22,14 @@ python3 tools/audit-pack.py --list               # every missing and stale key
 ```
 
 ```
-Orca v1.4.235: 16703 catalog keys, 16523 a pack may translate (180 protected, 0 over 8192 characters, 34 allow-listed).
+Orca v1.4.237: 16719 catalog keys, 16539 a pack may translate (180 protected, 0 over 8192 characters, 34 allow-listed).
 
-smwbev.russian v5.1.170 — ru-RU, locales/ru-RU.json, engines >=1.4.169
+smwbev.russian v5.1.171 — ru-RU, locales/ru-RU.json, engines >=1.4.169
   engine verdict: ACCEPTED
-  size: 18599/20000 entries, depth 12/16, 1558378 bytes
-  coverage: 16390/16523 = 99.20 % of what a pack may translate; 133 missing
+  size: 18626/20000 entries, depth 12/16, 1561359 bytes
+  coverage: 16406/16539 = 99.20 % of what a pack may translate; 133 missing
   stale keys the release does not define: 0
-  extra plural forms: 171 — `_few` and `_many` stay unreachable until stablyai/orca#12505
+  extra plural forms: 180 — `_few` and `_many` stay unreachable until stablyai/orca#12505
   identical to English: 1088
   placeholders the English source does not have: 0
     missing: auto.components.automations.externalScope.unknownManager

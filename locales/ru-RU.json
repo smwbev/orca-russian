@@ -145,6 +145,7 @@
     "antigravityReferenceDescription": "Продолжается в новой переписке Antigravity CLI с опорой на эту стенограмму.",
     "continueInCli": "Продолжить в CLI",
     "continueInCliNewTab": "Продолжить в CLI в новой вкладке",
+    "searchHitSourceHost": "Найдено на хосте {{value0}}",
     "subagents": {
       "empty": "Субагенты не найдены.",
       "loadError": "Не удалось загрузить всех субагентов.",
@@ -4642,6 +4643,15 @@
           }
         }
       },
+      "hostPicker": {
+        "moreHosts_one": "Ещё {{count}} хост. Найдите его поиском по имени.",
+        "moreHosts_other": "Ещё хостов: {{count}}. Найдите нужный поиском по имени.",
+        "moreHosts_other_few": "Ещё {{count}} хоста. Найдите нужный поиском по имени.",
+        "moreHosts_other_many": "Ещё {{count}} хостов. Найдите нужный поиском по имени.",
+        "moreHosts_other_one": "Ещё {{count}} хост. Найдите нужный поиском по имени.",
+        "noHostsMatch": "Подходящих хостов нет.",
+        "searchHosts": "Поиск хостов…"
+      },
       "jira": {
         "connect": {
           "dialog": {
@@ -5624,8 +5634,8 @@
             "recoverableBadge": "Не сохранено",
             "resumeAgentSession": "Возобновить сессию {{value0}}",
             "resumeInNewCli": "Возобновить в новом терминале",
-            "resumeInNewCliTooltipChat": "Нативный чат остаётся без изменений.",
-            "resumeInNewCliTooltipFork": "Ответвляет эту переписку в новую сессию CLI.",
+            "resumeInNewCliTooltipChat": "Этот чат остаётся без изменений.",
+            "resumeInNewCliTooltipFork": "Запускает новую сессию агента в терминале с копией этой переписки.",
             "resumeInNewNativeChat": "Возобновить в новом чате",
             "resumeInNewTab": "Возобновить в новой вкладке",
             "revealLog": "Показать журнал в папке",
@@ -11856,7 +11866,6 @@
             "statusUnknown": "Состояние неизвестно",
             "stop": "Остановить…",
             "stopOrcaDescription": "Останавливает Orca на SSH-хосте и убирает сервер из этого списка.",
-            "title": "Orca на {{host}}",
             "update": "Обновить",
             "updateOrcaOnHost": "Обновить Orca на этом хосте"
           },
@@ -12429,9 +12438,6 @@
           "setUpDone": "Orca настроена на {{name}}.",
           "setUpOnSshHost": "Настроить Orca на SSH-хосте",
           "settingUpInBackground": "Orca настраивается на {{name}} в фоне. Сервер появится в списке, когда будет готов.",
-          "shareButton": "Поделиться…",
-          "shareDescription": "Разрешите браузеру, телефону или другой Orca работать на этом компьютере.",
-          "shareDescriptionNamed": "Разрешите браузеру, телефону или другой Orca работать на {{name}}.",
           "shareDialogDescriptionRuns": "Любой, у кого есть ссылка, сможет выполнять команды от вашего имени на этом компьютере, пока вы её не отзовёте.",
           "shareTitle": "Поделиться этим компьютером",
           "showError": "Показать ошибку",
@@ -12647,7 +12653,7 @@
         },
         "sshManagedHostRemove": {
           "description": "На {{label}} работает Orca. В разделе «Orca на ваших SSH-хостах» нажмите «Остановить…», чтобы удалить Orca с хоста, или «Забыть…», если хоста больше нет. После этого SSH-хост можно будет убрать.",
-          "descriptionServers": "На {{label}} работает Orca. В разделе «Удалённые серверы Orca» откройте меню ⋯ у строки «Orca на {{label}}» и выберите «Остановить…», чтобы удалить Orca с хоста, или «Забыть…», если хоста больше нет. После этого SSH-хост можно будет убрать.",
+          "descriptionServerHost": "На {{label}} работает Orca. В разделе «Удалённые серверы Orca» откройте меню ⋯ у строки «{{label}}» и выберите «Остановить…», чтобы удалить Orca с хоста, или «Забыть…», если хоста больше нет. После этого SSH-хост можно будет убрать.",
           "open": "Открыть «Orca на ваших SSH-хостах»",
           "openServers": "Открыть «Удалённые серверы Orca»"
         },
@@ -15724,6 +15730,17 @@
             "fbb3f9f05e": "конфликт",
             "fd9a3c600e": "ошибка",
             "fdc57e9970": "Состояние подключения к удалённому хосту",
+            "moreSshHostMatches_one": "Ещё {{count}} совпадение. Продолжайте вводить, чтобы сузить список.",
+            "moreSshHostMatches_other": "Ещё совпадений: {{count}}. Продолжайте вводить, чтобы сузить список.",
+            "moreSshHostMatches_other_few": "Ещё {{count}} совпадения. Продолжайте вводить, чтобы сузить список.",
+            "moreSshHostMatches_other_many": "Ещё {{count}} совпадений. Продолжайте вводить, чтобы сузить список.",
+            "moreSshHostMatches_other_one": "Ещё {{count}} совпадение. Продолжайте вводить, чтобы сузить список.",
+            "moreSshHosts_one": "Найти ещё {{count}} SSH-хост…",
+            "moreSshHosts_other": "Найти среди остальных SSH-хостов ({{count}})…",
+            "moreSshHosts_other_few": "Найти среди остальных {{count}} SSH-хостов…",
+            "moreSshHosts_other_many": "Найти среди остальных {{count}} SSH-хостов…",
+            "moreSshHosts_other_one": "Найти среди остальных {{count}} SSH-хоста…",
+            "noMatchingSshHosts": "Подходящих SSH-хостов нет.",
             "remote_server": "Удалённый сервер",
             "runtime_checking": "Проверка",
             "runtime_connect_unavailable": "Удалённый хост недоступен",
@@ -15734,7 +15751,8 @@
             "runtime_reconnecting": "Переподключение",
             "runtime_unavailable": "Отключено",
             "runtime_unavailable_transport_up": "Orca недоступна",
-            "runtime_workspace_window_closed": "Окно рабочей области закрыто"
+            "runtime_workspace_window_closed": "Окно рабочей области закрыто",
+            "searchSshHosts": "Поиск SSH-хостов…"
           },
           "SshTargetStatusRow": {
             "sshHost": "SSH-хост"
@@ -18455,6 +18473,7 @@
         "thinking": "Размышление",
         "toggleOption": "Переключить {{value0}}",
         "tooManyAttachments": "Прикрепляйте не больше {{value0}} файлов за раз.",
+        "tooManySkills": "Сообщение для {{agent}} не отправлено. Оставьте выбранными не больше {{limit}} файлов навыков и попробуйте снова.",
         "uploadingFile": "Загрузка {{name}}…",
         "viewAttachment": "Просмотреть изображение",
         "workspaceAttachmentMismatch": "Файлы можно прикрепить только в той рабочей области, откуда они взяты.",
@@ -19156,8 +19175,8 @@
         },
         "SortableTabContextMenu": {
           "closeTabsToLeft": "Закрыть все вкладки слева",
-          "switchToChatView": "Перейти к интерфейсу чата",
-          "switchToTerminalView": "Перейти к агенту в терминале"
+          "switchToChatView": "Продолжить в интерфейсе чата",
+          "switchToTerminalView": "Продолжить с агентом в терминале"
         },
         "bulkClose": {
           "confirm": "Закрыть вкладки",
@@ -20262,6 +20281,16 @@
   "tabHoverCard": {
     "browser": "Браузер",
     "editor": "Редактор",
+    "namingFailure": {
+      "description": "Агент, придумывающий названия чатов, завершился с ошибкой, поэтому названием чата остаётся его первое сообщение.",
+      "dialogDescriptionEnd": "по его первому сообщению.",
+      "dialogDescriptionStart": "Orca не удалось сгенерировать название для чата",
+      "dialogTitle": "Не удалось задать название чата автоматически",
+      "regenerate": "Сгенерировать название заново",
+      "regenerating": "Генерация…",
+      "title": "Не удалось назвать этот чат",
+      "viewError": "посмотреть ошибку"
+    },
     "terminal": "Терминал"
   },
   "terminal": {
