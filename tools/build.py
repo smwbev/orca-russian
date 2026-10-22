@@ -12,6 +12,15 @@
 """
 import json, re, glob, sys, os, subprocess, base64
 
+# Флагов у сборки нет, а любой запуск перезаписывает каталог: `--help` молча собирал
+# пакет (22.10 так прошла незапланированная сборка). Справка — этот докстринг, прочие
+# аргументы — ошибка до первого обращения к сети.
+if sys.argv[1:] in (['-h'], ['--help']):
+    print(__doc__.strip())
+    sys.exit(0)
+if len(sys.argv) > 1:
+    sys.exit(f'✗ build.py запускается без аргументов, получено: {" ".join(sys.argv[1:])} (справка: --help)')
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCRATCH = os.environ.get('ORCA_RU_WORK') or os.path.join(ROOT, '.i18n-work')
 TARGET = os.path.join(ROOT, 'locales', 'ru-RU.json')
