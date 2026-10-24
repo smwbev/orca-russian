@@ -33,9 +33,10 @@ COUNT_SITES = [
     (r'alt="(\d{2}[,\s]\d{3}) (?:translated strings|переведённ\w+ строк\w*)"', 'alt бейджа'),
     (r'\n\s*(\d{2}[,\s]\d{3}) (?:strings —|строк\w* —)', 'подзаголовок'),
     (r'(?:translation catalog|каталог переводов), (\d{2}[,\s]\d{3})', 'дерево файлов'),
-    # `переведен[оа]`: счётчик, оканчивающийся на 1, требует согласования
+    # `переведен[оаы]`: счётчик, оканчивающийся на 1, требует согласования
     # («переведена 12 371 строка»), и жёсткое «переведено» молча теряло место.
-    (r'переведен[оа] (\d{2}[,\s]\d{3}) строк', 'шапка глоссария'),
+    # «переведены 16 684 строки» тоже по-русски, и 24.10 так же выпало из счёта.
+    (r'переведен[оаы] (\d{2}[,\s]\d{3}) строк', 'шапка глоссария'),
 ]
 DOCS = ['README.md', 'docs/readme/README.ru.md', 'GLOSSARY.md']
 # Число добавочных плюральных форм называют рядом со счётчиком строк.
@@ -43,6 +44,22 @@ EXTRA_SITES = [
     (r'and (\d+) extra plural forms', 'добавочные формы'),
     (r'и (\d+) добавочн\w+ форм\w* множественного числа', 'добавочные формы'),
 ]
+# Каждое релизное место поимённо. Страховка ниже ловила только ноль найденных счётчиков,
+# а место, которое одно перестало находиться, выпадало из счёта молча: 24.10 проверка
+# прошла по 21 месту из 22 и напечатала «согласовано». Новая формулировка, которую шаблон
+# не узнаёт, теперь ошибка, а не тишина.
+REQUIRED = {
+    'README.md': {('версия', 'бейдж версии'), ('версия', 'alt бейджа'), ('версия', 'строка установки'),
+                  ('счётчик', 'бейдж строк'), ('счётчик', 'alt бейджа'), ('счётчик', 'подзаголовок'),
+                  ('счётчик', 'дерево файлов'), ('формы', 'добавочные формы')},
+    'docs/readme/README.ru.md': {('версия', 'бейдж версии'), ('версия', 'alt бейджа'),
+                                 ('версия', 'строка установки'), ('счётчик', 'бейдж строк'),
+                                 ('счётчик', 'alt бейджа'), ('счётчик', 'подзаголовок'),
+                                 ('счётчик', 'дерево файлов'), ('формы', 'добавочные формы')},
+    'GLOSSARY.md': {('версия', 'шапка глоссария'), ('версия', 'запас по лимитам'),
+                    ('счётчик', 'шапка глоссария'), ('формы', 'добавочные формы')},
+}
+seen = set()
 
 
 def flat(o, p=''):
@@ -84,12 +101,14 @@ for rel in DOCS:
     for pattern, what in VERSION_SITES:
         for found in set(re.findall(pattern, text)):
             checked += 1
+            seen.add((rel, 'версия', what))
             if found != version:
                 errors.append(f'{rel} ({what}): {found} вместо {version}')
     for pattern, what in COUNT_SITES:
         for found in set(re.findall(pattern, text)):
             checked += 1
             counts_checked += 1
+            seen.add((rel, 'счётчик', what))
             if norm(found) not in ok_counts:
                 errors.append(f'{rel} ({what}): {found} вместо {lines}')
 
@@ -103,6 +122,7 @@ for rel in DOCS:
         for found in set(re.findall(pattern, text)):
             checked += 1
             extra_checked += 1
+            seen.add((rel, 'формы', what))
             if int(found) != len(extra_forms):
                 errors.append(f'{rel} ({what}): {found} вместо {len(extra_forms)}')
 if extra_forms and not extra_checked:
@@ -137,6 +157,10 @@ if len(set(headlines.values())) > 1:
 # Ноль найденных счётчиков — это сломанные шаблоны, а не чистый выпуск.
 if not counts_checked:
     errors.append('ни один счётчик строк не найден — шаблоны COUNT_SITES устарели')
+for rel, sites in REQUIRED.items():
+    for kind, what in sorted(sites - {(k, w) for r, k, w in seen if r == rel}):
+        errors.append(f'{rel}: не найдено место «{what}» ({kind}) — формулировку правили, '
+                      f'шаблон её не узнаёт')
 
 for e in sorted(set(errors)):
     print('  ✗', e)
