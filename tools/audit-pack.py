@@ -4,7 +4,8 @@
     python3 tools/audit-pack.py                     # this pack, latest stable Orca release
     python3 tools/audit-pack.py --release v1.4.224  # a specific release
     python3 tools/audit-pack.py path/to/other-pack  # any pack with an orca-plugin.json
-    python3 tools/audit-pack.py --en en.json --chrome plugin-translatable-chrome.ts   # offline
+    python3 tools/audit-pack.py --en en.json --chrome plugin-translatable-chrome.ts \
+        --artifact plugin-language-pack-artifact.ts                                  # offline
 
 It answers the questions a pack author has after every Orca release:
 
@@ -15,7 +16,10 @@ It answers the questions a pack author has after every Orca release:
 - Do placeholders match the English source?
 
 The rules are read from the release tag, not from Orca's main branch: a pack is installed
-on a release, and a rule that has only reached main does not apply to anyone yet.
+on a release, and a rule that has only reached main does not apply to anyone yet. That
+includes the engine module itself: whole components it protects outright (the native chat
+approval card, since stablyai/orca#33069) and its entry limit. A protection rule this script
+does not know stops the audit instead of passing it.
 Needs python3 and, unless --en/--chrome are given, an authenticated `gh`.
 Exit status is 1 when the engine would reject at least one audited pack.
 """
@@ -24,6 +28,12 @@ import argparse, base64, json, os, re, subprocess, sys
 REPO = 'stablyai/orca'
 EN_PATH = 'src/renderer/src/i18n/locales/en.json'
 CHROME_PATH = 'src/shared/plugins/plugin-translatable-chrome.ts'
+# The engine module moved into artifacts/ with the plugins-v2 work; releases up to v1.4.239 have it here.
+ARTIFACT_PATHS = ['src/shared/plugins/artifacts/plugin-language-pack-artifact.ts',
+                  'src/shared/plugins/plugin-language-pack-artifact.ts']
+KNOWN_RULES = {'PROTECTED_TRANSLATION_ROOT': "'auto.components.settings.'",
+               'PROTECTED_TRANSLATION_MODULE': '/^plugin/i',
+               'PROTECTED_TRANSLATION_COMPONENTS': None}
 PROTECTED_ROOT = 'auto.components.settings.'
 DANGEROUS = {'__proto__', 'prototype', 'constructor'}
 MAX_ENTRIES, MAX_DEPTH, MAX_VALUE, MAX_BYTES = 20_000, 16, 8192, 5 * 1024 * 1024
@@ -32,6 +42,16 @@ PLURAL = re.compile(r'_(zero|one|two|few|many|other)$')
 
 def gh(*args):
     result = subprocess.run(['gh', *args], capture_output=True, text=True)
+    if result.returncode != 0 or not result.stdout.strip():
+        sys.exit(f'gh {" ".join(args[:2])} failed: {result.stderr.strip() or "empty response"}')
+    return result.stdout
+
+
+def gh_optional(*args):
+    """Like gh(), but a missing file is None: the engine module has lived at two paths."""
+    result = subprocess.run(['gh', *args], capture_output=True, text=True)
+    if result.returncode != 0 and 'HTTP 404' in result.stderr:
+        return None
     if result.returncode != 0 or not result.stdout.strip():
         sys.exit(f'gh {" ".join(args[:2])} failed: {result.stderr.strip() or "empty response"}')
     return result.stdout
@@ -72,6 +92,7 @@ parser.add_argument('packs', nargs='*', help='pack directories (default: the rep
 parser.add_argument('--release', help='Orca release tag (default: latest stable)')
 parser.add_argument('--en', help='local en.json of the release, instead of fetching it')
 parser.add_argument('--chrome', help='local plugin-translatable-chrome.ts of the release')
+parser.add_argument('--artifact', help='local plugin-language-pack-artifact.ts of the release')
 parser.add_argument('--list', action='store_true', help='print every missing and stale key, not just a sample')
 args = parser.parse_args()
 
@@ -93,9 +114,41 @@ else:
                                         '--jq', '.content')).decode('utf-8')
 allowed_chrome = set(re.findall(r"'(auto\.components\.settings\.[^']+)'", chrome_source))
 
+if args.artifact:
+    artifact_source = open(args.artifact, encoding='utf-8').read()
+elif release:
+    artifact_source = next((s for s in (gh_optional('api', '-H', 'Accept: application/vnd.github.raw+json',
+                                                    f'repos/{REPO}/contents/{p}?ref={release}')
+                                        for p in ARTIFACT_PATHS) if s), None)
+    if artifact_source is None:
+        sys.exit(f'the engine module is at neither {" nor ".join(ARTIFACT_PATHS)} in {release}; '
+                 'find where it moved and add the path to ARTIFACT_PATHS')
+else:
+    artifact_source = None
+    print('No --artifact: whole protected components and the release entry limit are not checked.\n')
+protected_components = []
+if artifact_source:
+    # A rule this script does not model would let it print ACCEPTED for a pack the engine rejects,
+    # which is how a whole pack silently falls back to English. Stop instead.
+    rules = dict(re.findall(r'\bconst (PROTECTED_[A-Z_]+)\s*=\s*([^\n]+)', artifact_source))
+    unknown = sorted(set(rules) - set(KNOWN_RULES))
+    changed = sorted(k for k, v in KNOWN_RULES.items() if v is not None and k in rules and rules[k].strip() != v)
+    if unknown or changed:
+        sys.exit(f'the engine in {release or args.artifact} has protection rules this script does not model '
+                 f'({", ".join(unknown + changed)}); compare isProtectedPluginTranslationPath with protected() '
+                 'here before trusting a verdict')
+    listed = re.search(r'PROTECTED_TRANSLATION_COMPONENTS\s*=\s*\[(.*?)\]', artifact_source, re.S)
+    protected_components = re.findall(r"'([^']+)'", listed.group(1)) if listed else []
+    limit = re.search(r'PLUGIN_LANGUAGE_CATALOG_MAX_ENTRIES\s*=\s*([\d_]+)', artifact_source)
+    if limit:
+        MAX_ENTRIES = int(limit.group(1).replace('_', ''))
+
 
 def protected(path):
-    """The engine's rule: settings.plugin* is consent and trust copy, minus an explicit allow-list."""
+    """The engine's rule: settings.plugin* is consent and trust copy, minus an explicit allow-list,
+    and whole components no pack may relabel, with no allow-list."""
+    if any(path == c or path.startswith(c + '.') for c in protected_components):
+        return True
     if not path.startswith(PROTECTED_ROOT) or path in allowed_chrome:
         return False
     return path[len(PROTECTED_ROOT):].lower().startswith('plugin')
@@ -105,7 +158,7 @@ translatable = {k for k, v in english.items() if not protected(k) and len(v) <= 
 print(f'Orca {release or "(local catalog)"}: {len(english)} catalog keys, {len(translatable)} a pack may translate '
       f'({sum(1 for k in english if protected(k))} protected, '
       f'{sum(1 for v in english.values() if len(v) > MAX_VALUE)} over {MAX_VALUE} characters, '
-      f'{len(allowed_chrome)} allow-listed).\n')
+      f'{len(allowed_chrome)} allow-listed, {len(protected_components)} components protected outright).\n')
 
 rejected = False
 default_pack = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

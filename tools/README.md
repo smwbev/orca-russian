@@ -19,10 +19,11 @@ python3 tools/audit-pack.py                      # this pack, latest stable Orca
 python3 tools/audit-pack.py --release v1.4.224   # a specific release
 python3 tools/audit-pack.py path/to/another-pack # any directory with an orca-plugin.json
 python3 tools/audit-pack.py --list               # every missing and stale key
+python3 tools/audit-pack.py --release main       # preview a rule that has not shipped yet
 ```
 
 ```
-Orca v1.4.239: 16997 catalog keys, 16817 a pack may translate (180 protected, 0 over 8192 characters, 34 allow-listed).
+Orca v1.4.239: 16997 catalog keys, 16817 a pack may translate (180 protected, 0 over 8192 characters, 34 allow-listed, 0 components protected outright).
 
 smwbev.russian v5.1.173 — ru-RU, locales/ru-RU.json, engines >=1.4.169
   engine verdict: ACCEPTED
@@ -44,8 +45,9 @@ The exit status is 1 when the engine would reject a pack, so the script can gate
 
 The verdict mirrors the checks Orca runs on a language pack at install time:
 
-- **Protected paths.** Everything under `auto.components.settings.plugin*` is consent and trust copy, except the paths listed in `plugin-translatable-chrome.ts`. One protected key and Orca rejects the whole catalog without a message; the interface just stays English.
-- **Limits.** 20,000 entries, depth 16, 8,192 characters per value, 5 MB per file.
+- **Protected paths.** Everything under `auto.components.settings.plugin*` is consent and trust copy, except the paths listed in `plugin-translatable-chrome.ts`. Whole components the engine module lists in `PROTECTED_TRANSLATION_COMPONENTS` are protected with no exceptions (the native chat approval card and two plugin trust labels, from [stablyai/orca#33069](https://github.com/stablyai/orca/pull/33069), not in a release yet). One protected key and Orca rejects the whole catalog without a message; the interface just stays English.
+- **Limits.** The entry limit is read from the release's engine module (20,000 up to v1.4.239), plus depth 16, 8,192 characters per value, 5 MB per file.
+- **Rules the script does not know.** If the release's engine module declares a protection rule this script does not model, the audit stops with an error instead of printing a verdict.
 - **Unsafe keys.** Empty keys, keys with a dot or a control character, `__proto__`, `prototype`, `constructor`.
 
 ### Why the rules are read from the release, not from `main`

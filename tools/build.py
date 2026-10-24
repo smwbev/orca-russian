@@ -44,9 +44,26 @@ if _stable:
     if _r.returncode == 0 and _r.stdout.strip():
         src = base64.b64decode(_r.stdout).decode('utf-8')
         CHROME = set(re.findall(r"'(auto\.components\.settings\.[^']+)'", src))
-    print(f'  правило защиты: релиз {_stable}, разрешённых исключений {len(CHROME)}')
+# Компоненты, защищённые целиком, без исключений (с stablyai/orca#33069: карточка одобрения в
+# нативном чате, бейдж «Official», баннер подсказки типа файла). Их список лежит в самом модуле
+# движка, а не в plugin-translatable-chrome.ts; в релизах до v1.4.239 его нет. Модуль переехал
+# в artifacts/ — ищем по обоим путям.
+COMPONENTS = []
+if _stable:
+    for _path in ('src/shared/plugins/artifacts/plugin-language-pack-artifact.ts',
+                  'src/shared/plugins/plugin-language-pack-artifact.ts'):
+        _r = subprocess.run(['gh', 'api', *RAW, f'repos/{REPO}/contents/{_path}?ref={_stable}'],
+                            capture_output=True, text=True)
+        if _r.returncode == 0 and _r.stdout.strip():
+            _m = re.search(r'PROTECTED_TRANSLATION_COMPONENTS\s*=\s*\[(.*?)\]', _r.stdout, re.S)
+            COMPONENTS = re.findall(r"'([^']+)'", _m.group(1)) if _m else []
+            break
+    print(f'  правило защиты: релиз {_stable}, разрешённых исключений {len(CHROME)}, '
+          f'защищённых компонентов {len(COMPONENTS)}')
 
 def protected(path):
+    if any(path == c or path.startswith(c + '.') for c in COMPONENTS):
+        return True
     if not path.startswith(PROT):
         return False
     if path in CHROME:
