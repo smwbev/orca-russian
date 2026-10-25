@@ -1,8 +1,8 @@
 # Глоссарий локализации Orca (ru-RU)
 
-Рабочий документ для перевода `src/renderer/src/i18n/locales/en.json` (16 997 строк в релизе
-Orca v1.4.239; сборка сверяется с объединением `main` и последнего релиза, см. «Известные ограничения»).
-Актуально на `v5.1.173` (24 октября 2026): переведено 16 684 строки и 198 добавочных форм множественного числа,
+Рабочий документ для перевода `src/renderer/src/i18n/locales/en.json` (17 037 строк в релизе
+Orca v1.4.240; сборка сверяется с объединением `main` и последнего релиза, см. «Известные ограничения»).
+Актуально на `v5.1.174` (25 октября 2026): переведено 16 724 строки и 198 добавочных форм множественного числа,
 английский остаток в релизе — 313
 (180 защищённых `settings.plugin*`, 112 осиротевших ключей обмена навыками, 9 осиротевших
 ключей удалённого браузера из #15448, 1 неиспользуемый ключ автоматизаций из #16532 и 11 строк,
@@ -308,7 +308,7 @@ Orca v1.4.239; сборка сверяется с объединением `main
 | Orca-managed Node / Allow this host's orca CLI to control Orca / Quit {{appName}} (`settings.SshTargetCard.hostNode*`, `settings.SshTargetForm.allowRemoteCliControl*`, `menu.quitApp`) | Node от Orca / Разрешить orca CLI этого хоста управлять Orca / Завершить {{appName}} | ([#26483](https://github.com/stablyai/orca/pull/26483)) строка о неподдерживаемой конфигурации SSH-хоста, переключатель доступа удалённого `orca` CLI и пункт Quit меню macOS (на остальных платформах — `menu.exit` «Выход»). Runtime в SSH-настройках хоста → «Среда выполнения» |
 | Extra agent arguments / Extra arguments / Use fresh sessions (`automations.extraAgentArgs.*`) | Дополнительные аргументы агента / Дополнительные аргументы / Использовать новые сессии | ([#26659](https://github.com/stablyai/orca/pull/26659)) аргументы запуска агента в автоматизациях; добавляются к аргументам по умолчанию хоста. fresh session → «новая сессия» |
 | Stopped manually (`native-chat.notices.stoppedBeforeStart`) | Остановлено вручную | ([#26381](https://github.com/stablyai/orca/pull/26381)) до Orca v1.4.224 — «Stopped before the agent started» → «Остановлено до запуска агента» |
-| Orca is retrying automatically. This terminal will resume if the connection returns. (`terminal.pane.TerminalRemoteRuntimeReconnectBanner.retryingBody`) | Orca повторяет попытки автоматически. Этот терминал возобновится, если подключение вернётся. | ([#26847](https://github.com/stablyai/orca/pull/26847)) пара к `disconnectedBody` «Автоматические попытки прекращены…». До Orca v1.4.224 и английский, и русский баннер обещали «до одной минуты» при фактических трёх |
+| Reconnecting to {{server}} / The connection to the server dropped. Orca is retrying automatically, and terminals resume when it returns. (`terminal.pane.TerminalRemoteRuntimeReconnectBanner.connectionLost*`) | Переподключение к серверу {{server}} / Соединение с сервером прервалось. Orca повторяет попытки автоматически, и терминалы возобновятся, когда оно восстановится. | ([#26847](https://github.com/stablyai/orca/pull/26847), [#33095](https://github.com/stablyai/orca/pull/33095)) пара к `disconnectedBody` «Автоматические попытки прекращены…». С Orca v1.4.240 баннер называет сервер и причину: перезапуск, закрытый поток, остановленный вывод, ожидание. Имя `{{server}}` стоит приложением к «сервер», чтобы его не склонять; `fallbackServerName` (the server) → «Orca», и строка читается «сервер Orca». Прежние `retryingTitle` / `retryingBody` сняты из пакета в v5.1.174. До Orca v1.4.224 и английский, и русский баннер обещали «до одной минуты» при фактических трёх |
 | The remote browser is unavailable. Check its setup on the server. (`BrowserPane.streamBrowserUnavailable`) | Удалённый браузер недоступен. Проверьте его настройку на сервере. | ([#26573](https://github.com/stablyai/orca/pull/26573)) отдельное сообщение о браузере: удалённый хост может отвечать на запросы репозитория при неработающем браузере. Сосед `streamConnectionLost` / `streamConnectionUnreachable`; setup → «настройка» |
 
 ## Действия
@@ -451,7 +451,7 @@ Orca v1.4.239; сборка сверяется с объединением `main
   `build.py` предупреждает об опущенном `{{label}}`, и это ровно тот случай, для которого
   предупреждение сделано мягким. Тот же класс, что `SkillInstallReviewContent.tsx:84`.
 - **Лимит длины строки.** 8192 символа. До Orca v1.4.232 в каталоге были три CSS-блока стены возможностей: два (9691 и 9965 символов) не помещались в пакет, третий (7055) был чистым CSS. [#30765](https://github.com/stablyai/orca/pull/30765) убрал их из каталога, и сейчас ни одна строка лимита не превышает.
-- **Запас по лимитам движка** на v5.1.173: 18 964 узла из 20 000, глубина 12 из 16, размер ~1,5 МБ из 5 МБ.
+- **Запас по лимитам движка** на v5.1.174: 19 005 узлов из 20 000, глубина 12 из 16, размер ~1,5 МБ из 5 МБ.
 - **Каталог апстрима меняется.** `build.py` сам выбрасывает ключи, исчезнувшие из `en.json`
   (при обновлении на Orca 1.4.163 таких было 13), и ругается, только если устаревший ключ
   пришёл из блока перевода. После обновления Orca достаточно заменить `.i18n-work/en.json`
