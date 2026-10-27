@@ -23,15 +23,15 @@ python3 tools/audit-pack.py --release main       # preview a rule that has not s
 ```
 
 ```
-Orca v1.4.241: 17099 catalog keys, 16919 a pack may translate (180 protected, 0 over 8192 characters, 34 allow-listed, 0 components protected outright).
+Orca v1.4.242: 17187 catalog keys, 17007 a pack may translate (180 protected, 0 over 8192 characters, 34 allow-listed, 0 components protected outright).
 
-smwbev.russian v5.1.175 — ru-RU, locales/ru-RU.json, engines >=1.4.169
+smwbev.russian v5.1.176 — ru-RU, locales/ru-RU.json, engines >=1.4.169
   engine verdict: ACCEPTED
-  size: 19082/20000 entries, depth 12/16, 1606156 bytes
-  coverage: 16786/16919 = 99.21 % of what a pack may translate; 133 missing
+  size: 19187/20000 entries, depth 12/16, 1618808 bytes
+  coverage: 16874/17007 = 99.22 % of what a pack may translate; 133 missing
   stale keys the release does not define: 0
-  extra plural forms: 207 — `_few` and `_many` stay unreachable until stablyai/orca#12505
-  identical to English: 1090
+  extra plural forms: 217 — `_few` and `_many` stay unreachable until stablyai/orca#12505
+  identical to English: 1087
   placeholders the English source does not have: 0
     missing: auto.components.automations.externalScope.unknownManager
     missing: auto.components.settings.shareSkills.refreshLinks
@@ -46,7 +46,7 @@ The exit status is 1 when the engine would reject a pack, so the script can gate
 The verdict mirrors the checks Orca runs on a language pack at install time:
 
 - **Protected paths.** Everything under `auto.components.settings.plugin*` is consent and trust copy, except the paths listed in `plugin-translatable-chrome.ts`. Whole components the engine module lists in `PROTECTED_TRANSLATION_COMPONENTS` are protected with no exceptions (the native chat approval card and two plugin trust labels, from [stablyai/orca#33069](https://github.com/stablyai/orca/pull/33069), not in a release yet). One protected key and Orca rejects the whole catalog without a message; the interface just stays English.
-- **Limits.** The entry limit is read from the release's engine module (20,000 up to v1.4.241), plus depth 16, 8,192 characters per value, 5 MB per file.
+- **Limits.** The entry limit is read from the release's engine module (20,000 up to v1.4.242), plus depth 16, 8,192 characters per value, 5 MB per file.
 - **Rules the script does not know.** If the release's engine module declares a protection rule this script does not model, the audit stops with an error instead of printing a verdict.
 - **Unsafe keys.** Empty keys, keys with a dot or a control character, `__proto__`, `prototype`, `constructor`.
 

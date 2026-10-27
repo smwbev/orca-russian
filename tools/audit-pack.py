@@ -28,7 +28,7 @@ import argparse, base64, json, os, re, subprocess, sys
 REPO = 'stablyai/orca'
 EN_PATH = 'src/renderer/src/i18n/locales/en.json'
 CHROME_PATH = 'src/shared/plugins/plugin-translatable-chrome.ts'
-# The engine module moved into artifacts/ with the plugins-v2 work; releases up to v1.4.241 have it here.
+# The engine module moved into artifacts/ with the plugins-v2 work; releases up to v1.4.242 have it here.
 ARTIFACT_PATHS = ['src/shared/plugins/artifacts/plugin-language-pack-artifact.ts',
                   'src/shared/plugins/plugin-language-pack-artifact.ts']
 KNOWN_RULES = {'PROTECTED_TRANSLATION_ROOT': "'auto.components.settings.'",
