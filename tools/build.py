@@ -184,6 +184,35 @@ for k in retired:
         warnings.append(f'{k}: исчез из каталога Orca, выброшен из пакета')
     del flat[k]
 
+# Ключи, которых не читает ни один исходник релиза и main, — tools/unread-catalog-keys.json.
+# Orca их никогда не покажет, а узлы из лимита движка они занимают: 28.10 сборка со всеми
+# черновиками дала 20 076 узлов при пределе 20 000, и 1 514 таких переводов держали около
+# 1 600 из них. Переводы остаются в блоках, поэтому ключ, который Orca снова читает,
+# достаточно убрать из списка — следующая сборка вернёт его в пакет. Список сверен с одним
+# релизом; на новом релизе его надо пересверить (tools/recheck-unread-keys.py), иначе ключ,
+# который релиз снова читает, молча останется английским.
+UNREAD_PATH = os.path.join(ROOT, 'tools', 'unread-catalog-keys.json')
+_unread_doc = json.load(open(UNREAD_PATH, encoding='utf-8')) if os.path.exists(UNREAD_PATH) else None
+UNREAD = set(_unread_doc['keys']) if _unread_doc else set()
+if _unread_doc and _stable and _unread_doc['checked']['release'] != _stable:
+    errors.append(f'{os.path.relpath(UNREAD_PATH, ROOT)} сверен с {_unread_doc["checked"]["release"]}, '
+                  f'а последний релиз — {_stable}: пересверить (python3 tools/recheck-unread-keys.py)')
+_PLURAL_ANY = re.compile(r'_(zero|one|two|few|many|other)$')
+
+def unread(k):
+    """Ключ из списка либо форма семейства или строки, которые целиком в списке."""
+    if k in UNREAD:
+        return True
+    base = _PLURAL_ANY.sub('', k)
+    return base != k and (base in UNREAD or base + '_one' in UNREAD or base + '_other' in UNREAD)
+
+unread_dropped = [k for k in flat if unread(k)]
+for k in unread_dropped:
+    del flat[k]
+if _unread_doc:
+    print(f'  не читаются кодом Orca: {len(UNREAD)} ключей, из пакета выброшено {len(unread_dropped)} '
+          f'(сверено с {_unread_doc["checked"]["release"]} и main {_unread_doc["checked"]["main"]})')
+
 # Защищённый ключ в базе — след прошлой сборки, сделанной по правилам ещё не
 # вышедшего релиза. Выбрасываем молча-с-предупреждением: пакет должен грузиться
 # на том, что установлено. Приход такого ключа из блока — ошибка автора.

@@ -6,11 +6,12 @@ The scripts that build and check this pack. Orca does not load them: the manifes
 |---|---|
 | [`audit-pack.py`](audit-pack.py) | Audits any Orca language pack against one Orca release: whether the engine would accept the catalog, coverage, untranslated and stale keys, placeholder drift. |
 | [`build.py`](build.py) | Builds `locales/ru-RU.json` from translation blocks and validates it against the rules of the latest stable Orca release. |
+| [`recheck-unread-keys.py`](recheck-unread-keys.py) | Rechecks [`unread-catalog-keys.json`](unread-catalog-keys.json), the catalog keys no Orca code reads, against the sources of a release and `main`. Run at every Orca release. |
 | [`release-check.py`](release-check.py) | Checks that the version and every count agree across the manifest, both READMEs and the glossary. Run before tagging. |
 
 They need `python3` 3.8 or newer and an authenticated [`gh`](https://cli.github.com/). Run them from the repository root.
 
-`audit-pack.py` is written in English because it is meant for any pack author. `build.py` and `release-check.py` print and are commented in Russian, like the glossary: they are this pack's own workflow.
+`audit-pack.py` is written in English because it is meant for any pack author. `build.py`, `recheck-unread-keys.py` and `release-check.py` print and are commented in Russian, like the glossary: they are this pack's own workflow.
 
 ## Auditing a pack
 
@@ -24,21 +25,23 @@ python3 tools/audit-pack.py --release main       # preview a rule that has not s
 
 ```
 Orca v1.4.242: 17187 catalog keys, 17007 a pack may translate (180 protected, 0 over 8192 characters, 34 allow-listed, 0 components protected outright).
+1636 of them no Orca code reads, left out of coverage (tools/unread-catalog-keys.json, checked at v1.4.242 and main beb53a7f9e8).
 
 smwbev.russian v5.1.176 — ru-RU, locales/ru-RU.json, engines >=1.4.169
   engine verdict: ACCEPTED
   size: 19187/20000 entries, depth 12/16, 1618808 bytes
-  coverage: 16874/17007 = 99.22 % of what a pack may translate; 133 missing
+  coverage: 15360/15371 = 99.93 % of what a pack may translate and Orca reads; 11 missing
+  translations of keys no code reads: 1514 — dead weight against the entry limit
   stale keys the release does not define: 0
   extra plural forms: 217 — `_few` and `_many` stay unreachable until stablyai/orca#12505
-  identical to English: 1087
+  identical to English: 775
   placeholders the English source does not have: 0
-    missing: auto.components.automations.externalScope.unknownManager
-    missing: auto.components.settings.shareSkills.refreshLinks
-    missing: auto.components.skills.SkillBundleInstallFlow.01c5a13e04
-    missing: auto.components.skills.SkillBundleInstallFlow.01c5a13e05
-    missing: auto.components.skills.SkillBundleInstallOutcome.01c5a12e05
-    … 128 more missing (use --list)
+    missing: auto.components.skills.SkillDelete.blockedLine
+    missing: auto.components.skills.SkillDelete.resultLine
+    missing: auto.components.skills.SkillInstallManagementDialog.176fef9516
+    missing: auto.components.skills.SkillInstallReviewContent.1b6ad2ca5c
+    missing: auto.components.skills.SkillInstallReviewContent.3fc62a61eb
+    … 6 more missing (use --list)
 ```
 
 The exit status is 1 when the engine would reject a pack, so the script can gate a release.
@@ -67,11 +70,25 @@ The committed catalog is the base. Translation blocks are laid over it: flat JSO
 The build then:
 
 - drops a key that neither the latest release nor `main` defines, and fails if such a key came from a block;
+- leaves out every key in [`unread-catalog-keys.json`](unread-catalog-keys.json), with its plural forms, and fails when that list was checked against an older release than the latest (see below);
 - fails on a protected key, a placeholder the English source does not have, or any engine limit;
 - accepts a plural form English lacks (`_few` and `_many` of a plural family; `_one`, `_few` and `_many` of a string Orca calls with a count) only while the string it extends is alive in Orca's catalog and translated in the pack;
 - warns about a value with no Cyrillic, a missing «ё», or a dropped placeholder, which is usually the English plural `s`.
 
 Nothing is written when a check fails.
+
+## Keys no code reads
+
+Orca's `en.json` keeps keys that no component reads any more, mostly left behind when a component was rewritten under new keys. Orca never shows them, but a pack that translates them pays for them: the engine loads at most 20,000 catalog entries. On 2026-10-28 the pack with its pending translations came to 20,076 entries, and 1,514 translations of such keys took about 1,600 of them.
+
+[`unread-catalog-keys.json`](unread-catalog-keys.json) lists these keys and says what they were checked against. A key is on the list when the orphan detector from [stablyai/orca#22056](https://github.com/stablyai/orca/pull/22056) finds it on `main`, and neither the key nor its base without a plural suffix appears as a string literal in the `.ts`/`.tsx` sources of the release or of `main`. The build leaves these keys out, and `audit-pack.py` leaves them out of coverage, because a pack without them misses nothing on screen. Their translations stay in the blocks, so a key Orca reads again comes back with the next build once it leaves the list.
+
+```bash
+python3 tools/recheck-unread-keys.py                    # latest release and upstream/main
+python3 tools/recheck-unread-keys.py --add orphans.txt  # also add new orphans from the detector
+```
+
+The script needs a local clone of `stablyai/orca` with tags (`--orca`, `~/Developer/orca` by default) and only reads it. It removes every key the release or `main` reads again, and every key gone from both catalogs, and records the release and `main` commit it checked. Run it at every Orca release: until the list names the latest release, the build stops.
 
 ## Before tagging
 

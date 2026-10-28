@@ -13,6 +13,8 @@ It answers the questions a pack author has after every Orca release:
   unsafe key makes Orca reject the whole pack, and the UI silently stays English.
 - Which release strings are still untranslated, and which pack keys does the release
   no longer define?
+- Which of its translations are for keys no Orca code reads (unread-catalog-keys.json)?
+  They count against the entry limit and never reach the screen.
 - Do placeholders match the English source?
 
 The rules are read from the release tag, not from Orca's main branch: a pack is installed
@@ -158,7 +160,23 @@ translatable = {k for k, v in english.items() if not protected(k) and len(v) <= 
 print(f'Orca {release or "(local catalog)"}: {len(english)} catalog keys, {len(translatable)} a pack may translate '
       f'({sum(1 for k in english if protected(k))} protected, '
       f'{sum(1 for v in english.values() if len(v) > MAX_VALUE)} over {MAX_VALUE} characters, '
-      f'{len(allowed_chrome)} allow-listed, {len(protected_components)} components protected outright).\n')
+      f'{len(allowed_chrome)} allow-listed, {len(protected_components)} components protected outright).')
+
+# Keys the catalog defines but no Orca code reads (unread-catalog-keys.json next to this script).
+# Orca never shows them, so a pack without them misses nothing on screen: they leave coverage
+# and are counted on their own. The list is checked against one release and main; against
+# another release a key that release reads again would be wrongly left out, so say so.
+UNREAD_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'unread-catalog-keys.json')
+unread_doc = json.load(open(UNREAD_PATH, encoding='utf-8')) if os.path.exists(UNREAD_PATH) else None
+unread = {k for k in unread_doc['keys'] if k in translatable} if unread_doc else set()
+readable = translatable - unread
+if unread_doc:
+    checked = unread_doc['checked']
+    print(f'{len(unread)} of them no Orca code reads, left out of coverage '
+          f'(tools/unread-catalog-keys.json, checked at {checked["release"]} and main {checked["main"]}).')
+    if release and release != checked['release']:
+        print(f'  ! the list was checked at {checked["release"]}, not at {release}: recheck it before trusting coverage')
+print()
 
 rejected = False
 default_pack = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -185,8 +203,9 @@ for root in args.packs or [default_pack]:
         rejected = rejected or bool(reasons)
 
         text = {k: v for k, v in catalog.items() if isinstance(v, str)}
-        covered = [k for k in text if k in translatable]
-        missing = sorted(translatable - set(text))
+        covered = [k for k in text if k in readable]
+        missing = sorted(readable - set(text))
+        carried_unread = sum(1 for k in text if k in unread)
         # A plural form the language needs and English lacks is not stale while its family
         # lives: English has the same base with `_one`/`_other`, or the bare base key that a
         # `count` call falls back to.
@@ -213,8 +232,11 @@ for root in args.packs or [default_pack]:
               f'{pack.get("locale")}, {pack["path"]}, engines {manifest.get("engines", {}).get("orca")}')
         print(f'  engine verdict: {"ACCEPTED" if not reasons else "REJECTED — " + "; ".join(reasons)}')
         print(f'  size: {entries}/{MAX_ENTRIES} entries, depth {depth}/{MAX_DEPTH}, {size} bytes')
-        print(f'  coverage: {len(covered)}/{len(translatable)} = {100 * len(covered) / len(translatable):.2f} % '
-              f'of what a pack may translate; {len(missing)} missing')
+        print(f'  coverage: {len(covered)}/{len(readable)} = {100 * len(covered) / len(readable):.2f} % '
+              f'of what a pack may translate and Orca reads; {len(missing)} missing')
+        if unread:
+            print(f'  translations of keys no code reads: {carried_unread}'
+                  + (' — dead weight against the entry limit' if carried_unread else ''))
         print(f'  stale keys the release does not define: {len(stale)}')
         print(f'  extra plural forms: {len(extra_plural)}'
               + (' — `_few` and `_many` stay unreachable until stablyai/orca#12505' if extra_plural else ''))
