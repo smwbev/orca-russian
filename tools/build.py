@@ -38,12 +38,18 @@ CHROME = set()
 _stable = subprocess.run(['gh', 'release', 'view', '--repo', REPO, '--json', 'tagName', '--jq', '.tagName'],
                          capture_output=True, text=True).stdout.strip()
 if _stable:
-    _r = subprocess.run(['gh', 'api',
-        f'repos/{REPO}/contents/src/shared/plugins/plugin-translatable-chrome.ts?ref={_stable}',
-        '--jq', '.content'], capture_output=True, text=True)
-    if _r.returncode == 0 and _r.stdout.strip():
-        src = base64.b64decode(_r.stdout).decode('utf-8')
-        CHROME = set(re.findall(r"'(auto\.components\.settings\.[^']+)'", src))
+    # stablyai/orca#34538 переносит правило в languages/ — ищем по обоим путям.
+    for _path in ('src/shared/plugins/languages/plugin-translatable-chrome.ts',
+                  'src/shared/plugins/plugin-translatable-chrome.ts'):
+        _r = subprocess.run(['gh', 'api', f'repos/{REPO}/contents/{_path}?ref={_stable}',
+                             '--jq', '.content'], capture_output=True, text=True)
+        if _r.returncode == 0 and _r.stdout.strip():
+            src = base64.b64decode(_r.stdout).decode('utf-8')
+            CHROME = set(re.findall(r"'(auto\.components\.settings\.[^']+)'", src))
+            break
+    if not CHROME:
+        sys.exit(f'✗ правило защиты (plugin-translatable-chrome.ts) не найдено в {_stable}: '
+                 'найдите, куда переехал файл, и добавьте путь')
 # Компоненты, защищённые целиком, без исключений (с stablyai/orca#33069: карточка одобрения в
 # нативном чате, бейдж «Official», баннер подсказки типа файла). Их список лежит в самом модуле
 # движка, а не в plugin-translatable-chrome.ts; в релизах до v1.4.243 его нет. Модуль переехал

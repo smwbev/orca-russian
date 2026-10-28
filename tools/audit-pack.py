@@ -29,7 +29,9 @@ import argparse, base64, json, os, re, subprocess, sys
 
 REPO = 'stablyai/orca'
 EN_PATH = 'src/renderer/src/i18n/locales/en.json'
-CHROME_PATH = 'src/shared/plugins/plugin-translatable-chrome.ts'
+# stablyai/orca#34538 moves the allow-list into languages/; releases up to v1.4.243 have it here.
+CHROME_PATHS = ['src/shared/plugins/languages/plugin-translatable-chrome.ts',
+                'src/shared/plugins/plugin-translatable-chrome.ts']
 # The engine module moved into artifacts/ with the plugins-v2 work; releases up to v1.4.243 have it here.
 ARTIFACT_PATHS = ['src/shared/plugins/artifacts/plugin-language-pack-artifact.ts',
                   'src/shared/plugins/plugin-language-pack-artifact.ts']
@@ -112,8 +114,12 @@ else:
 if args.chrome:
     chrome_source = open(args.chrome, encoding='utf-8').read()
 else:
-    chrome_source = base64.b64decode(gh('api', f'repos/{REPO}/contents/{CHROME_PATH}?ref={release}',
-                                        '--jq', '.content')).decode('utf-8')
+    chrome_source = next((s for s in (gh_optional('api', '-H', 'Accept: application/vnd.github.raw+json',
+                                                  f'repos/{REPO}/contents/{p}?ref={release}')
+                                      for p in CHROME_PATHS) if s), None)
+    if chrome_source is None:
+        sys.exit(f'the allow-list is at neither {" nor ".join(CHROME_PATHS)} in {release}; '
+                 'find where it moved and add the path to CHROME_PATHS')
 allowed_chrome = set(re.findall(r"'(auto\.components\.settings\.[^']+)'", chrome_source))
 
 if args.artifact:
