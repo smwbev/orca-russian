@@ -1,8 +1,8 @@
 {
   "about": "Keys of Orca's en.json that no Orca code reads. tools/build.py leaves them out of the pack, and tools/audit-pack.py leaves them out of coverage. A key that a release or main reads again must leave this list before the next build.",
   "checked": {
-    "release": "v1.4.242",
-    "main": "beb53a7f9e8",
+    "release": "v1.4.243",
+    "main": "ee09f979fac",
     "date": "2026-10-28",
     "method": "Orphans of main found by config/scripts/verify-localization-orphans.mjs from stablyai/orca#22056, minus every key that, or whose base without a plural suffix, appears as a string literal in the .ts/.tsx sources of the release or of main."
   },

@@ -46,7 +46,7 @@ if _stable:
         CHROME = set(re.findall(r"'(auto\.components\.settings\.[^']+)'", src))
 # Компоненты, защищённые целиком, без исключений (с stablyai/orca#33069: карточка одобрения в
 # нативном чате, бейдж «Official», баннер подсказки типа файла). Их список лежит в самом модуле
-# движка, а не в plugin-translatable-chrome.ts; в релизах до v1.4.242 его нет. Модуль переехал
+# движка, а не в plugin-translatable-chrome.ts; в релизах до v1.4.243 его нет. Модуль переехал
 # в artifacts/ — ищем по обоим путям.
 COMPONENTS = []
 if _stable:

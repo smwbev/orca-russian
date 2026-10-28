@@ -24,17 +24,17 @@ python3 tools/audit-pack.py --release main       # preview a rule that has not s
 ```
 
 ```
-Orca v1.4.242: 17187 catalog keys, 17007 a pack may translate (180 protected, 0 over 8192 characters, 34 allow-listed, 0 components protected outright).
-1636 of them no Orca code reads, left out of coverage (tools/unread-catalog-keys.json, checked at v1.4.242 and main beb53a7f9e8).
+Orca v1.4.243: 17485 catalog keys, 17305 a pack may translate (180 protected, 0 over 8192 characters, 34 allow-listed, 0 components protected outright).
+1637 of them no Orca code reads, left out of coverage (tools/unread-catalog-keys.json, checked at v1.4.243 and main ee09f979fac).
 
-smwbev.russian v5.1.176 — ru-RU, locales/ru-RU.json, engines >=1.4.169
+smwbev.russian v5.1.177 — ru-RU, locales/ru-RU.json, engines >=1.4.169
   engine verdict: ACCEPTED
-  size: 19187/20000 entries, depth 12/16, 1618808 bytes
-  coverage: 15360/15371 = 99.93 % of what a pack may translate and Orca reads; 11 missing
-  translations of keys no code reads: 1514 — dead weight against the entry limit
+  size: 17974/20000 entries, depth 12/16, 1532786 bytes
+  coverage: 15657/15668 = 99.93 % of what a pack may translate and Orca reads; 11 missing
+  translations of keys no code reads: 0
   stale keys the release does not define: 0
-  extra plural forms: 217 — `_few` and `_many` stay unreachable until stablyai/orca#12505
-  identical to English: 775
+  extra plural forms: 243 — `_few` and `_many` stay unreachable until stablyai/orca#12505
+  identical to English: 777
   placeholders the English source does not have: 0
     missing: auto.components.skills.SkillDelete.blockedLine
     missing: auto.components.skills.SkillDelete.resultLine
@@ -49,7 +49,7 @@ The exit status is 1 when the engine would reject a pack, so the script can gate
 The verdict mirrors the checks Orca runs on a language pack at install time:
 
 - **Protected paths.** Everything under `auto.components.settings.plugin*` is consent and trust copy, except the paths listed in `plugin-translatable-chrome.ts`. Whole components the engine module lists in `PROTECTED_TRANSLATION_COMPONENTS` are protected with no exceptions (the native chat approval card and two plugin trust labels, from [stablyai/orca#33069](https://github.com/stablyai/orca/pull/33069), not in a release yet). One protected key and Orca rejects the whole catalog without a message; the interface just stays English.
-- **Limits.** The entry limit is read from the release's engine module (20,000 up to v1.4.242), plus depth 16, 8,192 characters per value, 5 MB per file.
+- **Limits.** The entry limit is read from the release's engine module (20,000 up to v1.4.243), plus depth 16, 8,192 characters per value, 5 MB per file.
 - **Rules the script does not know.** If the release's engine module declares a protection rule this script does not model, the audit stops with an error instead of printing a verdict.
 - **Unsafe keys.** Empty keys, keys with a dot or a control character, `__proto__`, `prototype`, `constructor`.
 
@@ -81,7 +81,7 @@ Nothing is written when a check fails.
 
 Orca's `en.json` keeps keys that no component reads any more, mostly left behind when a component was rewritten under new keys. Orca never shows them, but a pack that translates them pays for them: the engine loads at most 20,000 catalog entries. On 2026-10-28 the pack with its pending translations came to 20,076 entries, and 1,514 translations of such keys took about 1,600 of them.
 
-[`unread-catalog-keys.json`](unread-catalog-keys.json) lists these keys and says what they were checked against. A key is on the list when the orphan detector from [stablyai/orca#22056](https://github.com/stablyai/orca/pull/22056) finds it on `main`, and neither the key nor its base without a plural suffix appears as a string literal in the `.ts`/`.tsx` sources of the release or of `main`. The build leaves these keys out, and `audit-pack.py` leaves them out of coverage, because a pack without them misses nothing on screen. Their translations stay in the blocks, so a key Orca reads again comes back with the next build once it leaves the list.
+[`unread-catalog-keys.json`](unread-catalog-keys.json) lists these keys and says what they were checked against. Since [stablyai/orca#22056](https://github.com/stablyai/orca/pull/22056) was merged on 2026-10-28, Orca's extraction check fails on any such key, so `main` has none and the list empties at the first release that includes it. A key is on the list when the orphan detector from [stablyai/orca#22056](https://github.com/stablyai/orca/pull/22056) finds it on `main`, and neither the key nor its base without a plural suffix appears as a string literal in the `.ts`/`.tsx` sources of the release or of `main`. The build leaves these keys out, and `audit-pack.py` leaves them out of coverage, because a pack without them misses nothing on screen. Their translations stay in the blocks, so a key Orca reads again comes back with the next build once it leaves the list.
 
 ```bash
 python3 tools/recheck-unread-keys.py                    # latest release and upstream/main
